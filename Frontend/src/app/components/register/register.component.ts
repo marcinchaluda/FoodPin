@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
-import { passwordValidator } from "../../validators/password.validator";
+import { passwordMatchValidator } from "../../validators/passwordMatch.validator";
 
 @Component({
   selector: 'app-register',
@@ -10,10 +10,10 @@ import { passwordValidator } from "../../validators/password.validator";
 export class RegisterComponent implements OnInit {
   registrationForm = this.formBuilder.group({
     userName: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', Validators.required],
-    password: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
     confirmPassword: ['', Validators.required],
-  }, {validator: passwordValidator});
+  }, {validator: passwordMatchValidator});
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -22,6 +22,18 @@ export class RegisterComponent implements OnInit {
 
   get userName() {
     return this.registrationForm.get('userName');
+  }
+
+  get email() {
+    return this.registrationForm.get('email');
+  }
+
+  get password() {
+    return this.registrationForm.get('password');
+  }
+
+  get confirmPassword() {
+    return this.registrationForm.get('confirmPassword');
   }
 
 }

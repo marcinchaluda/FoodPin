@@ -14,10 +14,21 @@
       </div>
       <label for="email">Email</label>
       <input id="email" class="register__email" placeholder="email" type="email" formControlName="email">
+      <div *ngIf="email.invalid && email.touched">
+        <small *ngIf="email.errors?.required">Email is required</small>
+        <small *ngIf="email.errors?.email">Email must be a valid email address</small>
+      </div>
       <label for="password">Password</label>
       <input id="password" class="register__password" placeholder="password" type="password" formControlName="password">
+      <div *ngIf="password.invalid && password.touched">
+        <small *ngIf="password.errors?.required">Password is required</small>
+      </div>
       <label for="confirm-password">Confirm password</label>
-      <input id="confirm-password" class="register__confirm-password" placeholder="confirm password" type="password" formControlName="confirmPassword">
+      <input [class.invalid]="registrationForm.errors?.misMatch" id="confirm-password" class="register__confirm-password" placeholder="confirm password" type="password" formControlName="confirmPassword">
+      <div *ngIf="confirmPassword.invalid && confirmPassword.touched">
+        <small *ngIf="confirmPassword.errors?.required">Confirm password is required</small>
+        <small *ngIf="registrationForm.errors?.misMatch">Passwords do not match</small>
+      </div>
       <button type='submit' class="register__submit">Register</button>
     </form>
     <div class="register__login-redirect">
