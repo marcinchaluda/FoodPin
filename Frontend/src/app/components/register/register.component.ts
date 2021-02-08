@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { passwordMatchValidator } from "../../validators/passwordMatch.validator";
+import {patternValidator} from "../../validators/patternValidator.validator";
 
 @Component({
   selector: 'app-register',
@@ -8,11 +9,20 @@ import { passwordMatchValidator } from "../../validators/passwordMatch.validator
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  registrationForm = this.formBuilder.group({
-    userName: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    confirmPassword: ['', Validators.required],
+  registrationForm: FormGroup = this.formBuilder.group({
+    userName: [null , Validators.compose([Validators.required, Validators.minLength(3)])],
+    email: [null , Validators.compose([Validators.required, Validators.email])],
+    password: [null , Validators.compose([
+      Validators.required,
+      // consist a number in a password
+      patternValidator(/\d/, {hasNumber: true}),
+      // consist of uppercase letter in a password
+      patternValidator(/[A-Z]/, {hasCapitalCase: true}),
+      // consist of lowercase letter in a password
+      patternValidator(/[a-z]/, {hasSmallCase: true}),
+      Validators.minLength(6),
+      ])],
+    confirmPassword: [null , Validators.compose([Validators.required])],
   }, {validator: passwordMatchValidator});
 
   constructor(private formBuilder: FormBuilder) { }

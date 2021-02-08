@@ -22,12 +22,16 @@
       <input id="password" class="register__password" placeholder="password" type="password" formControlName="password">
       <div *ngIf="password.invalid && password.touched">
         <small *ngIf="password.errors?.required">Password is required</small>
+        <small *ngIf="password.hasError('hasNumber')">Password must contain at least 1 number</small>
+        <small *ngIf="password.hasError('hasCapitalCase')">Password must contain at least 1 capital letter</small>
+        <small *ngIf="password.hasError('hasSmallCase')">Password must contain at least 1 lowercase letter</small>
+        <small *ngIf="password.errors?.minlength">Password must be at least 6 characters</small>
       </div>
       <label for="confirm-password">Confirm password</label>
       <input [class.invalid]="registrationForm.errors?.misMatch" id="confirm-password" class="register__confirm-password" placeholder="confirm password" type="password" formControlName="confirmPassword">
       <div *ngIf="confirmPassword.invalid && confirmPassword.touched">
         <small *ngIf="confirmPassword.errors?.required">Confirm password is required</small>
-        <small *ngIf="registrationForm.errors?.misMatch">Passwords do not match</small>
+        <small *ngIf="confirmPassword.hasError('NoPasswordMatch')">Passwords do not match</small>
       </div>
       <button type='submit' class="register__submit">Register</button>
     </form>
