@@ -9,25 +9,12 @@ import {patternValidator} from "../../validators/patternValidator.validator";
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  registrationForm: FormGroup = this.formBuilder.group({
-    userName: [null , Validators.compose([Validators.required, Validators.minLength(3)])],
-    email: [null , Validators.compose([Validators.required, Validators.email])],
-    password: [null , Validators.compose([
-      Validators.required,
-      // consist a number in a password
-      patternValidator(/\d/, {hasNumber: true}),
-      // consist of uppercase letter in a password
-      patternValidator(/[A-Z]/, {hasCapitalCase: true}),
-      // consist of lowercase letter in a password
-      patternValidator(/[a-z]/, {hasSmallCase: true}),
-      Validators.minLength(6),
-      ])],
-    confirmPassword: [null , Validators.compose([Validators.required])],
-  }, {validator: passwordMatchValidator});
+  registrationForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.registrationForm = this.generateRegistrationForm();
   }
 
   get userName() {
@@ -46,4 +33,25 @@ export class RegisterComponent implements OnInit {
     return this.registrationForm.get('confirmPassword');
   }
 
+  private generateRegistrationForm(): FormGroup {
+    return this.formBuilder.group({
+      userName: [null , Validators.compose([Validators.required, Validators.minLength(3)])],
+      email: [null , Validators.compose([Validators.required, Validators.email])],
+      password: [null , Validators.compose([
+        Validators.required,
+        // consist a number in a password
+        patternValidator(/\d/, {hasNumber: true}),
+        // consist of uppercase letter in a password
+        patternValidator(/[A-Z]/, {hasCapitalCase: true}),
+        // consist of lowercase letter in a password
+        patternValidator(/[a-z]/, {hasSmallCase: true}),
+        Validators.minLength(6),
+      ])],
+      confirmPassword: [null , Validators.compose([Validators.required])],
+    }, {validator: passwordMatchValidator});
+  }
+
+  registerUser() {
+    console.log(this.registrationForm.value);
+  }
 }

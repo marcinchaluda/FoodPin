@@ -4,7 +4,7 @@
       <img class="register__image" src="" alt="food pin logo">
       <h1 class="register__brand-name">FoodPin</h1>
     </div>
-    <form class="register__user-info" [formGroup]="registrationForm">
+    <form class="register__user-info" [formGroup]="registrationForm" (ngSubmit)="registerUser()">
       <label for="user-name">Username</label>
       <input id="user-name" class="register__userName" placeholder="user name" type="text" formControlName="userName"
              [class.invalid]="userName.invalid && userName.touched">
