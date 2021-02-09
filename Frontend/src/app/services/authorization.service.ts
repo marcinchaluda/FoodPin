@@ -30,6 +30,11 @@ export class AuthorizationService {
 
   private doLoginUser(userName: string, tokens: Tokens) {
     this.loggedUser = userName;
+    this.storeTokens(tokens);
   }
 
+  private storeTokens(tokens: Tokens) {
+    localStorage.setItem(this.JWT_TOKEN, tokens.access);
+    localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh);
+  }
 }
