@@ -1,0 +1,27 @@
+@import "./variables";
+
+@mixin flexColumnDirection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@mixin flexRowCenter {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@mixin inputFormsStyle {
+  padding:10px;
+  border:0;
+  box-shadow:0 0 20px 4px rgba(247,149,33,0.15);
+}
+
+@mixin activeButton {
+  padding: 0.5em 0;
+  border-radius: 25px;
+  font-size: 1.2em;
+  background-color: $colorOrange;
+  color: $colorWhite;
+}

@@ -1,9 +1,61 @@
+@import "../../variables";
+@import "../../mixins";
+
 .register {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100vw;
-  height: 100vh
+  height: 100vh;
+
+  &__container {
+    @include flexColumnDirection;
+    margin-top: 3em;
+    width: 90%;
+  }
+
+  &__logo {
+    @include flexColumnDirection;
+    text-align: center;
+  }
+
+  &__image {
+    width: 40%;
+    margin: 0 auto;
+  }
+
+  &__brand-name {
+    color: $colorOrange;
+    margin-bottom: 0.5em;
+  }
+
+  &__user-info {
+    @include flexColumnDirection;
+    margin: 0 auto;
+    width: 70%;
+
+    input {
+      @include inputFormsStyle;
+      margin-top: 1em;
+      font-size: 1em;
+    }
+  }
+
+  &__submit {
+    @include activeButton;
+    width: 70%;
+    margin: 1em auto 0 auto;
+  }
+
+  &__login-redirect {
+    @include flexRowCenter;
+    width: 60%;
+    margin: 0 auto;
+    font-size: 0.9em;
+
+    p { color: $colorGrey; }
+    a { color: $colorOrange; }
+  }
 }
 .invalid {
   border: 2px solid red;
