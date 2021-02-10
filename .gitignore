@@ -114,3 +114,6 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/webstorm,sass
 .idea/
 FoodPin Icons/
+/venv/
+__pycache__
+.env
