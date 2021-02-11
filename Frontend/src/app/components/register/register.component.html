@@ -5,7 +5,7 @@
       <h1 class="register__brand-name">FoodPin</h1>
     </div>
     <form class="register__user-info" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-      <input id="user-name" class="register__userName" placeholder="user name" type="text" formControlName="userName"
+      <input id="user-name" class="register__userName" placeholder="user name" type="text" formControlName="username"
              [class.invalid]="userName.invalid && userName.touched">
       <div *ngIf="userName.invalid && userName.touched">
         <small *ngIf="userName.errors?.required">Username is required</small>
@@ -16,7 +16,7 @@
         <small *ngIf="email.errors?.required">Email is required</small>
         <small *ngIf="email.errors?.email">Email must be a valid email address</small>
       </div>
-      <input id="password" class="register__password" placeholder="password" type="password" formControlName="password">
+      <input id="password" class="register__password" placeholder="password" type="password" formControlName="password1">
       <div *ngIf="password.invalid && password.touched">
         <small *ngIf="password.errors?.required">Password is required</small>
         <small *ngIf="password.hasError('hasNumber')">Password must contain at least 1 number</small>
@@ -24,7 +24,7 @@
         <small *ngIf="password.hasError('hasSmallCase')">Password must contain at least 1 lowercase letter</small>
         <small *ngIf="password.errors?.minlength">Password must be at least 6 characters</small>
       </div>
-      <input [class.invalid]="registrationForm.errors?.misMatch" id="confirm-password" class="register__confirm-password" placeholder="confirm password" type="password" formControlName="confirmPassword">
+      <input [class.invalid]="registrationForm.errors?.misMatch" id="confirm-password" class="register__confirm-password" placeholder="confirm password" type="password" formControlName="password2">
       <div *ngIf="confirmPassword.invalid && confirmPassword.touched">
         <small *ngIf="confirmPassword.errors?.required">Confirm password is required</small>
         <small *ngIf="confirmPassword.hasError('NoPasswordMatch')">Passwords do not match</small>

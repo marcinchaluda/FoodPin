@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { passwordMatchValidator } from "../../validators/passwordMatch.validator";
 import {patternValidator} from "../../validators/patternValidator.validator";
+import {RegistrationService} from "../../services/registration.service";
 
 @Component({
   selector: 'app-register',
@@ -11,14 +12,14 @@ import {patternValidator} from "../../validators/patternValidator.validator";
 export class RegisterComponent implements OnInit {
   registrationForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private registrationService: RegistrationService) { }
 
   ngOnInit(): void {
     this.registrationForm = this.generateRegistrationForm();
   }
 
   get userName() {
-    return this.registrationForm.get('userName');
+    return this.registrationForm.get('username');
   }
 
   get email() {
@@ -26,18 +27,18 @@ export class RegisterComponent implements OnInit {
   }
 
   get password() {
-    return this.registrationForm.get('password');
+    return this.registrationForm.get('password1');
   }
 
   get confirmPassword() {
-    return this.registrationForm.get('confirmPassword');
+    return this.registrationForm.get('password2');
   }
 
   private generateRegistrationForm(): FormGroup {
     return this.formBuilder.group({
-      userName: [null , Validators.compose([Validators.required, Validators.minLength(3)])],
+      username: [null , Validators.compose([Validators.required, Validators.minLength(3)])],
       email: [null , Validators.compose([Validators.required, Validators.email])],
-      password: [null , Validators.compose([
+      password1: [null , Validators.compose([
         Validators.required,
         // consist a number in a password
         patternValidator(/\d/, {hasNumber: true}),
@@ -47,11 +48,15 @@ export class RegisterComponent implements OnInit {
         patternValidator(/[a-z]/, {hasSmallCase: true}),
         Validators.minLength(6),
       ])],
-      confirmPassword: [null , Validators.compose([Validators.required])],
+      password2: [null , Validators.compose([Validators.required])],
     }, {validator: passwordMatchValidator});
   }
 
-  registerUser() {
-    console.log(this.registrationForm.value);
+  // tslint:disable-next-line:typedef
+  onSubmit() {
+    console.log(this.registrationForm);
+    this.registrationService.registerUser(this.registrationForm.value).subscribe(
+      response => console.log('Success!', response),
+      error => console.log('Error!', error));
   }
 }
