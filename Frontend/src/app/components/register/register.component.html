@@ -1,7 +1,11 @@
 <div class="register">
   <div class="register__container">
     <div class="register__logo">
-      <img class="register__image" src="./assets/FoodPin.png" alt="food pin logo">
+      <picture class="register__image">
+        <source media="(min-width: 1024px)" srcset="assets/Logo/logo-460x345.png">
+        <source media="(min-width: 460px)" srcset="assets/Logo/logo-360x270.png">
+        <img src="./assets/Logo/logo-200x150.png" alt="food pin logo">
+      </picture>
       <h1 class="register__brand-name">FoodPin</h1>
     </div>
     <form class="register__user-info" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
