@@ -25,3 +25,15 @@
   background-color: $colorOrange;
   color: $colorWhite;
 }
+
+@mixin mediaQuery($breakPoint) {
+  $size: map-get($breakPoints, $breakPoint);
+  @if($size) {
+    @media #{$size} {
+      @content;
+    }
+  }
+  @else {
+    @error '"#{$breakPoint}" - resolution is not define';
+  }
+}
