@@ -2,3 +2,12 @@ $colorOrange: #f79521;
 $colorFadedOrange: #fccaa0;
 $colorGrey: #C4C4C4;
 $colorWhite: white;
+
+$breakPoints: (
+  smartphoneSmall: (min-width: 360px),
+  smartphone: (min-width: 460px),
+  smartphoneLarge: (min-width: 640px),
+  tablet: (min-width: 800px),
+  tabletLarge: (min-width: 1024px),
+  desktop: (min-width: 1280px),
+);
