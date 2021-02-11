@@ -1,17 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { passwordMatchValidator } from "../../validators/passwordMatch.validator";
+// @ts-ignore
+import {passwordMatchValidator} from "../../validators/passwordMatch.validator";
+// @ts-ignore
 import {patternValidator} from "../../validators/patternValidator.validator";
+import {RegistrationService} from "../../services/registration.service";
+import {faUser, faAt, faLock} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  providers: [RegistrationService]
 })
 export class RegisterComponent implements OnInit {
+  userIcon = faUser;
+  emailIcon = faAt;
+  passwordIcon = faLock;
   registrationForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private registrationService: RegistrationService) { }
 
   ngOnInit(): void {
     this.registrationForm = this.generateRegistrationForm();
@@ -51,7 +59,11 @@ export class RegisterComponent implements OnInit {
     }, {validator: passwordMatchValidator});
   }
 
-  registerUser() {
+  onSubmit()  {
     console.log(this.registrationForm.value);
+    this.registrationService.registerUser(this.registrationForm.value).subscribe(
+      response => console.log('Success!', response),
+      error => console.log('Error!', error),
+    )
   }
 }

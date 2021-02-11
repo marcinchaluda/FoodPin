@@ -7,6 +7,12 @@
   align-items: flex-start;
   width: 100vw;
   height: 100vh;
+  min-width: 400px;
+  max-width: 700px;
+
+  @__userName {
+
+  }
 
   &__container {
     @include flexColumnDirection;
@@ -57,6 +63,7 @@
     a { color: $colorOrange; }
   }
 }
+
 .invalid {
   border: 2px solid red;
 }
@@ -67,4 +74,15 @@ small {
 
 .show {
   display: none;
+}
+
+.icon-container {
+  @include flexRowCenter;
+
+  fa-icon {
+    padding-top: 1em;
+    margin-right: 0.5em;
+    color: lighten($colorOrange, 15%);
+    font-size: 1.2em;
+  }
 }
