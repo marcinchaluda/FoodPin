@@ -14,7 +14,7 @@
       <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:password}"></ng-container>
       <input [class.invalid]="registrationForm.errors?.misMatch" id="confirm-password" class="register__confirm-password"
              placeholder="confirm password" type="password" formControlName="confirmPassword">
-      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:password}"></ng-container>
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:confirmPassword}"></ng-container>
       <button type='submit' class="register__submit">Register</button>
     </form>
     <div class="register__login-redirect">
