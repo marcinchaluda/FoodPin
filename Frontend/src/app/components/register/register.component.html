@@ -8,15 +8,13 @@
       <label for="user-name">Username</label>
       <input id="user-name" class="register__userName" placeholder="user name" type="text" formControlName="userName"
              [class.invalid]="userName.invalid && userName.touched">
-      <div *ngIf="userName.invalid && userName.touched">
-        <small *ngIf="userName.errors?.required">Username is required</small>
-        <small *ngIf="userName.errors?.minlength">Username must be at least 3 characters</small>
-      </div>
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:userName}">
+      </ng-container>
       <label for="email">Email</label>
       <input id="email" class="register__email" placeholder="email" type="email" formControlName="email">
       <div *ngIf="email.invalid && email.touched">
-        <small *ngIf="email.errors?.required">Email is required</small>
-        <small *ngIf="email.errors?.email">Email must be a valid email address</small>
+        <small *ngIf="email.hasError('required')">Email is required</small>
+        <small *ngIf="email.hasError('email')">Email must be a valid email address</small>
       </div>
       <label for="password">Password</label>
       <input id="password" class="register__password" placeholder="password" type="password" formControlName="password">
@@ -41,3 +39,9 @@
     </div>
   </div>
 </div>
+
+<ng-template let-error="inputFieldValue" #validationError>
+  <div *ngIf="error.invalid && error.touched">
+    {{ error.errors | inputError }}
+  </div>
+</ng-template>
