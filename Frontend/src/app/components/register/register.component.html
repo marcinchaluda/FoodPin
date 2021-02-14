@@ -5,32 +5,16 @@
       <h1 class="register__brand-name">FoodPin</h1>
     </div>
     <form class="register__user-info" [formGroup]="registrationForm" (ngSubmit)="registerUser()">
-      <label for="user-name">Username</label>
       <input id="user-name" class="register__userName" placeholder="user name" type="text" formControlName="userName"
              [class.invalid]="userName.invalid && userName.touched">
-      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:userName}">
-      </ng-container>
-      <label for="email">Email</label>
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:userName}"></ng-container>
       <input id="email" class="register__email" placeholder="email" type="email" formControlName="email">
-      <div *ngIf="email.invalid && email.touched">
-        <small *ngIf="email.hasError('required')">Email is required</small>
-        <small *ngIf="email.hasError('email')">Email must be a valid email address</small>
-      </div>
-      <label for="password">Password</label>
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:email}"></ng-container>
       <input id="password" class="register__password" placeholder="password" type="password" formControlName="password">
-      <div *ngIf="password.invalid && password.touched">
-        <small *ngIf="password.errors?.required">Password is required</small>
-        <small *ngIf="password.hasError('hasNumber')">Password must contain at least 1 number</small>
-        <small *ngIf="password.hasError('hasCapitalCase')">Password must contain at least 1 capital letter</small>
-        <small *ngIf="password.hasError('hasSmallCase')">Password must contain at least 1 lowercase letter</small>
-        <small *ngIf="password.errors?.minlength">Password must be at least 6 characters</small>
-      </div>
-      <label for="confirm-password">Confirm password</label>
-      <input [class.invalid]="registrationForm.errors?.misMatch" id="confirm-password" class="register__confirm-password" placeholder="confirm password" type="password" formControlName="confirmPassword">
-      <div *ngIf="confirmPassword.invalid && confirmPassword.touched">
-        <small *ngIf="confirmPassword.errors?.required">Confirm password is required</small>
-        <small *ngIf="confirmPassword.hasError('NoPasswordMatch')">Passwords do not match</small>
-      </div>
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:password}"></ng-container>
+      <input [class.invalid]="registrationForm.errors?.misMatch" id="confirm-password" class="register__confirm-password"
+             placeholder="confirm password" type="password" formControlName="confirmPassword">
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:password}"></ng-container>
       <button type='submit' class="register__submit">Register</button>
     </form>
     <div class="register__login-redirect">
@@ -42,6 +26,6 @@
 
 <ng-template let-error="inputFieldValue" #validationError>
   <div *ngIf="error.invalid && error.touched">
-    {{ error.errors | inputError }}
+    <small [innerHTML]="error.errors | inputError"></small>
   </div>
 </ng-template>
