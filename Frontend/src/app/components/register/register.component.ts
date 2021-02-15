@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 // @ts-ignore
 import {passwordMatchValidator} from "../../validators/passwordMatch.validator";
 // @ts-ignore
 import {patternValidator} from "../../validators/patternValidator.validator";
 import {RegistrationService} from "../../services/registration.service";
-import {faUser, faAt, faLock} from "@fortawesome/free-solid-svg-icons";
+import {faAt, faLock, faUser} from "@fortawesome/free-solid-svg-icons";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 
@@ -28,23 +28,23 @@ export class RegisterComponent implements OnInit {
     private _toastr: ToastrService,
     ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.registrationForm = this.generateRegistrationForm();
   }
 
-  get userName() {
+  public get userName(): AbstractControl {
     return this.registrationForm.get('username');
   }
 
-  get email() {
+  public get email(): AbstractControl {
     return this.registrationForm.get('email');
   }
 
-  get password() {
+  public get password(): AbstractControl {
     return this.registrationForm.get('password1');
   }
 
-  get confirmPassword() {
+  public get confirmPassword(): AbstractControl {
     return this.registrationForm.get('password2');
   }
 
@@ -66,11 +66,11 @@ export class RegisterComponent implements OnInit {
     }, {validator: passwordMatchValidator});
   }
 
-  onSubmit()  {
+  public onSubmit(): void  {
     this._registrationService.registerUser$(this.registrationForm.value).subscribe(
       _ => {
         this._toastr.success("Successfully logged in");
-        this._router.navigate(["login"]);
+        this._router.navigate(["login"]).then(r => console.log(r));
       },
     )
   }
