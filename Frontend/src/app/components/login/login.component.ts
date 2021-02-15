@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {patternValidator} from "../../validators/patternValidator.validator";
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
+import {AuthorizationService} from "../../services/authorization.service";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-login',
@@ -10,22 +14,27 @@ import {patternValidator} from "../../validators/patternValidator.validator";
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _authService: AuthorizationService,
+    private _router: Router,
+    private _toastr: ToastrService,
+  ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.loginForm = this.generateLoginForm();
   }
 
-  get email() {
+  public get email(): AbstractControl {
     return this.loginForm.get('email');
   }
 
-  get password() {
+  public get password(): AbstractControl {
     return this.loginForm.get('password');
   }
 
-  private generateLoginForm() {
-    return this.formBuilder.group({
+  private generateLoginForm(): FormGroup {
+    return this._formBuilder.group({
       email: [null , Validators.compose([Validators.required, Validators.email])],
       password: [null , Validators.compose([
         Validators.required,
@@ -40,7 +49,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log(this.loginForm.value);
+  public onSubmit(): void {
+    const user = this.createUser();
+
+    this._authService.login$(user).subscribe(
+      _ => {
+        this._toastr.success("Successfully logged in");
+        this._router.navigate([""]).then(r => "Login: " + r);
+      },
+    );
+  }
+
+  private createUser(): User {
+    const user: User = ({
+      email: this.loginForm.value['email'],
+      password: this.loginForm.value['password'],
+    });
+    return user;
   }
 }
