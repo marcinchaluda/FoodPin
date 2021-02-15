@@ -8,6 +8,10 @@
   margin: 3em auto;
   height: 80vh;
 
+  @include mediaQuery(tabletLarge) {
+    margin-top: 1em;
+  }
+
   &__container {
     @include flexColumnDirection;
     margin-top: 3em;
@@ -19,6 +23,10 @@
     font-size: 2em;
     font-weight: bold;
     text-align: center;
+
+    @include mediaQuery(tabletLarge) {
+      font-size: 4em;
+    }
   }
 
   &__image {
@@ -39,6 +47,10 @@
       @include inputFormsStyle;
       margin-top: 1em;
       font-size: 1em;
+
+      @include mediaQuery(tabletLarge) {
+        font-size: 1.6em;
+      }
     }
 
     input:focus {
@@ -51,6 +63,10 @@
     width: 10em;
     margin: 2em auto 0 auto;
     box-shadow:0 0 20px 4px rgba(247,149,33,0.15);
+
+    @include mediaQuery(tabletLarge) {
+      width: 13em;
+    }
   }
 
   &__submit:disabled {
@@ -73,6 +89,10 @@
     a {
       padding-left: 0.5em;
       color: $colorOrange;
+    }
+
+    @include mediaQuery(tabletLarge) {
+      font-size: 1.6em;
     }
   }
 }
