@@ -69,8 +69,8 @@ export class RegisterComponent implements OnInit {
   public onSubmit(): void  {
     this._registrationService.registerUser$(this.registrationForm.value).subscribe(
       _ => {
-        this._toastr.success("Successfully logged in");
-        this._router.navigate(["login"]).then(r => console.log(r));
+        this._toastr.success("Registration successful");
+        this._router.navigate(["login"]).then(r => console.log("Registration: " + r));
       },
     )
   }

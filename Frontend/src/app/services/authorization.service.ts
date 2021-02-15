@@ -21,11 +21,6 @@ export class AuthorizationService {
     return this.http.post<any>(`${this.apiUrl}sessions/login/`, user)
       .pipe(
         tap(tokens => this.doLoginUser(user.username, tokens)),
-        mapTo(true),
-        catchError(error => {
-          alert(error.error);
-          return of(false);
-        })
       );
   }
 

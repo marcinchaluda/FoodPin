@@ -51,7 +51,13 @@ export class LoginComponent implements OnInit {
 
   public onSubmit(): void {
     const user = this.createUser();
-    console.log(user);
+
+    this._authService.login$(user).subscribe(
+      _ => {
+        this._toastr.success("Successfully logged in");
+        this._router.navigate([""]).then(r => "Login: " + r);
+      },
+    );
   }
 
   private createUser(): User {
