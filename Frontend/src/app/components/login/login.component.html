@@ -1,7 +1,10 @@
 <div class="login">
   <div class="login__container">
     <div class="login__logo">
-      <img class="login__image" src="" alt="food pin logo">
+      <picture class="register__image">
+        <source media="(min-width: 1024px)" srcset="assets/Logo/logo-360x270.png">
+        <img src="./assets/Logo/logo-200x150.png" alt="food pin logo">
+      </picture>
       <h1 class="login__brand-name">FoodPin</h1>
     </div>
     <form class="login__user-info" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -15,7 +18,7 @@
         <input id="password" class="register__password" placeholder="password" type="password" formControlName="password1">
       </div>
       <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:password}"></ng-container>
-      <button type='submit' class="register__submit" [disabled]="!loginForm.valid">Login</button>
+      <button type='submit' class="login__submit" [disabled]="!loginForm.valid">Login</button>
     </form>
     <div class="login__register-redirect">
       <p>Need an account?</p>

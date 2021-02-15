@@ -31,6 +31,7 @@
   font-size: 1.2em;
   background-color: $colorOrange;
   color: $colorWhite;
+  border: none;
 }
 
 @mixin mediaQuery($breakPoint) {
@@ -42,5 +43,20 @@
   }
   @else {
     @error '"#{$breakPoint}" - resolution is not define';
+  }
+}
+
+@mixin iconContainer {
+  @include flexRowCenter;
+
+  fa-icon {
+    padding-top: 1em;
+    margin-right: 0.5em;
+    color: lighten($colorOrange, 15%);
+    font-size: 1.2em;
+
+    @include mediaQuery(tabletLarge) {
+      font-size: 1.6em;
+    }
   }
 }

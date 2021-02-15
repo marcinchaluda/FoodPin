@@ -54,11 +54,14 @@
     font-size: 1.2em;
     background-color: #f79521;
     color: white;
+    border: none;
     width: 10em;
     margin: 2em auto 0 auto; }
     @media (min-width: 1024px) {
       .register__submit {
         width: 13em; } }
+  .register__submit:disabled {
+    background-color: #fbc483; }
   .register__login-redirect {
     display: flex;
     justify-content: center;
@@ -70,6 +73,7 @@
     .register__login-redirect p {
       color: #C4C4C4; }
     .register__login-redirect a {
+      padding-left: 0.5em;
       color: #f79521; }
     @media (min-width: 1024px) {
       .register__login-redirect {
