@@ -48,9 +48,9 @@ export class RegisterComponent implements OnInit {
 
   private generateRegistrationForm(): FormGroup {
     return this.formBuilder.group({
-      userName: [null , Validators.compose([Validators.required, Validators.minLength(6)])],
+      username: [null , Validators.compose([Validators.required, Validators.minLength(6)])],
       email: [null , Validators.compose([Validators.required, Validators.email])],
-      password: [null , Validators.compose([
+      password1: [null , Validators.compose([
         Validators.required,
         // consist a number in a password
         patternValidator(/\d/, {hasNumber: true}),
@@ -60,14 +60,14 @@ export class RegisterComponent implements OnInit {
         patternValidator(/[a-z]/, {hasSmallCase: true}),
         Validators.minLength(6),
       ])],
-      confirmPassword: [null , Validators.compose([Validators.required])],
+      password2: [null , Validators.compose([Validators.required])],
     }, {validator: passwordMatchValidator});
   }
 
   onSubmit()  {
     console.log(this.registrationForm.value);
     this.registrationService.registerUser(this.registrationForm.value).subscribe(
-      response => this.router.navigate(["app-login"]),
+      response => this.router.navigate(["login"]),
       error => console.log('Error!', error),
     )
   }

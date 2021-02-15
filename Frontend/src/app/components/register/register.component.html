@@ -10,8 +10,7 @@
     <form class="register__user-info" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="icon-container">
         <fa-icon [icon]="userIcon"></fa-icon>
-      <input id="user-name" class="register__userName" placeholder="user name" type="text" formControlName="username"
-             [class.invalid]="userName.invalid && userName.touched">
+      <input id="user-name" class="register__userName" placeholder="user name" type="text" formControlName="username">
       </div>
       <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:userName}"></ng-container>
       <div class="icon-container">
@@ -34,7 +33,7 @@
     </form>
     <div class="register__login-redirect">
       <p>Already have an account?</p>
-      <a href="/register">Sign In</a>
+      <a routerLink="/login">Sign In</a>
     </div>
   </div>
 </div>
