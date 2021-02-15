@@ -6,6 +6,7 @@ import {passwordMatchValidator} from "../../validators/passwordMatch.validator";
 import {patternValidator} from "../../validators/patternValidator.validator";
 import {RegistrationService} from "../../services/registration.service";
 import {faUser, faAt, faLock} from "@fortawesome/free-solid-svg-icons";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -19,14 +20,18 @@ export class RegisterComponent implements OnInit {
   passwordIcon = faLock;
   registrationForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private registrationService: RegistrationService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private registrationService: RegistrationService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.registrationForm = this.generateRegistrationForm();
   }
 
   get userName() {
-    return this.registrationForm.get('userName');
+    return this.registrationForm.get('username');
   }
 
   get email() {
@@ -34,18 +39,18 @@ export class RegisterComponent implements OnInit {
   }
 
   get password() {
-    return this.registrationForm.get('password');
+    return this.registrationForm.get('password1');
   }
 
   get confirmPassword() {
-    return this.registrationForm.get('confirmPassword');
+    return this.registrationForm.get('password2');
   }
 
   private generateRegistrationForm(): FormGroup {
     return this.formBuilder.group({
-      userName: [null , Validators.compose([Validators.required, Validators.minLength(6)])],
+      username: [null , Validators.compose([Validators.required, Validators.minLength(6)])],
       email: [null , Validators.compose([Validators.required, Validators.email])],
-      password: [null , Validators.compose([
+      password1: [null , Validators.compose([
         Validators.required,
         // consist a number in a password
         patternValidator(/\d/, {hasNumber: true}),
@@ -55,14 +60,14 @@ export class RegisterComponent implements OnInit {
         patternValidator(/[a-z]/, {hasSmallCase: true}),
         Validators.minLength(6),
       ])],
-      confirmPassword: [null , Validators.compose([Validators.required])],
+      password2: [null , Validators.compose([Validators.required])],
     }, {validator: passwordMatchValidator});
   }
 
   onSubmit()  {
     console.log(this.registrationForm.value);
     this.registrationService.registerUser(this.registrationForm.value).subscribe(
-      response => console.log('Success!', response),
+      response => this.router.navigate(["login"]),
       error => console.log('Error!', error),
     )
   }

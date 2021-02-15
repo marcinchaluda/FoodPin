@@ -1,9 +1,15 @@
 .register {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   min-width: 400px;
-  max-width: 700px; }
+  max-width: 700px;
+  margin: 3em auto;
+  height: 80vh; }
+  @media (min-width: 1024px) {
+    .register {
+      margin-top: 1em; } }
   .register__container {
     display: flex;
     flex-direction: column;
@@ -17,6 +23,9 @@
     font-size: 2em;
     font-weight: bold;
     text-align: center; }
+    @media (min-width: 1024px) {
+      .register__logo {
+        font-size: 4em; } }
   .register__image {
     margin: 0 auto; }
   .register__brand-name {
@@ -34,17 +43,23 @@
       box-shadow: 0 0 20px 4px rgba(247, 149, 33, 0.15);
       margin-top: 1em;
       font-size: 1em; }
+      @media (min-width: 1024px) {
+        .register__user-info input {
+          font-size: 1.6em; } }
   .register__submit {
     padding: 0.5em 0;
     border-radius: 25px;
     font-size: 1.2em;
     background-color: #f79521;
     color: white;
-    width: 70%;
+    width: 10em;
     margin: 2em auto 0 auto; }
+    @media (min-width: 1024px) {
+      .register__submit {
+        width: 13em; } }
   .register__login-redirect {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 60%;
     margin: 0 auto;
@@ -54,24 +69,35 @@
       color: #C4C4C4; }
     .register__login-redirect a {
       color: #f79521; }
+    @media (min-width: 1024px) {
+      .register__login-redirect {
+        font-size: 1.6em; } }
 
 .invalid {
   border: 2px solid red; }
 
 small {
+  min-width: 400px;
+  max-width: 700px;
   color: red; }
+
+.inputErrors {
+  text-align: center; }
 
 .show {
   display: none; }
 
 .icon-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center; }
   .icon-container fa-icon {
     padding-top: 1em;
     margin-right: 0.5em;
     color: #fab86b;
     font-size: 1.2em; }
+    @media (min-width: 1024px) {
+      .icon-container fa-icon {
+        font-size: 1.6em; } }
 
 /*# sourceMappingURL=register.component.css.map */
