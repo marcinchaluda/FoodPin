@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { InputErrorPipe } from './pipes/input-error.pipe';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

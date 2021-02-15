@@ -1,19 +1,34 @@
 <div class="register">
   <div class="register__container">
     <div class="register__logo">
-      <img class="register__image" src="" alt="food pin logo">
+      <picture class="register__image">
+        <source media="(min-width: 1024px)" srcset="assets/Logo/logo-360x270.png">
+        <img src="./assets/Logo/logo-200x150.png" alt="food pin logo">
+      </picture>
       <h1 class="register__brand-name">FoodPin</h1>
     </div>
-    <form class="register__user-info" [formGroup]="registrationForm" (ngSubmit)="registerUser()">
+    <form class="register__user-info" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div class="icon-container">
+        <fa-icon [icon]="userIcon"></fa-icon>
       <input id="user-name" class="register__userName" placeholder="user name" type="text" formControlName="userName"
              [class.invalid]="userName.invalid && userName.touched">
+      </div>
       <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:userName}"></ng-container>
+      <div class="icon-container">
+        <fa-icon [icon]="emailIcon"></fa-icon>
       <input id="email" class="register__email" placeholder="email" type="email" formControlName="email">
+      </div>
       <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:email}"></ng-container>
+      <div class="icon-container">
+        <fa-icon [icon]="passwordIcon"></fa-icon>
       <input id="password" class="register__password" placeholder="password" type="password" formControlName="password">
+      </div>
       <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:password}"></ng-container>
+      <div class="icon-container">
+        <fa-icon [icon]="passwordIcon"></fa-icon>
       <input [class.invalid]="registrationForm.errors?.misMatch" id="confirm-password" class="register__confirm-password"
              placeholder="confirm password" type="password" formControlName="confirmPassword">
+      </div>
       <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:confirmPassword}"></ng-container>
       <button type='submit' class="register__submit">Register</button>
     </form>
@@ -25,7 +40,7 @@
 </div>
 
 <ng-template let-error="inputFieldValue" #validationError>
-  <div *ngIf="error.invalid && error.touched">
+  <div class="inputErrors" *ngIf="error.invalid && error.touched">
     <small [innerHTML]="error.errors | inputError"></small>
   </div>
 </ng-template>
