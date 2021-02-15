@@ -2,8 +2,7 @@
   <div class="register__container">
     <div class="register__logo">
       <picture class="register__image">
-        <source media="(min-width: 1024px)" srcset="assets/Logo/logo-460x345.png">
-        <source media="(min-width: 460px)" srcset="assets/Logo/logo-360x270.png">
+        <source media="(min-width: 1024px)" srcset="assets/Logo/logo-360x270.png">
         <img src="./assets/Logo/logo-200x150.png" alt="food pin logo">
       </picture>
       <h1 class="register__brand-name">FoodPin</h1>
@@ -41,7 +40,7 @@
 </div>
 
 <ng-template let-error="inputFieldValue" #validationError>
-  <div *ngIf="error.invalid && error.touched">
+  <div class="inputErrors" *ngIf="error.invalid && error.touched">
     <small [innerHTML]="error.errors | inputError"></small>
   </div>
 </ng-template>

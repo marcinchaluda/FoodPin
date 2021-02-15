@@ -2,11 +2,15 @@
 @import "../../mixins";
 
 .register {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+ @include flexColumnCenter;
   min-width: 400px;
   max-width: 700px;
+  margin: 3em auto;
+  height: 80vh;
+
+  @include mediaQuery(tabletLarge) {
+    margin-top: 1em;
+  }
 
   &__container {
     @include flexColumnDirection;
@@ -19,6 +23,10 @@
     font-size: 2em;
     font-weight: bold;
     text-align: center;
+
+    @include mediaQuery(tabletLarge) {
+      font-size: 4em;
+    }
   }
 
   &__image {
@@ -39,13 +47,21 @@
       @include inputFormsStyle;
       margin-top: 1em;
       font-size: 1em;
+
+      @include mediaQuery(tabletLarge) {
+        font-size: 1.6em;
+      }
     }
   }
 
   &__submit {
     @include activeButton;
-    width: 70%;
+    width: 10em;
     margin: 2em auto 0 auto;
+
+    @include mediaQuery(tabletLarge) {
+      width: 13em;
+    }
   }
 
   &__login-redirect {
@@ -57,6 +73,10 @@
 
     p { color: $colorGrey; }
     a { color: $colorOrange; }
+
+    @include mediaQuery(tabletLarge) {
+      font-size: 1.6em;
+    }
   }
 }
 
@@ -65,9 +85,14 @@
 }
 
 small {
+  min-width: 400px;
+  max-width: 700px;
   color: red;
 }
 
+.inputErrors {
+  text-align: center;
+}
 .show {
   display: none;
 }
@@ -80,5 +105,9 @@ small {
     margin-right: 0.5em;
     color: lighten($colorOrange, 15%);
     font-size: 1.2em;
+
+    @include mediaQuery(tabletLarge) {
+      font-size: 1.6em;
+    }
   }
 }

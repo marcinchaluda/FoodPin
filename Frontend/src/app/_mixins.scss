@@ -6,14 +6,21 @@
   justify-content: space-between;
 }
 
+@mixin flexColumnCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 @mixin flexRowCenter {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
 @mixin inputFormsStyle {
-  padding:10px;
+  padding: 10px;
   border:0;
   box-shadow:0 0 20px 4px rgba(247,149,33,0.15);
 }
@@ -29,7 +36,7 @@
 @mixin mediaQuery($breakPoint) {
   $size: map-get($breakPoints, $breakPoint);
   @if($size) {
-    @media #{$size} {
+    @media (#{$size}) {
       @content;
     }
   }
