@@ -5,26 +5,27 @@
       <h1 class="login__brand-name">FoodPin</h1>
     </div>
     <form class="login__user-info" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <label for="email">Email</label>
-      <input id="email" class="login__email" placeholder="email" type="email" formControlName="email">
-      <div *ngIf="email.invalid && email.touched">
-        <small *ngIf="email.errors?.required">Email is required</small>
-        <small *ngIf="email.errors?.email">Email must be a valid email address</small>
+      <div class="icon-container">
+        <fa-icon [icon]="emailIcon"></fa-icon>
+        <input id="email" class="register__email" placeholder="email" type="email" formControlName="email">
       </div>
-      <label for="password">Password</label>
-      <input id="password" class="register__password" placeholder="password" type="password" formControlName="password">
-      <div *ngIf="password.invalid && password.touched">
-        <small *ngIf="password.errors?.required">Password is required</small>
-        <small *ngIf="password.hasError('hasNumber')">Password must contain at least 1 number</small>
-        <small *ngIf="password.hasError('hasCapitalCase')">Password must contain at least 1 capital letter</small>
-        <small *ngIf="password.hasError('hasSmallCase')">Password must contain at least 1 lowercase letter</small>
-        <small *ngIf="password.errors?.minlength">Password must be at least 6 characters</small>
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:email}"></ng-container>
+      <div class="icon-container">
+        <fa-icon [icon]="passwordIcon"></fa-icon>
+        <input id="password" class="register__password" placeholder="password" type="password" formControlName="password1">
       </div>
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:password}"></ng-container>
       <button type='submit' class="register__submit" [disabled]="!loginForm.valid">Login</button>
     </form>
     <div class="login__register-redirect">
       <p>Need an account?</p>
-      <a>Sign Up</a>
+      <a routerLink="/register">Sign Up</a>
     </div>
   </div>
 </div>
+
+<ng-template let-error="inputFieldValue" #validationError>
+  <div class="inputErrors" *ngIf="error.invalid && error.touched">
+    <small [innerHTML]="error.errors | inputError"></small>
+  </div>
+</ng-template>

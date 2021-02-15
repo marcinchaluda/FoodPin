@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {AuthorizationService} from "../../services/authorization.service";
 import {User} from "../../models/User";
+import {faAt, faLock} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,8 @@ import {User} from "../../models/User";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  emailIcon = faAt;
+  passwordIcon = faLock;
   loginForm: FormGroup;
 
   constructor(
@@ -30,13 +33,13 @@ export class LoginComponent implements OnInit {
   }
 
   public get password(): AbstractControl {
-    return this.loginForm.get('password');
+    return this.loginForm.get('password1');
   }
 
   private generateLoginForm(): FormGroup {
     return this._formBuilder.group({
       email: [null , Validators.compose([Validators.required, Validators.email])],
-      password: [null , Validators.compose([
+      password1: [null , Validators.compose([
         Validators.required,
         // consist a number in a password
         patternValidator(/\d/, {hasNumber: true}),
