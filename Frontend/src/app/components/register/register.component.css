@@ -46,6 +46,8 @@
       @media (min-width: 1024px) {
         .register__user-info input {
           font-size: 1.6em; } }
+    .register__user-info input:focus {
+      border: 2px solid #f79521; }
   .register__submit {
     padding: 0.5em 0;
     border-radius: 25px;

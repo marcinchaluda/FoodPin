@@ -7,6 +7,7 @@ import {patternValidator} from "../../validators/patternValidator.validator";
 import {RegistrationService} from "../../services/registration.service";
 import {faUser, faAt, faLock} from "@fortawesome/free-solid-svg-icons";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-register',
@@ -21,9 +22,10 @@ export class RegisterComponent implements OnInit {
   registrationForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private registrationService: RegistrationService,
-    private router: Router
+    private _formBuilder: FormBuilder,
+    private _registrationService: RegistrationService,
+    private _router: Router,
+    private _toastr: ToastrService,
     ) { }
 
   ngOnInit(): void {
@@ -47,7 +49,7 @@ export class RegisterComponent implements OnInit {
   }
 
   private generateRegistrationForm(): FormGroup {
-    return this.formBuilder.group({
+    return this._formBuilder.group({
       username: [null , Validators.compose([Validators.required, Validators.minLength(6)])],
       email: [null , Validators.compose([Validators.required, Validators.email])],
       password1: [null , Validators.compose([
@@ -65,10 +67,11 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit()  {
-    console.log(this.registrationForm.value);
-    this.registrationService.registerUser(this.registrationForm.value).subscribe(
-      response => this.router.navigate(["login"]),
-      error => console.log('Error!', error),
+    this._registrationService.registerUser$(this.registrationForm.value).subscribe(
+      _ => {
+        this._toastr.success("Successfully logged in");
+        this._router.navigate(["login"]);
+      },
     )
   }
 }
