@@ -10,7 +10,7 @@
     <form class="register__user-info" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="icon-container">
         <fa-icon [icon]="userIcon"></fa-icon>
-      <input id="user-name" class="register__userName" placeholder="user name" type="text" formControlName="userName"
+      <input id="user-name" class="register__userName" placeholder="user name" type="text" formControlName="username"
              [class.invalid]="userName.invalid && userName.touched">
       </div>
       <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:userName}"></ng-container>
@@ -21,13 +21,13 @@
       <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:email}"></ng-container>
       <div class="icon-container">
         <fa-icon [icon]="passwordIcon"></fa-icon>
-      <input id="password" class="register__password" placeholder="password" type="password" formControlName="password">
+      <input id="password" class="register__password" placeholder="password" type="password" formControlName="password1">
       </div>
       <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:password}"></ng-container>
       <div class="icon-container">
         <fa-icon [icon]="passwordIcon"></fa-icon>
       <input [class.invalid]="registrationForm.errors?.misMatch" id="confirm-password" class="register__confirm-password"
-             placeholder="confirm password" type="password" formControlName="confirmPassword">
+             placeholder="confirm password" type="password" formControlName="password2">
       </div>
       <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:confirmPassword}"></ng-container>
       <button type='submit' class="register__submit">Register</button>
