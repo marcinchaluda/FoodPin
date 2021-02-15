@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from "@angular/common/http";
 import { LoginComponent } from './components/login/login.component';
+import { InputErrorPipe } from './pipes/input-error.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
+    InputErrorPipe,
   ],
   imports: [
     BrowserModule,

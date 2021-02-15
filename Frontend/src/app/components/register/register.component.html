@@ -11,45 +11,37 @@
     <form class="register__user-info" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="icon-container">
         <fa-icon [icon]="userIcon"></fa-icon>
-        <input id="user-name" class="register__userName" placeholder="user name" type="text" formControlName="userName"
-                                                    [class.invalid]="userName.invalid && userName.touched">
+      <input id="user-name" class="register__userName" placeholder="user name" type="text" formControlName="userName"
+             [class.invalid]="userName.invalid && userName.touched">
       </div>
-      <div *ngIf="userName.invalid && userName.touched">
-        <small *ngIf="userName.errors?.required">Username is required</small>
-        <small *ngIf="userName.errors?.minlength">Username must be at least 3 characters</small>
-      </div>
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:userName}"></ng-container>
       <div class="icon-container">
         <fa-icon [icon]="emailIcon"></fa-icon>
-        <input id="email" class="register__email" placeholder="email" type="email" formControlName="email">
+      <input id="email" class="register__email" placeholder="email" type="email" formControlName="email">
       </div>
-      <div *ngIf="email.invalid && email.touched">
-        <small *ngIf="email.errors?.required">Email is required</small>
-        <small *ngIf="email.errors?.email">Email must be a valid email address</small>
-      </div>
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:email}"></ng-container>
       <div class="icon-container">
         <fa-icon [icon]="passwordIcon"></fa-icon>
-        <input id="password" class="register__password" placeholder="password" type="password" formControlName="password">
+      <input id="password" class="register__password" placeholder="password" type="password" formControlName="password">
       </div>
-      <div *ngIf="password.invalid && password.touched">
-        <small *ngIf="password.errors?.required">Password is required</small>
-        <small *ngIf="password.hasError('hasNumber')">Password must contain at least 1 number</small>
-        <small *ngIf="password.hasError('hasCapitalCase')">Password must contain at least 1 capital letter</small>
-        <small *ngIf="password.hasError('hasSmallCase')">Password must contain at least 1 lowercase letter</small>
-        <small *ngIf="password.errors?.minlength">Password must be at least 6 characters</small>
-      </div>
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:password}"></ng-container>
       <div class="icon-container">
         <fa-icon [icon]="passwordIcon"></fa-icon>
-        <input [class.invalid]="registrationForm.errors?.misMatch" id="confirm-password" class="register__confirm-password" placeholder="confirm password" type="password" formControlName="confirmPassword">
+      <input [class.invalid]="registrationForm.errors?.misMatch" id="confirm-password" class="register__confirm-password"
+             placeholder="confirm password" type="password" formControlName="confirmPassword">
       </div>
-      <div *ngIf="confirmPassword.invalid && confirmPassword.touched">
-        <small *ngIf="confirmPassword.errors?.required">Confirm password is required</small>
-        <small *ngIf="confirmPassword.hasError('NoPasswordMatch')">Passwords do not match</small>
-      </div>
-      <button type='submit' class="register__submit" [disabled]="!registrationForm.valid">Sign Up</button>
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:confirmPassword}"></ng-container>
+      <button type='submit' class="register__submit">Register</button>
     </form>
     <div class="register__login-redirect">
       <p>Already have an account?</p>
-      <a>Sign In</a>
+      <a href="/register">Sign In</a>
     </div>
   </div>
 </div>
+
+<ng-template let-error="inputFieldValue" #validationError>
+  <div *ngIf="error.invalid && error.touched">
+    <small [innerHTML]="error.errors | inputError"></small>
+  </div>
+</ng-template>

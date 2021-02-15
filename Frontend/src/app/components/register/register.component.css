@@ -1,9 +1,59 @@
 .register {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh; }
+  align-items: flex-start;
+  min-width: 400px;
+  max-width: 700px; }
+  .register__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 3em;
+    width: 90%; }
+  .register__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center; }
+  .register__image {
+    margin: 0 auto; }
+  .register__brand-name {
+    color: #f79521;
+    margin-bottom: 0.5em; }
+  .register__user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 70%; }
+    .register__user-info input {
+      padding: 10px;
+      border: 0;
+      box-shadow: 0 0 20px 4px rgba(247, 149, 33, 0.15);
+      margin-top: 1em;
+      font-size: 1em; }
+  .register__submit {
+    padding: 0.5em 0;
+    border-radius: 25px;
+    font-size: 1.2em;
+    background-color: #f79521;
+    color: white;
+    width: 70%;
+    margin: 2em auto 0 auto; }
+  .register__login-redirect {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+    margin: 0 auto;
+    font-size: 0.9em;
+    padding-top: 1em; }
+    .register__login-redirect p {
+      color: #C4C4C4; }
+    .register__login-redirect a {
+      color: #f79521; }
 
 .invalid {
   border: 2px solid red; }
@@ -13,5 +63,15 @@ small {
 
 .show {
   display: none; }
+
+.icon-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+  .icon-container fa-icon {
+    padding-top: 1em;
+    margin-right: 0.5em;
+    color: #fab86b;
+    font-size: 1.2em; }
 
 /*# sourceMappingURL=register.component.css.map */

@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
 
   private generateRegistrationForm(): FormGroup {
     return this.formBuilder.group({
-      userName: [null , Validators.compose([Validators.required, Validators.minLength(3)])],
+      userName: [null , Validators.compose([Validators.required, Validators.minLength(6)])],
       email: [null , Validators.compose([Validators.required, Validators.email])],
       password: [null , Validators.compose([
         Validators.required,
