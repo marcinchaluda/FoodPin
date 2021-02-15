@@ -28,3 +28,9 @@
     </div>
   </div>
 </div>
+
+<ng-template let-error="inputFieldValue" #validationError>
+  <div class="inputErrors" *ngIf="error.invalid && error.touched">
+    <small [innerHTML]="error.errors | inputError"></small>
+  </div>
+</ng-template>
