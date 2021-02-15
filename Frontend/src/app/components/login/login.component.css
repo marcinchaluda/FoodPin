@@ -7,6 +7,9 @@
   max-width: 700px;
   margin: 3em auto;
   height: 80vh; }
+  @media (min-width: 1024px) {
+    .login {
+      margin-top: 1em; } }
   .login__container {
     display: flex;
     flex-direction: column;
@@ -20,6 +23,9 @@
     font-size: 2em;
     font-weight: bold;
     text-align: center; }
+    @media (min-width: 1024px) {
+      .login__logo {
+        font-size: 4em; } }
   .login__image {
     margin: 0 auto; }
   .login__brand-name {
@@ -37,6 +43,9 @@
       box-shadow: 0 0 20px 4px rgba(247, 149, 33, 0.15);
       margin-top: 1em;
       font-size: 1em; }
+      @media (min-width: 1024px) {
+        .login__user-info input {
+          font-size: 1.6em; } }
     .login__user-info input:focus {
       border: 2px solid #f79521; }
   .login__submit {
@@ -49,6 +58,9 @@
     width: 10em;
     margin: 2em auto 0 auto;
     box-shadow: 0 0 20px 4px rgba(247, 149, 33, 0.15); }
+    @media (min-width: 1024px) {
+      .login__submit {
+        width: 13em; } }
   .login__submit:disabled {
     pointer-events: none;
     background-color: #fbc483; }
@@ -67,6 +79,9 @@
     .login__register-redirect a {
       padding-left: 0.5em;
       color: #f79521; }
+    @media (min-width: 1024px) {
+      .login__register-redirect {
+        font-size: 1.6em; } }
 
 .invalid {
   border: 2px solid red; }
