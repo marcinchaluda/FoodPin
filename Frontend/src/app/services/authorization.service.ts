@@ -21,38 +21,41 @@ export class AuthorizationService {
     return this.http.post<any>(`${this.apiUrl}sessions/login/`, user)
       .pipe(
         tap(tokens => this.doLoginUser(user.username, tokens)),
+        mapTo(true),
       );
   }
 
-  logout() {
-    const queryParams = new HttpParams().set('refreshToken', localStorage.getItem(this.REFRESH_TOKEN));
-    return this.http.delete<any>(`${this.apiUrl}sessions/`, { params: queryParams })
+  public logout(): Observable<boolean> {
+    const refreshToken: Tokens = ({
+      refresh: this.getRefreshToken(),
+    });
+    return this.http.post<any>(`${this.apiUrl}sessions/logout/`, refreshToken)
       .pipe(
         tap(() => this.doLogoutUser()),
         mapTo(true),
-        catchError(error => {
-          alert(error.error);
-          return of(false);
-        })
       );
   }
 
-  private doLoginUser(userName: string, tokens: Tokens) {
+  private getRefreshToken(): string {
+    return localStorage.getItem(this.REFRESH_TOKEN);
+  }
+
+  private doLoginUser(userName: string, tokens: Tokens): void {
     this.loggedUser = userName;
     this.storeTokens(tokens);
   }
 
-  private doLogoutUser() {
+  private doLogoutUser(): void {
     this.loggedUser = null;
     this.removeTokens();
   }
 
-  private storeTokens(tokens: Tokens) {
+  private storeTokens(tokens: Tokens): void {
     localStorage.setItem(this.JWT_TOKEN, tokens.access);
     localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh);
   }
 
-  private removeTokens() {
+  private removeTokens(): void {
     localStorage.removeItem(this.JWT_TOKEN);
     localStorage.removeItem(this.REFRESH_TOKEN);
   }
