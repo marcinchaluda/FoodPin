@@ -8,7 +8,7 @@ import {
 import { Observable } from 'rxjs';
 import {AuthorizationService} from "../services/authorization.service";
 
-@Injectable()
+@Injectable( { providedIn: "root"} )
 export class TokenInterceptor implements HttpInterceptor {
 
   constructor(private _authService: AuthorizationService) {}
@@ -23,12 +23,10 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(request);
   }
 
-  // method set request with new authorization bearer token
+  //method set request with new authorization bearer token
   public addToken(request: HttpRequest<any>, jwt: string): HttpRequest<any> {
     return request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${jwt}`,
-      }
+      headers: request.headers.set('Authorization', `Bearer ${jwt}`)
     });
   }
 }

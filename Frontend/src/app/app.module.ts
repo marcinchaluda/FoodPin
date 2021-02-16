@@ -37,11 +37,6 @@ import {TokenInterceptor} from "./interceptors/token.interceptor";
     provide: HTTP_INTERCEPTORS,
     useClass: HttpErrorInterceptor,
     multi: true,
-    },
-    {
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true,
     }],
   bootstrap: [AppComponent]
 })
