@@ -25,7 +25,7 @@ export class AuthorizationService {
       );
   }
 
-  public logout(): Observable<boolean> {
+  public logout$(): Observable<boolean> {
     const refreshToken: Tokens = ({
       refresh: this.getRefreshToken(),
     });
