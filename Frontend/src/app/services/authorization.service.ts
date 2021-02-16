@@ -4,27 +4,23 @@ import {Observable, of} from "rxjs";
 import {environment} from "../../environments/environment";
 import {catchError, mapTo, tap} from "rxjs/operators";
 import {Tokens} from "../models/Tokens";
+import {User} from "../models/User";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
-  private readonly JWT_TOKEN = 'JWT_TOKEN';
-  private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
-  readonly apiUrl = environment.apiUrl;
+  private readonly JWT_TOKEN: string = 'JWT_TOKEN';
+  private readonly REFRESH_TOKEN: string = 'REFRESH_TOKEN';
+  readonly apiUrl: string = environment.apiUrl;
   private loggedUser: string;
 
   constructor(private http: HttpClient) { }
 
-  login(user: {userName: string, password: string}): Observable<boolean> {
-    return this.http.post<any>(`${this.apiUrl}sessions`, user)
+  public login$(user: User): Observable<boolean> {
+    return this.http.post<any>(`${this.apiUrl}sessions/login/`, user)
       .pipe(
-        tap(tokens => this.doLoginUser(user.userName, tokens)),
-        mapTo(true),
-        catchError(error => {
-          alert(error.error);
-          return of(false);
-        })
+        tap(tokens => this.doLoginUser(user.username, tokens)),
       );
   }
 

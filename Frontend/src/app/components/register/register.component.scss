@@ -1,18 +1,113 @@
+@import "../../variables";
+@import "../../mixins";
+
 .register {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh
+ @include flexColumnCenter;
+  min-width: 400px;
+  max-width: 700px;
+  margin: 3em auto;
+  height: 80vh;
+
+  @include mediaQuery(tabletLarge) {
+    margin-top: 1em;
+  }
+
+  &__container {
+    @include flexColumnDirection;
+    margin-top: 3em;
+    width: 90%;
+  }
+
+  &__logo {
+    @include flexColumnDirection;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+
+    @include mediaQuery(tabletLarge) {
+      font-size: 4em;
+    }
+  }
+
+  &__image {
+    margin: 0 auto;
+  }
+
+  &__brand-name {
+    color: $colorOrange;
+    margin-bottom: 0.5em;
+  }
+
+  &__user-info {
+    @include flexColumnDirection;
+    margin: 0 auto;
+    width: 70%;
+
+    input {
+      @include inputFormsStyle;
+      margin-top: 1em;
+      font-size: 1em;
+
+      @include mediaQuery(tabletLarge) {
+        font-size: 1.6em;
+      }
+    }
+
+     input:focus {
+       border: 2px solid $colorOrange;
+     }
+  }
+
+  &__submit {
+    @include activeButton;
+    width: 10em;
+    margin: 2em auto 0 auto;
+
+    @include mediaQuery(tabletLarge) {
+      width: 13em;
+    }
+  }
+
+  &__submit:disabled {
+    background-color: lighten($colorOrange, 20%);
+  }
+
+  &__login-redirect {
+    @include flexRowCenter;
+    width: 60%;
+    margin: 0 auto;
+    font-size: 0.9em;
+    padding-top: 1em;
+
+    p { color: $colorGrey; }
+    a {
+      padding-left: 0.5em;
+      color: $colorOrange;
+    }
+
+    @include mediaQuery(tabletLarge) {
+      font-size: 1.6em;
+    }
+  }
 }
+
 .invalid {
   border: 2px solid red;
 }
 
 small {
+  min-width: 400px;
+  max-width: 700px;
   color: red;
 }
 
+.inputErrors {
+  text-align: center;
+}
 .show {
   display: none;
+}
+
+.icon-container {
+  @include iconContainer;
 }

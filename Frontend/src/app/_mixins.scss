@@ -1,0 +1,62 @@
+@import "./variables";
+
+@mixin flexColumnDirection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@mixin flexColumnCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexRowCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin inputFormsStyle {
+  padding: 10px;
+  border:0;
+  box-shadow:0 0 20px 4px rgba(247,149,33,0.15);
+}
+
+@mixin activeButton {
+  padding: 0.5em 0;
+  border-radius: 25px;
+  font-size: 1.2em;
+  background-color: $colorOrange;
+  color: $colorWhite;
+  border: none;
+}
+
+@mixin mediaQuery($breakPoint) {
+  $size: map-get($breakPoints, $breakPoint);
+  @if($size) {
+    @media (#{$size}) {
+      @content;
+    }
+  }
+  @else {
+    @error '"#{$breakPoint}" - resolution is not define';
+  }
+}
+
+@mixin iconContainer {
+  @include flexRowCenter;
+
+  fa-icon {
+    padding-top: 1em;
+    margin-right: 0.5em;
+    color: lighten($colorOrange, 15%);
+    font-size: 1.2em;
+
+    @include mediaQuery(tabletLarge) {
+      font-size: 1.6em;
+    }
+  }
+}
