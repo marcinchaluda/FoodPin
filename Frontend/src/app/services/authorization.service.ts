@@ -72,6 +72,10 @@ export class AuthorizationService {
     localStorage.setItem(this.JWT_TOKEN, jwt);
   }
 
+  public getJwtToken():string {
+    return localStorage.getItem(this.JWT_TOKEN);
+  }
+
   private createRefreshToken(): Tokens {
     const refreshToken: Tokens = ({
       refresh: this.getRefreshToken(),
