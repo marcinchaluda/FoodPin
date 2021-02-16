@@ -10,7 +10,6 @@ import {AuthorizationService} from "../services/authorization.service";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  private isRefreshing = false;
 
   constructor(private _authService: AuthorizationService) {}
 
@@ -25,7 +24,7 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   // method set request with new authorization bearer token
-  private addToken(request: HttpRequest<any>, jwt: string) {
+  public addToken(request: HttpRequest<any>, jwt: string): HttpRequest<any> {
     return request.clone({
       setHeaders: {
         Authorization: `Bearer ${jwt}`,
