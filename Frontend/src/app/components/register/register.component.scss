@@ -68,6 +68,10 @@
     }
   }
 
+  &__submit:disabled {
+    background-color: lighten($colorOrange, 20%);
+  }
+
   &__login-redirect {
     @include flexRowCenter;
     width: 60%;
@@ -76,7 +80,10 @@
     padding-top: 1em;
 
     p { color: $colorGrey; }
-    a { color: $colorOrange; }
+    a {
+      padding-left: 0.5em;
+      color: $colorOrange;
+    }
 
     @include mediaQuery(tabletLarge) {
       font-size: 1.6em;
@@ -102,16 +109,5 @@ small {
 }
 
 .icon-container {
-  @include flexRowCenter;
-
-  fa-icon {
-    padding-top: 1em;
-    margin-right: 0.5em;
-    color: lighten($colorOrange, 15%);
-    font-size: 1.2em;
-
-    @include mediaQuery(tabletLarge) {
-      font-size: 1.6em;
-    }
-  }
+  @include iconContainer;
 }

@@ -35,5 +35,4 @@ export class InputErrorPipe implements PipeTransform {
     }
     return errorMessage.replace(regexNewLine, "<br>");
   }
-
 }

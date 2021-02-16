@@ -17,16 +17,18 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   constructor(private _toastr: ToastrService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
     return next.handle(request).pipe(
       retry(this.REPEAT_TIMES),
       catchError((error: HttpErrorResponse) => {
         let errorMessage: string = '';
 
         if (error.error instanceof ErrorEvent) {
-          errorMessage = `Error: ${error.error.message}`;
+          errorMessage = `${error.error.message} `;
         } else {
-          errorMessage = `Error code: ${error.status}\nMessage: ${error.message}`
+          errorMessage = `${error.status}; `;
+          Object.values(error.error).forEach(err => {
+            errorMessage += err[0] + " ";
+          });
         }
         this._toastr.error(errorMessage);
         return throwError(errorMessage);
