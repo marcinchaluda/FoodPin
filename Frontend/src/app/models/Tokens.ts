@@ -1,4 +1,4 @@
 export interface Tokens {
-  access: string;
+  access?: string;
   refresh: string;
 }

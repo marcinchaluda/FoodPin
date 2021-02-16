@@ -12,6 +12,7 @@ import { InputErrorPipe } from './pipes/input-error.pipe';
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpErrorInterceptor} from "./interceptors/http-error.interceptor";
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {HttpErrorInterceptor} from "./interceptors/http-error.interceptor";
     RegisterComponent,
     LoginComponent,
     InputErrorPipe,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

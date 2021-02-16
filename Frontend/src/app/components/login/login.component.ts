@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
     this._authService.login$(user).subscribe(
       _ => {
         this._toastr.success("Successfully logged in");
-        this._router.navigate([""]).then(r => "Login: " + r);
+        this._router.navigate(["home"]).then(r => "Login: " + r);
       },
     );
   }
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
   private createUser(): User {
     const user: User = ({
       email: this.loginForm.value['email'],
-      password: this.loginForm.value['password'],
+      password: this.loginForm.value['password1'],
     });
     return user;
   }
