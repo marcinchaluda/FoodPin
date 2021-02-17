@@ -1,0 +1,32 @@
+@import "../../variables";
+@import "../../mixins";
+
+.home {
+  @include mainComponentStyles;
+
+  &__container {
+    @include flexColumnDirection;
+    margin-top: 3em;
+    width: 90%;
+  }
+
+  &__logo {
+    @include flexColumnDirection;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+
+    @include mediaQuery(tabletLarge) {
+      font-size: 4em;
+    }
+  }
+
+  &__image {
+    margin: 0 auto;
+  }
+
+  &__brand-name {
+    color: $colorOrange;
+    margin-bottom: 0.5em;
+  }
+}

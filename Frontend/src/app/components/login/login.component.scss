@@ -1,16 +1,8 @@
 @import "../../variables";
 @import "../../mixins";
 
-.home {
-  @include flexColumnCenter;
-  min-width: 400px;
-  max-width: 700px;
-  margin: 3em auto;
-  height: 80vh;
-
-  @include mediaQuery(tabletLarge) {
-    margin-top: 1em;
-  }
+.login {
+  @include mainComponentStyles;
 
   &__container {
     @include flexColumnDirection;

@@ -2,15 +2,7 @@
 @import "../../mixins";
 
 .register {
- @include flexColumnCenter;
-  min-width: 400px;
-  max-width: 700px;
-  margin: 3em auto;
-  height: 80vh;
-
-  @include mediaQuery(tabletLarge) {
-    margin-top: 1em;
-  }
+  @include mainComponentStyles;
 
   &__container {
     @include flexColumnDirection;

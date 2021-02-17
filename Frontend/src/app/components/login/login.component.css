@@ -1,4 +1,4 @@
-.home {
+.login {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,15 +8,15 @@
   margin: 3em auto;
   height: 80vh; }
   @media (min-width: 1024px) {
-    .home {
+    .login {
       margin-top: 1em; } }
-  .home__container {
+  .login__container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin-top: 3em;
     width: 90%; }
-  .home__logo {
+  .login__logo {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -24,31 +24,31 @@
     font-weight: bold;
     text-align: center; }
     @media (min-width: 1024px) {
-      .home__logo {
+      .login__logo {
         font-size: 4em; } }
-  .home__image {
+  .login__image {
     margin: 0 auto; }
-  .home__brand-name {
+  .login__brand-name {
     color: #f79521;
     margin-bottom: 0.5em; }
-  .home__user-info {
+  .login__user-info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 0 auto;
     width: 70%; }
-    .home__user-info input {
+    .login__user-info input {
       padding: 10px;
       border: 0;
       box-shadow: 0 0 20px 4px rgba(247, 149, 33, 0.15);
       margin-top: 1em;
       font-size: 1em; }
       @media (min-width: 1024px) {
-        .home__user-info input {
+        .login__user-info input {
           font-size: 1.6em; } }
-    .home__user-info input:focus {
+    .login__user-info input:focus {
       border: 2px solid #f79521; }
-  .home__submit {
+  .login__submit {
     padding: 0.5em 0;
     border-radius: 25px;
     font-size: 1.2em;
@@ -59,14 +59,14 @@
     margin: 2em auto 0 auto;
     box-shadow: 0 0 20px 4px rgba(247, 149, 33, 0.15); }
     @media (min-width: 1024px) {
-      .home__submit {
+      .login__submit {
         width: 13em; } }
-  .home__submit:disabled {
+  .login__submit:disabled {
     pointer-events: none;
     background-color: #fbc483; }
-  .home__submit:hover {
+  .login__submit:hover {
     background-color: #ac6006; }
-  .home__register-redirect {
+  .login__register-redirect {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,13 +74,13 @@
     margin: 0 auto;
     font-size: 0.9em;
     padding-top: 1em; }
-    .home__register-redirect p {
+    .login__register-redirect p {
       color: #C4C4C4; }
-    .home__register-redirect a {
+    .login__register-redirect a {
       padding-left: 0.5em;
       color: #f79521; }
     @media (min-width: 1024px) {
-      .home__register-redirect {
+      .login__register-redirect {
         font-size: 1.6em; } }
 
 .invalid {

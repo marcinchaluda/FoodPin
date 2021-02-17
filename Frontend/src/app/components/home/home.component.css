@@ -1,3 +1,35 @@
-
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 400px;
+  max-width: 700px;
+  margin: 3em auto;
+  height: 80vh; }
+  @media (min-width: 1024px) {
+    .home {
+      margin-top: 1em; } }
+  .home__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 3em;
+    width: 90%; }
+  .home__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center; }
+    @media (min-width: 1024px) {
+      .home__logo {
+        font-size: 4em; } }
+  .home__image {
+    margin: 0 auto; }
+  .home__brand-name {
+    color: #f79521;
+    margin-bottom: 0.5em; }
 
 /*# sourceMappingURL=home.component.css.map */
