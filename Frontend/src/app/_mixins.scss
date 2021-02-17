@@ -72,3 +72,55 @@
     margin-top: 1em;
   }
 }
+
+@mixin mainContainerStyles {
+  &__container {
+    @include flexColumnDirection;
+    margin-top: 3em;
+    width: 90%;
+  }
+}
+
+@mixin logoStyles {
+  &__logo {
+    @include flexColumnDirection;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+
+    @include mediaQuery(tabletLarge) {
+      font-size: 4em;
+    }
+  }
+
+  &__image {
+    margin: 0 auto;
+  }
+
+  &__brand-name {
+    color: $colorOrange;
+    margin-bottom: 0.5em;
+  }
+}
+
+@mixin userInfoStyles {
+  &__user-info {
+    @include flexColumnDirection;
+    margin: 0 auto;
+    width: 70%;
+
+    input {
+      @include inputFormsStyle;
+      margin-top: 1em;
+      font-size: 1em;
+
+      @include mediaQuery(tabletLarge) {
+        font-size: 1.6em;
+      }
+    }
+
+    input:focus {
+      border: 2px solid $colorOrange;
+    }
+  }
+}
