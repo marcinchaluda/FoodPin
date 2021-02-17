@@ -66,7 +66,7 @@
   min-width: 400px;
   max-width: 700px;
   margin: 3em auto;
-  height: 80vh;
+  height: 100vh;
 
   @include mediaQuery(tabletLarge) {
     margin-top: 1em;
@@ -90,6 +90,31 @@
 
     @include mediaQuery(tabletLarge) {
       font-size: 4em;
+    }
+  }
+
+  &__image {
+    margin: 0 auto;
+  }
+
+  &__brand-name {
+    color: $colorOrange;
+    margin-bottom: 0.5em;
+  }
+}
+
+@mixin logoStylesDesktop {
+  &__logo {
+    @include flexColumnDirection;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+
+    @include mediaQuery(tabletLarge) {
+      display: flex;
+      flex-direction: row;
+      align-self: flex-start;
+      font-size: 3em;
     }
   }
 

@@ -6,7 +6,7 @@
   min-width: 400px;
   max-width: 700px;
   margin: 3em auto;
-  height: 80vh; }
+  height: 100vh; }
   @media (min-width: 1024px) {
     .register {
       margin-top: 1em; } }

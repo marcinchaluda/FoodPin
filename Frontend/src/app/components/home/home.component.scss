@@ -4,6 +4,70 @@
 .home {
   @include mainComponentStyles;
   @include mainContainerStyles;
-  @include logoStyles;
+  @include logoStylesDesktop;
 
+  &__quotation {
+    @include flexColumnCenter;
+    margin: 1em auto;
+
+    h1 {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 0.9em;
+    }
+  }
+
+  &__buttons {
+    @include flexRowCenter;
+    margin: 1em auto;
+  }
+
+  &__button-container {
+    @include flexColumnCenter;
+    margin: 0 0.7em;
+
+    button {
+      width: 65px;
+      height: 65px;
+      border: 1px solid $colorOrange;
+      border-radius: 50%;
+      background-color: $colorWhite;
+
+    }
+
+    small {
+      margin-top: 0.4em;
+    }
+
+    & .home__Donate {
+      background-color: $colorOrange;
+    }
+
+    & .home__Search {
+      background-color: lighten($colorOrange, 30);
+    }
+
+    & .home__menu {
+      width: 50px;
+      height: 50px;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      background-color: $colorOrange;
+    }
+  }
+
+  &__menu-btn {
+
+    small {
+      display: none;
+    }
+  }
+
+}
+
+.home_Donate {
+  background-color: $colorOrange;
 }
