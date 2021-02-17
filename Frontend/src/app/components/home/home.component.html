@@ -7,15 +7,18 @@
       </picture>
       <h1 class="home__brand-name">FoodPin</h1>
     </header>
-  </div>
-  <div class="home__quotation">
-    <h1>Want to share food?</h1>
-    <p>Choose anyone</p>
-  </div>
-  <div class="home__buttons">
-    <ng-container *ngTemplateOutlet="button; context:{description:'Donate', icon: 'donateIcon'}"></ng-container>
-    <ng-container *ngTemplateOutlet="button; context:{description:'Search', icon: 'magnifier'}"></ng-container>
-    <ng-container *ngTemplateOutlet="button; context:{description:'Map', icon: 'mapLocation'}"></ng-container>
+    <div class="home__quotation">
+      <h1>Want to share food?</h1>
+      <p>Choose anyone</p>
+    </div>
+    <div class="home__buttons">
+      <ng-container *ngTemplateOutlet="button; context:{description:'Donate', icon: 'donateIcon'}"></ng-container>
+      <ng-container *ngTemplateOutlet="button; context:{description:'Search', icon: 'magnifier'}"></ng-container>
+      <ng-container *ngTemplateOutlet="button; context:{description:'Map', icon: 'mapLocation'}"></ng-container>
+    </div>
+    <div class="home__menu-btn">
+      <ng-container *ngTemplateOutlet="button; context:{description: '', icon: 'menu'}"></ng-container>
+    </div>
   </div>
 </div>
 
