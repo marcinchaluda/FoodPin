@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 @mixin flexColumnCenter {
@@ -62,7 +63,7 @@
 }
 
 @mixin mainComponentStyles {
-  @include flexColumnCenter;
+  @include flexColumnDirection;
   min-width: 400px;
   max-width: 700px;
   margin: 3em auto;
@@ -76,7 +77,7 @@
 @mixin mainContainerStyles {
   &__container {
     @include flexColumnDirection;
-    margin-top: 3em;
+    //margin-top: 3em;
     width: 90%;
   }
 }
@@ -119,7 +120,7 @@
   }
 
   &__image {
-    margin: 0 auto;
+    margin: 1em auto 0 auto;
   }
 
   &__brand-name {

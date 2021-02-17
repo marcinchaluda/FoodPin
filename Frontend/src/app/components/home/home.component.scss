@@ -5,18 +5,20 @@
   @include mainComponentStyles;
   @include mainContainerStyles;
   @include logoStylesDesktop;
+  position: relative;
+  overflow: hidden;
 
   &__quotation {
     @include flexColumnCenter;
-    margin: 1em auto;
+    margin: 1.5em auto;
 
     h1 {
-      font-size: 1.2em;
+      font-size: 1.5em;
       font-weight: bold;
     }
 
     p {
-      font-size: 0.9em;
+      font-size: 1.2em;
     }
   }
 
@@ -60,12 +62,32 @@
   }
 
   &__menu-btn {
-
+    position: absolute;
+    top: 50%;
+    right: -3%;
     small {
       display: none;
     }
   }
 
+  &__child-image {
+    margin-top: 3.6em;
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3em;
+    background-color: $colorOrange;
+    text-align: center;
+    line-height: 3em;
+
+    p {
+      color: $colorWhite;
+      font-size: 1.2em;
+    }
+  }
 }
 
 .home_Donate {
