@@ -13,6 +13,7 @@ import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpErrorInterceptor} from "./interceptors/http-error.interceptor";
 import { HomeComponent } from './components/home/home.component';
+import {TokenInterceptor} from "./interceptors/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -31,11 +32,12 @@ import { HomeComponent } from './components/home/home.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [{
+  providers: [
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: HttpErrorInterceptor,
     multi: true,
-  }],
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
