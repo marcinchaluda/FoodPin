@@ -30,8 +30,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'foodpin.apps.address',
-    'foodpin.apps.users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +46,8 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',  # TODO add script on server to clean database daily after deploying
+    'address',
+    'users',
 ]
 
 MIDDLEWARE = [

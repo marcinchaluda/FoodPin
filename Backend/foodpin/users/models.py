@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from ..address.models import Address
+from address.models import Address
 
 
 class CustomUser(AbstractUser):
