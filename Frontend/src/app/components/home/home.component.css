@@ -6,7 +6,7 @@
   min-width: 400px;
   max-width: 700px;
   margin: 3em auto;
-  height: 100vh;
+  height: 92vh;
   position: relative;
   overflow: hidden; }
   @media (min-width: 1024px) {
@@ -78,7 +78,7 @@
       border-top-right-radius: 0;
       background-color: #f79521; }
   .home__menu-btn {
-    position: absolute;
+    position: fixed;
     top: 50%;
     right: -3%; }
     .home__menu-btn small {
@@ -86,7 +86,7 @@
   .home__child-image {
     margin-top: 3.6em; }
   .home__footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 3em;

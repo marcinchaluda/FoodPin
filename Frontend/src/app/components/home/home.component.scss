@@ -62,7 +62,7 @@
   }
 
   &__menu-btn {
-    position: absolute;
+    position: fixed;
     top: 50%;
     right: -3%;
     small {
@@ -75,7 +75,7 @@
   }
 
   &__footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 3em;
