@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
     this._authService.login$(user).subscribe(
       _ => {
         this._toastr.success("Successfully logged in");
-        this._router.navigate(["home"]).then(r => "Login: " + r);
+        this._router.navigate(["home"]).then(r => console.log);
       },
     );
   }

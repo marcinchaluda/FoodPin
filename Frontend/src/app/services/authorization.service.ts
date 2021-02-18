@@ -31,12 +31,16 @@ export class AuthorizationService {
   }
 
   private storeTokens(tokens: Tokens): void {
-    localStorage.setItem(this.JWT_TOKEN, tokens.access);
-    localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh);
+    localStorage.setItem(this.JWT_TOKEN, tokens.access_token);
+    localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh_token);
   }
 
   public logout$(): Observable<boolean> {
-    const refreshToken: Tokens = this.createRefreshToken();
+    const refreshToken: object = {
+      refresh: this.getRefreshToken()
+    };
+    if (this.getRefreshToken() === null) { return; }
+
     return this._http.post<any>(`${this.apiUrl}sessions/logout/`, refreshToken)
       .pipe(
         tap(() => this.doLogoutUser()),
@@ -63,7 +67,7 @@ export class AuthorizationService {
     return this._http.post<any>(`${this.apiUrl}sessions/token/refresh/`, refreshToken)
       .pipe(
         tap((tokens: Tokens) => {
-          this.storeJwtToken(tokens.access);
+          this.storeJwtToken(tokens.access_token);
         }),
       );
   }
@@ -78,7 +82,7 @@ export class AuthorizationService {
 
   private createRefreshToken(): Tokens {
     const refreshToken: Tokens = ({
-      refresh: this.getRefreshToken(),
+      refresh_token: this.getRefreshToken(),
     });
     return refreshToken;
   }
