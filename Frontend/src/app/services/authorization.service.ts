@@ -22,7 +22,6 @@ export class AuthorizationService {
       .pipe(
         tap(tokens => this.doLoginUser(user.username, tokens)),
         mapTo(true),
-        tap(_ => {console.log(this.refreshToken(), this.getRefreshToken())})
       );
   }
 
@@ -37,8 +36,6 @@ export class AuthorizationService {
   }
 
   public logout$(): Observable<boolean> {
-    // const refreshToken: Tokens = this.createRefreshToken();
-    console.log(this.getRefreshToken());
     const refreshToken: object = {
       refresh: this.getRefreshToken()
     };
