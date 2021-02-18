@@ -4,9 +4,8 @@
   justify-content: space-between;
   align-items: center;
   min-width: 400px;
-  max-width: 700px;
-  margin: 3em auto;
-  height: 92vh;
+  margin: 3em auto 0 auto;
+  height: 100%;
   position: relative;
   overflow: hidden; }
   @media (min-width: 1024px) {
@@ -18,53 +17,120 @@
     justify-content: space-between;
     align-items: center;
     width: 90%; }
+    @media (min-width: 1024px) {
+      .home__container {
+        width: 100%; } }
   .home__logo {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin-top: 0;
     font-size: 1.5em;
     font-weight: bold;
     text-align: center; }
+    @media (min-width: 640px) {
+      .home__logo {
+        font-size: 2em; } }
     @media (min-width: 1024px) {
       .home__logo {
+        margin: 0 0 0.5em 15%;
         display: flex;
         flex-direction: row;
-        align-self: flex-start;
-        font-size: 3em; } }
-  .home__image {
-    margin: 1em auto 0 auto; }
-  .home__brand-name {
-    color: #f79521;
-    margin-bottom: 0.5em; }
+        justify-content: flex-start;
+        font-sizes: 3em;
+        width: 50%; } }
+    @media (min-width: 1280px) {
+      .home__logo {
+        margin: 0 0 0.5em 20%; } }
+    .home__logo .home__image {
+      margin: 1em auto 0 auto; }
+      @media (min-width: 1024px) {
+        .home__logo .home__image {
+          margin: 0; } }
+    .home__logo .home__brand-name {
+      color: #f79521;
+      margin-bottom: 0.5em; }
+      @media (min-width: 1024px) {
+        .home__logo .home__brand-name {
+          margin-bottom: 0; } }
+  @media (min-width: 1024px) {
+    .home {
+      height: 100vh; } }
+  @media (min-width: 1024px) {
+    .home header {
+      display: flex;
+      width: 100%;
+      box-shadow: 0 4px 2px -2px rgba(247, 149, 33, 0.35); } }
+  .home__user-buttons {
+    display: none; }
+    @media (min-width: 1024px) {
+      .home__user-buttons {
+        display: flex;
+        justify-content: flex-end;
+        margin: 0 15% 0.5em 0;
+        width: 50%; } }
+    @media (min-width: 1280px) {
+      .home__user-buttons {
+        margin: 0 20% 0.5em 0; } }
+    .home__user-buttons button {
+      padding: 0 1em 0 0;
+      border: none;
+      font-size: 2.4em;
+      color: #f79521;
+      background-color: white; }
   .home__quotation {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1.5em auto; }
+    margin: 1.5em auto;
+    max-width: 700px; }
     .home__quotation h1 {
       font-size: 1.5em;
       font-weight: bold; }
+      @media (min-width: 640px) {
+        .home__quotation h1 {
+          font-size: 1.8em; } }
+      @media (min-width: 1024px) {
+        .home__quotation h1 {
+          font-size: 2.1em; } }
     .home__quotation p {
       font-size: 1.2em; }
+      @media (min-width: 640px) {
+        .home__quotation p {
+          font-size: 1.5em; } }
+      @media (min-width: 1024px) {
+        .home__quotation p {
+          font-size: 1.8em; } }
   .home__buttons {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1em auto; }
+    margin: 1em auto;
+    max-width: 700px; }
   .home__button-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 0.7em; }
+    @media (min-width: 640px) {
+      .home__button-container {
+        margin: 0 1em; } }
+    @media (min-width: 1024px) {
+      .home__button-container {
+        margin: 0 1.5em; } }
     .home__button-container button {
       width: 65px;
       height: 65px;
       border: 1px solid #f79521;
       border-radius: 50%;
       background-color: white; }
+      @media (min-width: 640px) {
+        .home__button-container button {
+          width: 80px;
+          height: 80px; } }
     .home__button-container small {
       margin-top: 0.4em; }
     .home__button-container .home__Donate {
@@ -79,23 +145,118 @@
       background-color: #f79521; }
   .home__menu-btn {
     position: fixed;
-    top: 50%;
-    right: -3%; }
+    top: 57%;
+    right: 0; }
+    @media (min-width: 1024px) {
+      .home__menu-btn {
+        top: 25%; } }
     .home__menu-btn small {
       display: none; }
+    .home__menu-btn .home__button-container {
+      margin: 0;
+      padding: 0; }
   .home__child-image {
-    margin-top: 3.6em; }
+    margin-top: 3.6em;
+    position: fixed;
+    bottom: 5%; }
+    @media (min-width: 1024px) {
+      .home__child-image {
+        display: none; } }
   .home__footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 3em;
+    height: 5em;
     background-color: #f79521;
     text-align: center;
     line-height: 3em; }
     .home__footer p {
       color: white;
       font-size: 1.2em; }
+      @media (min-width: 640px) {
+        .home__footer p {
+          font-size: 1.5em; } }
+      @media (min-width: 1024px) {
+        .home__footer p {
+          display: none; } }
+    @media (min-width: 1024px) {
+      .home__footer {
+        margin-top: 1em;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 23%;
+        box-shadow: 0 2px 6px 4px rgba(247, 149, 33, 0.35);
+        background-color: white;
+        color: #f79521; } }
+  .home__footer-container {
+    display: none; }
+    @media (min-width: 1024px) {
+      .home__footer-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        margin: 2em auto; } }
+  .home__footer-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto 2em; }
+    .home__footer-info a {
+      text-transform: uppercase; }
+  .home__page-map {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    line-height: 1.5em;
+    font-size: 1.5em;
+    color: black;
+    align-items: flex-start; }
+  .home__footer-child {
+    position: absolute;
+    bottom: 2em;
+    right: 5em; }
+    .home__footer-child img {
+      width: 200px; }
+  .home__about {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+    line-height: 1.5em;
+    font-size: 1.5em;
+    color: black;
+    align-items: flex-start; }
+    .home__about a {
+      text-transform: uppercase; }
+  .home__footer-icons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; }
+    .home__footer-icons .home__logo {
+      width: 20%;
+      margin: 0 0 0 20%; }
+  .home__funpages {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%; }
+    .home__funpages button {
+      padding: 0.5em 0;
+      border-radius: 25px;
+      font-size: 1.2em;
+      background-color: #f79521;
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      padding: 3px 0 0 0;
+      margin: 0 0.5em; }
 
 .home_Donate {
   background-color: #f79521; }

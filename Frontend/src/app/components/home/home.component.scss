@@ -8,28 +8,87 @@
   position: relative;
   overflow: hidden;
 
+  @include mediaQuery(tabletLarge) {
+    height: 100vh;
+  }
+
+  header {
+    @include mediaQuery(tabletLarge) {
+      display: flex;
+      width: 100%;
+      box-shadow:0 4px 2px -2px rgba(247,149,33,0.35);
+    }
+  }
+
+  &__user-buttons {
+    display: none;
+
+    @include mediaQuery(tabletLarge) {
+      display: flex;
+      justify-content: flex-end;
+      margin: 0 15% 0.5em 0;
+      width: 50%;
+    }
+
+    @include mediaQuery(desktop) {
+      margin: 0 20% 0.5em 0;
+    }
+
+    & button {
+      padding: 0 1em 0 0;
+      border: none;
+      font-size: 2.4em;
+      color: $colorOrange;
+      background-color: $colorWhite;
+    }
+  }
+
   &__quotation {
     @include flexColumnCenter;
     margin: 1.5em auto;
+    max-width: 700px;
 
     h1 {
       font-size: 1.5em;
       font-weight: bold;
+
+      @include mediaQuery(smartphoneLarge) {
+        font-size: 1.8em;
+      }
+      @include mediaQuery(tabletLarge) {
+        font-size: 2.1em;
+      }
     }
 
     p {
       font-size: 1.2em;
+
+      @include mediaQuery(smartphoneLarge) {
+        font-size: 1.5em;
+      }
+      @include mediaQuery(tabletLarge) {
+        font-size: 1.8em;
+      }
     }
+
   }
 
   &__buttons {
     @include flexRowCenter;
     margin: 1em auto;
+    max-width: 700px;
   }
 
   &__button-container {
     @include flexColumnCenter;
     margin: 0 0.7em;
+
+    @include mediaQuery(smartphoneLarge) {
+      margin: 0 1em;
+    }
+    @include mediaQuery(tabletLarge) {
+      margin: 0 1.5em;
+    }
 
     button {
       width: 65px;
@@ -38,6 +97,10 @@
       border-radius: 50%;
       background-color: $colorWhite;
 
+      @include mediaQuery(smartphoneLarge) {
+        width: 80px;
+        height: 80px;
+      }
     }
 
     small {
@@ -63,22 +126,38 @@
 
   &__menu-btn {
     position: fixed;
-    top: 50%;
-    right: -3%;
+    top: 57%;
+    right: 0;
+
+    @include mediaQuery(tabletLarge) {
+      top: 25%;
+    }
+
     small {
       display: none;
+    }
+
+    & .home__button-container {
+      margin: 0;
+      padding: 0;
     }
   }
 
   &__child-image {
     margin-top: 3.6em;
+    position: fixed;
+    bottom: 5%;
+
+    @include mediaQuery(tabletLarge) {
+      display: none;
+    }
   }
 
   &__footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 3em;
+    height: 5em;
     background-color: $colorOrange;
     text-align: center;
     line-height: 3em;
@@ -86,6 +165,103 @@
     p {
       color: $colorWhite;
       font-size: 1.2em;
+
+      @include mediaQuery(smartphoneLarge) {
+        font-size: 1.5em;
+      }
+      @include mediaQuery(tabletLarge) {
+        display: none;
+      }
+    }
+
+    @include mediaQuery(tabletLarge) {
+      margin-top: 1em;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 23%;
+      box-shadow: 0 2px 6px 4px rgba(247, 149, 33, 0.35);
+      background-color: $colorWhite;
+      color: $colorOrange;
+    }
+  }
+
+  &__footer-container {
+    display: none;
+
+    @include mediaQuery(tabletLarge) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      margin: 2em auto;
+    }
+  }
+
+  &__footer-info {
+    @include flexRowCenter;
+    width: 80%;
+    margin: 0 auto 2em;
+
+    a {
+      text-transform: uppercase;
+    }
+  }
+
+  &__page-map {
+    @include flexColumnDirection;
+    width: 30%;
+    line-height: 1.5em;
+    font-size: 1.5em;
+    color: black;
+    align-items: flex-start;
+  }
+
+  &__footer-child {
+    position: absolute;
+    bottom: 2em;
+    right: 5em;
+
+    img {
+      width: 200px;
+    }
+  }
+
+  &__about {
+    @include flexColumnDirection;
+    width: 20%;
+    line-height: 1.5em;
+    font-size: 1.5em;
+    color: black;
+    align-items: flex-start;
+    a {
+      text-transform: uppercase;
+    }
+  }
+
+  &__footer-icons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    & .home__logo {
+      width: 20%;
+      margin: 0 0 0 20%;
+    }
+  }
+
+  &__funpages {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+
+    button {
+      @include activeButton;
+      width: 40px;
+      height: 40px;
+      padding: 3px 0 0 0;
+      margin: 0 0.5em;
     }
   }
 }

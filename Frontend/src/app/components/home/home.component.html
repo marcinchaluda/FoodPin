@@ -1,12 +1,11 @@
 <div class="home">
   <div class="home__container">
-    <header class="home__logo">
-      <picture class="home__image">
-        <source media="(min-width: 1024px)" srcset="assets/Logo/logo-75x56.png">
-        <source media="(min-width: 640px)" srcset="assets/Logo/logo-150x113.png">
-        <img src="./assets/Logo/logo-100x75.png" alt="food pin logo">
-      </picture>
-      <h1 class="home__brand-name">FoodPin</h1>
+    <header>
+      <ng-container *ngTemplateOutlet="logo"></ng-container>
+      <div class="home__user-buttons">
+        <button><fa-icon class="content__icon" [icon]="userIcon"></fa-icon></button>
+        <button><fa-icon class="content__icon" [icon]="registerIcon"></fa-icon></button>
+      </div>
     </header>
     <div class="home__quotation">
       <h1>Want to share food?</h1>
@@ -25,11 +24,36 @@
       <picture>
         <source media="(min-width: 1024px)" srcset="assets/Buttons/child-100x100.png">
         <source media="(min-width: 640px)" srcset="assets/Buttons/child-75x75.png">
-        <img src="./assets/Buttons/child-50x50.png">
+        <img src="./assets/Buttons/child-50x50.png" alt="sad child">
       </picture>
     </div>
     <footer class="home__footer">
       <p class="home__child-quotation">I need some food</p>
+      <div class="home__footer-container">
+        <section class="home__footer-info">
+          <div class="home__page-map">
+            <a>Home page</a>
+            <a>Become a partner</a>
+          </div>
+          <div class="home__about">
+            <a>Regulations</a>
+            <a>About</a>
+          </div>
+          <div class="home__footer-child">
+            <img src="./assets/Buttons/child-50x50.png" alt="sad child">
+          </div>
+        </section>
+        <section class="home__footer-icons">
+            <ng-container *ngTemplateOutlet="logo"></ng-container>
+            <div class="home__funpages">
+              <button><fa-icon class="content__icon" [icon]="facebookIcon"></fa-icon></button>
+              <button><fa-icon class="content__icon" [icon]="twitterIcon"></fa-icon></button>
+              <button><fa-icon class="content__icon" [icon]="instagramIcon"></fa-icon></button>
+              <button><fa-icon class="content__icon" [icon]="emailIcon"></fa-icon></button>
+            </div>
+        </section>
+      </div>
+
     </footer>
   </div>
 </div>
@@ -38,11 +62,21 @@
   <div class="home__button-container">
     <button class="home__{{ btn_info }}">
       <picture class="home__btn-donate">
-        <source media="(min-width: 1024px)" srcset="assets/Buttons/{{ btn_icon }}-100x100.png">
         <source media="(min-width: 640px)" srcset="assets/Buttons/{{ btn_icon }}-75x75.png">
-        <img src="./assets/Buttons/{{ btn_icon }}-50x50.png">
+        <img src="./assets/Buttons/{{ btn_icon }}-50x50.png" alt="button">
       </picture>
     </button>
     <small class="home__btn-info">{{ btn_info }}</small>
+  </div>
+</ng-template>
+
+<ng-template #logo>
+  <div class="home__logo">
+    <picture class="home__image">
+      <source media="(min-width: 1024px)" srcset="assets/Logo/logo-75x56.png">
+      <source media="(min-width: 640px)" srcset="assets/Logo/logo-150x113.png">
+      <img src="./assets/Logo/logo-100x75.png" alt="food pin logo">
+    </picture>
+    <h1 class="home__brand-name">FoodPin</h1>
   </div>
 </ng-template>

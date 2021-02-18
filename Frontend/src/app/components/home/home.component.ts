@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from "../../services/authorization.service";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {faUserCircle, faPlusCircle, faEnvelope} from "@fortawesome/free-solid-svg-icons"
+import {faFacebookF, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons"
 
 @Component({
   selector: 'app-home',
@@ -9,6 +11,13 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  userIcon = faUserCircle;
+  registerIcon = faPlusCircle;
+  facebookIcon = faFacebookF;
+  twitterIcon = faTwitter;
+  instagramIcon = faInstagram;
+  emailIcon = faEnvelope;
+
 
   constructor(
     private _authService: AuthorizationService,
@@ -20,11 +29,13 @@ export class HomeComponent implements OnInit {
   }
 
   public logoutUser(): void {
-    this._authService.logout$().subscribe(
-      _ => {
-        this._toastr.success("Successfully logged out");
-      },
-    );
+    if (!this._authService.getRefreshToken() !== null) {
+      this._authService.logout$().subscribe(
+        _ => {
+          this._toastr.success("Successfully logged out");
+        },
+      );
+    }
   }
 
 }

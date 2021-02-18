@@ -58,7 +58,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         .pipe(
           filter(token => token !== null),
           // transform refresh token into observable which emits only first emitted value
-          take(1),
+          take(this.REPEAT_TIMES),
           switchMap(jwt => {
             return next.handle(this._tokenInterceptor.addToken(request, jwt));
           })

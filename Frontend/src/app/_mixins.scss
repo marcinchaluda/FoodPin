@@ -65,9 +65,8 @@
 @mixin mainComponentStyles {
   @include flexColumnDirection;
   min-width: 400px;
-  max-width: 700px;
-  margin: 3em auto;
-  height: 92vh;
+  margin: 3em auto 0 auto;
+  height: 100%;
 
   @include mediaQuery(tabletLarge) {
     margin-top: 1em;
@@ -77,8 +76,12 @@
 @mixin mainContainerStyles {
   &__container {
     @include flexColumnDirection;
-    //margin-top: 3em;
     width: 90%;
+
+    @include mediaQuery(tabletLarge) {
+      width: 100%;
+    }
+
   }
 }
 
@@ -107,25 +110,43 @@
 @mixin logoStylesDesktop {
   &__logo {
     @include flexColumnDirection;
+    margin-top: 0;
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
 
+    @include mediaQuery(smartphoneLarge) {
+      font-size: 2em;
+    }
     @include mediaQuery(tabletLarge) {
+      margin: 0 0 0.5em 15%;
       display: flex;
       flex-direction: row;
-      align-self: flex-start;
-      font-size: 3em;
+      justify-content: flex-start;
+      font-sizes: 3em;
+      width: 50%;
     }
-  }
 
-  &__image {
-    margin: 1em auto 0 auto;
-  }
+    @include mediaQuery(desktop) {
+      margin: 0 0 0.5em 20%;
+    }
 
-  &__brand-name {
-    color: $colorOrange;
-    margin-bottom: 0.5em;
+    & .home__image {
+      margin: 1em auto 0 auto;
+
+      @include mediaQuery(tabletLarge) {
+        margin: 0;
+      }
+    }
+
+    & .home__brand-name {
+      color: $colorOrange;
+      margin-bottom: 0.5em;
+
+      @include mediaQuery(tabletLarge) {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
