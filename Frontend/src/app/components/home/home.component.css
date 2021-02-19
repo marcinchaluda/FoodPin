@@ -78,7 +78,8 @@
       border: none;
       font-size: 2.4em;
       color: #f79521;
-      background-color: white; }
+      background-color: white;
+      transition: 0.5s; }
     .home__user-buttons button .content__icon:hover {
       color: #ac6006; }
   .home__quotation {
@@ -128,7 +129,8 @@
       height: 65px;
       border: 1px solid #f79521;
       border-radius: 50%;
-      background-color: white; }
+      background-color: white;
+      transition: 0.5s; }
       @media (min-width: 640px) {
         .home__button-container button {
           width: 80px;
@@ -210,7 +212,8 @@
     margin: 0 auto; }
     .home__footer-info a {
       text-transform: uppercase;
-      margin-left: 5em; }
+      margin-left: 5em;
+      transition: 0.5s; }
     .home__footer-info a:hover {
       color: #ac6006;
       cursor: pointer; }

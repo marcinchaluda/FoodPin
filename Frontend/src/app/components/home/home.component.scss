@@ -40,6 +40,7 @@
       font-size: 2.4em;
       color: $colorOrange;
       background-color: $colorWhite;
+      transition: 0.5s;
     }
     & button .content__icon:hover {
       color: darken($colorOrange, 20%);
@@ -99,6 +100,7 @@
       border: 1px solid $colorOrange;
       border-radius: 50%;
       background-color: $colorWhite;
+      transition: 0.5s;
 
       @include mediaQuery(smartphoneLarge) {
         width: 80px;
@@ -213,6 +215,7 @@
     a {
       text-transform: uppercase;
       margin-left: 5em;
+      transition: 0.5s;
     }
     a:hover {
       color: darken($colorOrange, 20%);
