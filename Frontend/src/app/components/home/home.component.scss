@@ -41,6 +41,9 @@
       color: $colorOrange;
       background-color: $colorWhite;
     }
+    & button .content__icon:hover {
+      color: darken($colorOrange, 20%);
+    }
   }
 
   &__quotation {
@@ -103,6 +106,10 @@
       }
     }
 
+    button:hover {
+      box-shadow:0 0 20px 4px $colorOrange;
+    }
+
     small {
       margin-top: 0.4em;
     }
@@ -157,7 +164,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 5em;
+    height: 3em;
     background-color: $colorOrange;
     text-align: center;
     line-height: 3em;
@@ -180,7 +187,6 @@
       bottom: 0;
       width: 100%;
       height: 23%;
-      box-shadow: 0 2px 6px 4px rgba(247, 149, 33, 0.35);
       background-color: $colorWhite;
       color: $colorOrange;
     }
@@ -195,54 +201,47 @@
       justify-content: center;
       width: 100%;
       margin: 2em auto;
+      background-color: lighten($colorOrange, 40%);
     }
   }
 
   &__footer-info {
     @include flexRowCenter;
-    width: 80%;
-    margin: 0 auto 2em;
+    width: 780px;
+    margin: 0 auto;
 
     a {
+      text-transform: uppercase;
+      margin-left: 5em;
+    }
+    a:hover {
+      color: darken($colorOrange, 20%);
+      cursor: pointer;
+    }
+    h3 {
       text-transform: uppercase;
     }
   }
 
   &__page-map {
     @include flexColumnDirection;
-    width: 30%;
-    line-height: 1.5em;
-    font-size: 1.5em;
+    width: 50%;
+    line-height: 1.4em;
+    font-size: 1em;
     color: black;
     align-items: flex-start;
+    color: $colorOrange;
   }
 
   &__footer-child {
-    position: absolute;
-    bottom: 2em;
-    right: 5em;
-
     img {
-      width: 200px;
-    }
-  }
-
-  &__about {
-    @include flexColumnDirection;
-    width: 20%;
-    line-height: 1.5em;
-    font-size: 1.5em;
-    color: black;
-    align-items: flex-start;
-    a {
-      text-transform: uppercase;
+      width: 180px;
     }
   }
 
   &__footer-icons {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
+    @include flexColumnCenter;
+    width: 80%;
     align-items: center;
 
     & .home__logo {
@@ -251,10 +250,17 @@
     }
   }
 
+  &__copyrights {
+    width: 100%;
+    text-align: center;
+    background-color: $colorOrange;
+    color: $colorWhite;
+  }
+
   &__funpages {
     display: flex;
-    justify-content: flex-start;
-    width: 50%;
+    justify-content: center;
+    width: 100%;
 
     button {
       @include activeButton;
@@ -262,6 +268,12 @@
       height: 40px;
       padding: 3px 0 0 0;
       margin: 0 0.5em;
+      background-color: lighten($colorOrange, 20%);
+      transition: 0.5s;
+    }
+
+    button:hover {
+      background-color: $colorOrange;
     }
   }
 }

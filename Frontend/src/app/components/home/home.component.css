@@ -79,6 +79,8 @@
       font-size: 2.4em;
       color: #f79521;
       background-color: white; }
+    .home__user-buttons button .content__icon:hover {
+      color: #ac6006; }
   .home__quotation {
     display: flex;
     flex-direction: column;
@@ -131,6 +133,8 @@
         .home__button-container button {
           width: 80px;
           height: 80px; } }
+    .home__button-container button:hover {
+      box-shadow: 0 0 20px 4px #f79521; }
     .home__button-container small {
       margin-top: 0.4em; }
     .home__button-container .home__Donate {
@@ -166,7 +170,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 5em;
+    height: 3em;
     background-color: #f79521;
     text-align: center;
     line-height: 3em; }
@@ -186,7 +190,6 @@
         bottom: 0;
         width: 100%;
         height: 23%;
-        box-shadow: 0 2px 6px 4px rgba(247, 149, 33, 0.35);
         background-color: white;
         color: #f79521; } }
   .home__footer-container {
@@ -197,55 +200,54 @@
         flex-direction: column;
         justify-content: center;
         width: 100%;
-        margin: 2em auto; } }
+        margin: 2em auto;
+        background-color: #fef3e6; } }
   .home__footer-info {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    margin: 0 auto 2em; }
+    width: 780px;
+    margin: 0 auto; }
     .home__footer-info a {
+      text-transform: uppercase;
+      margin-left: 5em; }
+    .home__footer-info a:hover {
+      color: #ac6006;
+      cursor: pointer; }
+    .home__footer-info h3 {
       text-transform: uppercase; }
   .home__page-map {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 30%;
-    line-height: 1.5em;
-    font-size: 1.5em;
+    width: 50%;
+    line-height: 1.4em;
+    font-size: 1em;
     color: black;
-    align-items: flex-start; }
-  .home__footer-child {
-    position: absolute;
-    bottom: 2em;
-    right: 5em; }
-    .home__footer-child img {
-      width: 200px; }
-  .home__about {
+    align-items: flex-start;
+    color: #f79521; }
+  .home__footer-child img {
+    width: 180px; }
+  .home__footer-icons {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 20%;
-    line-height: 1.5em;
-    font-size: 1.5em;
-    color: black;
-    align-items: flex-start; }
-    .home__about a {
-      text-transform: uppercase; }
-  .home__footer-icons {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
+    width: 80%;
     align-items: center; }
     .home__footer-icons .home__logo {
       width: 20%;
       margin: 0 0 0 20%; }
+  .home__copyrights {
+    width: 100%;
+    text-align: center;
+    background-color: #f79521;
+    color: white; }
   .home__funpages {
     display: flex;
-    justify-content: flex-start;
-    width: 50%; }
+    justify-content: center;
+    width: 100%; }
     .home__funpages button {
       padding: 0.5em 0;
       border-radius: 25px;
@@ -256,7 +258,11 @@
       width: 40px;
       height: 40px;
       padding: 3px 0 0 0;
-      margin: 0 0.5em; }
+      margin: 0 0.5em;
+      background-color: #fbc483;
+      transition: 0.5s; }
+    .home__funpages button:hover {
+      background-color: #f79521; }
 
 .home_Donate {
   background-color: #f79521; }
