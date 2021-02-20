@@ -4,9 +4,8 @@
   justify-content: space-between;
   align-items: center;
   min-width: 400px;
-  max-width: 700px;
-  margin: 3em auto;
-  height: 92vh; }
+  margin: 3em auto 0 auto;
+  height: 100%; }
   @media (min-width: 1024px) {
     .login {
       margin-top: 1em; } }
@@ -16,6 +15,9 @@
     justify-content: space-between;
     align-items: center;
     width: 90%; }
+    @media (min-width: 1024px) {
+      .login__container {
+        width: 100%; } }
   .login__logo {
     display: flex;
     flex-direction: column;
@@ -81,6 +83,8 @@
     .login__register-redirect a {
       padding-left: 0.5em;
       color: #f79521; }
+    .login__register-redirect a:hover {
+      color: #ac6006; }
     @media (min-width: 1024px) {
       .login__register-redirect {
         font-size: 1.6em; } }

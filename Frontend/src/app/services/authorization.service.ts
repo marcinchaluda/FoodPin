@@ -48,7 +48,7 @@ export class AuthorizationService {
       );
   }
 
-  private getRefreshToken(): string {
+  public getRefreshToken(): string {
     return localStorage.getItem(this.REFRESH_TOKEN);
   }
 

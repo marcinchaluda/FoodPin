@@ -39,6 +39,9 @@
       padding-left: 0.5em;
       color: $colorOrange;
     }
+    a:hover {
+      color: darken($colorOrange, 20%);
+    }
 
     @include mediaQuery(tabletLarge) {
       font-size: 1.6em;
