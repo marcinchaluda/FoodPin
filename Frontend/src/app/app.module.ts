@@ -13,6 +13,7 @@ import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpErrorInterceptor} from "./interceptors/http-error.interceptor";
 import {HomeComponent} from './components/home/home.component';
+import { LoaderComponent } from './components/shared/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {HomeComponent} from './components/home/home.component';
     LoginComponent,
     InputErrorPipe,
     HomeComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
