@@ -8,6 +8,7 @@ import {RegistrationService} from "../../services/registration.service";
 import {faAt, faLock, faUser} from "@fortawesome/free-solid-svg-icons";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {timeout} from "rxjs/operators";
 
 @Component({
   selector: 'app-register',
