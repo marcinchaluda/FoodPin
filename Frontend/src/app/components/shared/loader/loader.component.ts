@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {faAppleAlt, faCarrot, faDrumstickBite, faIceCream, faPepperHot} from "@fortawesome/free-solid-svg-icons";
+import {BehaviorSubject} from "rxjs";
+import {LoaderService} from "../../../services/loader.service";
 
 @Component({
   selector: 'app-loader',
@@ -12,8 +14,9 @@ export class LoaderComponent implements OnInit {
   iceCreamIcon = faIceCream;
   pepperIcon = faPepperHot;
   appleIcon = faAppleAlt;
+  isLoading: BehaviorSubject<boolean> = this._loaderService.isLoading;
 
-  constructor() { }
+  constructor(private _loaderService: LoaderService) { }
 
   ngOnInit(): void {
   }

@@ -2,7 +2,8 @@
 
 .loader {
   height: 100vh;
-  background-color: transparentize($colorOrange, 0.9);
+  width: 100%;
+  background-color: transparent;
   z-index: 1;
 }
 
@@ -28,6 +29,7 @@
 
 fa-icon {
   --delay: 0s;
+  color: $colorOrange;
   font-size: 2em;
   padding: 0 0.2em;
   animation: arrows 1s var(--delay) infinite ease-in;

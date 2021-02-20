@@ -14,6 +14,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpErrorInterceptor} from "./interceptors/http-error.interceptor";
 import {HomeComponent} from './components/home/home.component';
 import { LoaderComponent } from './components/shared/loader/loader.component';
+import {LoaderService} from "./services/loader.service";
+import {LoaderInterceptor} from "./interceptors/loader.interceptor";
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { LoaderComponent } from './components/shared/loader/loader.component';
     provide: HTTP_INTERCEPTORS,
     useClass: HttpErrorInterceptor,
     multi: true,
-    }],
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    LoaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
