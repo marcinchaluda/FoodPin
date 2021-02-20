@@ -1,0 +1,34 @@
+@import "../../../variables";
+
+.loader {
+  height: 100vh;
+  background-color: transparentize($colorOrange, 0.9);
+  z-index: 1;
+}
+
+.loader__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+@keyframes arrows {
+  0%,
+  100% {
+    color: $colorOrange;
+    transform: translateY(0);
+  }
+  50% {
+    color: $colorFadedOrange;
+    transform: translateY(30px);
+  }
+}
+
+fa-icon {
+  --delay: 0s;
+  font-size: 2em;
+  padding: 0 0.2em;
+  animation: arrows 1s var(--delay) infinite ease-in;
+}
