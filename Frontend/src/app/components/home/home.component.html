@@ -4,7 +4,7 @@
     <header>
       <ng-container *ngTemplateOutlet="logo"></ng-container>
       <div class="home__user-buttons">
-        <button><fa-icon class="content__icon" [icon]="userIcon"></fa-icon></button>
+        <button routerLink="/login"><fa-icon class="content__icon" [icon]="userIcon"></fa-icon></button>
         <button routerLink="/register"><fa-icon class="content__icon" [icon]="registerIcon"></fa-icon></button>
       </div>
     </header>
