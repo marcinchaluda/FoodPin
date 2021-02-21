@@ -1,17 +1,17 @@
 # FOODPIN
 
-###The purpose of the app is to connect people which want to save food. One user announce that have spare food and he will give it to another user for free instead of throw it up and waste. The idea is to pin donations on a map a let user browse to find food in the neighbourhood which can be used by him. 
+### The purpose of the app is to connect people which want to save food. One user announce that have spare food and he will give it to another user for free instead of throw it up and waste. The idea is to pin donations on a map a let user browse to find food in the neighbourhood which can be used by him. 
 
-###Backend by [Robert Matląg](http://github.com/RobertMatlag)
+### Backend by [Robert Matląg](http://github.com/RobertMatlag)
 **Technologies: Python, Django, Django Rest Framework, PostgreSQL**
 
 ### Frontend by [Marcin Chałuda](http://github.com/marcinchaluda)
 **Technologies: Angular, Typescript, Sass**
 
-###Project tools
+### Project tools
 **Technologies: Jira, Figma, Swagger**
 
-##Prototypes
+## Prototypes
 ### Adding new donation
 Logged-in user can add own donation, there is space to precise what is the product, what is an amount of products, 
 address and time to pick up. User can describe an announcement and give more details.
