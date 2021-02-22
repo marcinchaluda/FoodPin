@@ -17,6 +17,8 @@ import { LoaderComponent } from './components/shared/loader/loader.component';
 import {LoaderService} from "./services/loader.service";
 import {LoaderInterceptor} from "./interceptors/loader.interceptor";
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import {MatSidenavModule} from '@angular/material/sidenav'
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
     FontAwesomeModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    MatSidenavModule,
+    MatIconModule,
   ],
   providers: [
     {
