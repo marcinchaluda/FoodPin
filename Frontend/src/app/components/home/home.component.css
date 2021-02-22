@@ -80,7 +80,9 @@
       color: #f79521;
       background-color: white;
       transition: 0.5s; }
-    .home__user-buttons button .content__icon:hover {
+      .home__user-buttons button span {
+        padding-top: 5px; }
+    .home__user-buttons button .content__icon:hover, .home__user-buttons button .material-icons:hover {
       color: #ac6006; }
   .home__quotation {
     display: flex;
@@ -269,5 +271,11 @@
 
 .home_Donate {
   background-color: #f79521; }
+
+.material-icons {
+  font-size: 50px;
+  align-self: flex-end;
+  margin: 0;
+  padding: 0; }
 
 /*# sourceMappingURL=home.component.css.map */

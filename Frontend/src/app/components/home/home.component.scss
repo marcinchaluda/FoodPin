@@ -41,8 +41,13 @@
       color: $colorOrange;
       background-color: $colorWhite;
       transition: 0.5s;
+
+      span {
+        padding-top: 5px;
+      }
     }
-    & button .content__icon:hover {
+
+    & button .content__icon:hover, & button .material-icons:hover {
       color: darken($colorOrange, 20%);
     }
   }
@@ -283,4 +288,12 @@
 
 .home_Donate {
   background-color: $colorOrange;
+}
+
+
+.material-icons {
+  font-size: 50px;
+  align-self: flex-end;
+  margin: 0;
+  padding: 0;
 }
