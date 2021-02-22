@@ -1,24 +1,73 @@
 @import "./src/app/variables";
 @import "./src/app/mixins";
 
-mat-sidenav-container {
+.navbar {
   height: 100vh;
-  display: flex;
-  flex-direction: column;
 
-  mat-sidenav {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
+  &__user-info {
+    @include flexColumnDirection;
+    width: 100%;
+    padding-bottom: 1em;
+
+    fa-icon {
+      font-size: 4em;
+      color: white;
+    }
+    p {
+      width: 90%;
+      padding: 0.5em 0;
+      border-bottom: 1px solid $colorWhite;
+      font-size: 1.3em;
+      color: white;
+      text-align: center;
+    }
+  }
+
+  &__slide {
+    padding-top: 2em;
+    width: 55%;
     background-color: $colorOrange;
+  }
 
-    .mat-drawer-inner-container {
-      display: flex;
-      flex-direction: column;
+  &__menu {
+    @include flexColumnDirection;
+    flex-grow: 1;
+  }
+
+  &__item {
+    width: 100%;
+
+    button {
+      @include navbarButton;
+      transition: 0.5s;
+
+      fa-icon {
+        width: 50px;
+        font-size: 1.5em;
+      }
+    }
+
+    button:hover {
+      color: darken($colorOrange, 20%);
+    }
+  }
+
+  &__logout {
+    @include flexColumnDirection;
+    padding-top: 1em;
+
+    a {
+      @include navbarAnchorTag;
+      transition: 0.5s;
+    }
+
+    a:hover {
+      color: darken($colorOrange, 20%);
     }
   }
 }
 
-.exp {
-  @include flexColumnDirection;
+.material-icons {
+  width: 50px;
+  font-size: 40px;
 }

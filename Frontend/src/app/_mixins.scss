@@ -20,6 +20,16 @@
   align-items: center;
 }
 
+@mixin navbarAnchorTag {
+  width: 90%;
+  padding: 0.5em 0;
+  text-align: center;
+  text-decoration: none;
+  color: $colorWhite;
+  font-size: 1.3em;
+  border-top: 1px solid $colorWhite;
+}
+
 @mixin inputFormsStyle {
   padding: 10px;
   border:0;
@@ -33,6 +43,19 @@
   background-color: $colorOrange;
   color: $colorWhite;
   border: none;
+}
+
+@mixin navbarButton {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 0.5em 1em;
+  font-size: 1.3em;
+  background-color: $colorOrange;
+  color: $colorWhite;
+  border: none;
+
 }
 
 @mixin mediaQuery($breakPoint) {
