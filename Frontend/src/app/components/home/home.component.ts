@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from "../../services/authorization.service";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
-import {faUserCircle, faPlusCircle, faEnvelope} from "@fortawesome/free-solid-svg-icons"
+import {faUserCircle, faEnvelope} from "@fortawesome/free-solid-svg-icons"
 import {faFacebookF, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons"
 
 @Component({
@@ -12,7 +12,6 @@ import {faFacebookF, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-
 })
 export class HomeComponent implements OnInit {
   userIcon = faUserCircle;
-  registerIcon = faPlusCircle;
   facebookIcon = faFacebookF;
   twitterIcon = faTwitter;
   instagramIcon = faInstagram;

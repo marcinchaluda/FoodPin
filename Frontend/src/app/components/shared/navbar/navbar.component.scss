@@ -1,0 +1,24 @@
+@import "./src/app/variables";
+@import "./src/app/mixins";
+
+mat-sidenav-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  mat-sidenav {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: $colorOrange;
+
+    .mat-drawer-inner-container {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.exp {
+  @include flexColumnDirection;
+}
