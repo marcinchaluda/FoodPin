@@ -1,1 +1,41 @@
-<p>navbar works!</p>
+<mat-sidenav-container class="navbar">
+  <mat-sidenav [(opened)]="isOpen$" position="end">
+    <ul class="navbar__menu">
+      <div class="navbar__user-info">
+        <fa-icon class="content__icon" [icon]="userIcon"></fa-icon>
+        <p>UserName</p>
+        <li class="navbar__item">
+          <button routerLink="#"><fa-icon class="content__icon" [icon]="accountIcon"></fa-icon>Account</button>
+        </li>
+      </div>
+      <li class="navbar__item">
+        <button routerLink="/login"><fa-icon class="content__icon" [icon]="userIcon"></fa-icon>Sign In</button>
+      </li>
+      <li class="navbar__item">
+        <button routerLink="/register"><span class="material-icons">app_registration</span>Sign Up</button>
+      </li>
+      <li class="navbar__item">
+        <button routerLink="#"><fa-icon class="content__icon" [icon]="statsIcon"></fa-icon>Statistics</button>
+      </li>
+      <li class="navbar__item">
+        <button routerLink="#"><fa-icon class="content__icon" [icon]="infoIcon"></fa-icon>About</button>
+      </li>
+      <li class="navbar__item">
+        <button routerLink="#"><fa-icon class="content__icon" [icon]="facebookIcon"></fa-icon>Facebook</button>
+      </li>
+      <li class="navbar__item">
+        <button routerLink="#"><fa-icon class="content__icon" [icon]="twitterIcon"></fa-icon>Twitter</button>
+      </li>
+      <li class="navbar__item">
+        <button routerLink="#"><fa-icon class="content__icon" [icon]="instagramIcon"></fa-icon>Instagram</button>
+      </li>
+      <li class="navbar__item">
+        <button routerLink="#"><fa-icon class="content__icon" [icon]="emailIcon"></fa-icon>Mail</button>
+      </li>
+      <li class="navbar__item">
+        <a routerLink="#">Sign Out</a>
+      </li>
+    </ul>
+  </mat-sidenav>
+  <mat-sidenav-content></mat-sidenav-content>
+</mat-sidenav-container>
