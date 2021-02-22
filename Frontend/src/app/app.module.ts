@@ -16,6 +16,7 @@ import {HomeComponent} from './components/home/home.component';
 import { LoaderComponent } from './components/shared/loader/loader.component';
 import {LoaderService} from "./services/loader.service";
 import {LoaderInterceptor} from "./interceptors/loader.interceptor";
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {LoaderInterceptor} from "./interceptors/loader.interceptor";
     InputErrorPipe,
     HomeComponent,
     LoaderComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
