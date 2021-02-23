@@ -20,10 +20,9 @@
       <ng-container *ngTemplateOutlet="button; context:{description:'Search', icon: 'magnifier'}"></ng-container>
       <ng-container *ngTemplateOutlet="button; context:{description:'Map', icon: 'mapLocation'}"></ng-container>
     </div>
-    <div class="home__menu-btn" (click)="toggleMenu()">
+    <div class="home__menu-btn" (click)="toggleMenu()" [ngClass]="{'navbar-open': isOpen$ | async}">
       <ng-container *ngTemplateOutlet="button; context:{description: 'menu', icon: 'menu'}"></ng-container>
     </div>
-    <button (click)="logoutUser()">Logout</button>
     <div class="home__child-image">
       <picture>
         <source media="(min-width: 1024px)" srcset="assets/Buttons/child-100x100.png">
@@ -62,9 +61,9 @@
   </div>
 </div>
 
-<ng-template let-btn_info="description" let-btn_icon="icon" let-triggerAction="triggerEvent" #button>
+<ng-template let-btn_info="description" let-btn_icon="icon" #button>
   <div class="home__button-container">
-    <button class="home__{{ btn_info }}" (click)=triggerAction>
+    <button class="home__{{ btn_info }}">
       <picture class="home__btn-donate">
         <source media="(min-width: 640px)" srcset="assets/Buttons/{{ btn_icon }}-75x75.png">
         <img src="./assets/Buttons/{{ btn_icon }}-50x50.png" alt="button">
