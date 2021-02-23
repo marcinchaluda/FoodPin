@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {mapTo, tap} from "rxjs/operators";
 import {Tokens} from "../models/Tokens";
@@ -13,20 +13,21 @@ export class AuthorizationService {
   private readonly JWT_TOKEN: string = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN: string = 'REFRESH_TOKEN';
   readonly apiUrl: string = environment.apiUrl;
-  private _loggedUser: string;
+  public loggedUser$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) {
+  }
 
   public login$(user: User): Observable<boolean> {
     return this._http.post<any>(`${this.apiUrl}sessions/login/`, user)
       .pipe(
-        tap(tokens => this.doLoginUser(user.username, tokens)),
+        tap(tokens => this.doLoginUser(user.email, tokens)),
         mapTo(true),
       );
   }
 
-  private doLoginUser(userName: string, tokens: Tokens): void {
-    this._loggedUser = userName;
+  private doLoginUser(email: string, tokens: Tokens): void {
+    this.loggedUser$.next(email);
     this.storeTokens(tokens);
   }
 
@@ -39,7 +40,9 @@ export class AuthorizationService {
     const refreshToken: object = {
       refresh: this.getRefreshToken()
     };
-    if (this.getRefreshToken() === null) { return; }
+    if (this.getRefreshToken() === null) {
+      return;
+    }
 
     return this._http.post<any>(`${this.apiUrl}sessions/logout/`, refreshToken)
       .pipe(
@@ -53,7 +56,7 @@ export class AuthorizationService {
   }
 
   private doLogoutUser(): void {
-    this._loggedUser = null;
+    this.loggedUser$.next(null);
     this.removeTokens();
   }
 
@@ -76,7 +79,7 @@ export class AuthorizationService {
     localStorage.setItem(this.JWT_TOKEN, jwt);
   }
 
-  public getJwtToken():string {
+  public getJwtToken(): string {
     return localStorage.getItem(this.JWT_TOKEN);
   }
 
@@ -86,10 +89,4 @@ export class AuthorizationService {
     });
     return refreshToken;
   }
-
-  get loggedUser(): string {
-    return this._loggedUser;
-  }
 }
-
-
