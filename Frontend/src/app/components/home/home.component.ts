@@ -4,6 +4,9 @@ import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {faUserCircle, faEnvelope} from "@fortawesome/free-solid-svg-icons"
 import {faFacebookF, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons"
+import {NavbarComponent} from "../shared/navbar/navbar.component";
+import {NavbarService} from "../../services/navbar.service";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -16,15 +19,17 @@ export class HomeComponent implements OnInit {
   twitterIcon = faTwitter;
   instagramIcon = faInstagram;
   emailIcon = faEnvelope;
-
+  isOpen$: BehaviorSubject<boolean>;
 
   constructor(
     private _authService: AuthorizationService,
     private _router: Router,
     private _toastr: ToastrService,
+    private _navbar: NavbarService,
     ) { }
 
   public ngOnInit(): void {
+    this.isOpen$ = this._navbar.isOpen$;
   }
 
   public logoutUser(): void {
@@ -37,4 +42,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  public toggleMenu() {
+    this._navbar.toggleNavbar();
+  }
 }

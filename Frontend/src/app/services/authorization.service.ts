@@ -13,7 +13,7 @@ export class AuthorizationService {
   private readonly JWT_TOKEN: string = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN: string = 'REFRESH_TOKEN';
   readonly apiUrl: string = environment.apiUrl;
-  private loggedUser: string;
+  private _loggedUser: string;
 
   constructor(private _http: HttpClient) { }
 
@@ -26,7 +26,7 @@ export class AuthorizationService {
   }
 
   private doLoginUser(userName: string, tokens: Tokens): void {
-    this.loggedUser = userName;
+    this._loggedUser = userName;
     this.storeTokens(tokens);
   }
 
@@ -53,7 +53,7 @@ export class AuthorizationService {
   }
 
   private doLogoutUser(): void {
-    this.loggedUser = null;
+    this._loggedUser = null;
     this.removeTokens();
   }
 
@@ -85,6 +85,10 @@ export class AuthorizationService {
       refresh_token: this.getRefreshToken(),
     });
     return refreshToken;
+  }
+
+  get loggedUser(): string {
+    return this._loggedUser;
   }
 }
 

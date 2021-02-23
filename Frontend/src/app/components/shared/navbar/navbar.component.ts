@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {faEnvelope, faInfoCircle, faSignal, faUserCircle, faUserCog} from "@fortawesome/free-solid-svg-icons";
 import {faFacebookF, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import {AuthorizationService} from "../../../services/authorization.service";
 
 @Component({
   selector: 'app-navbar',
@@ -17,10 +18,11 @@ export class NavbarComponent implements OnInit {
   instagramIcon = faInstagram;
   emailIcon = faEnvelope;
   isOpen$ = true;
+  loggedUser: string;
 
-  constructor() { }
+  constructor(private _authService: AuthorizationService) { }
 
   ngOnInit(): void {
+    this.loggedUser = this._authService.loggedUser;
   }
-
 }
