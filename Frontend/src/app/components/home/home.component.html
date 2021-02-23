@@ -1,5 +1,7 @@
 <app-loader></app-loader>
-<app-navbar></app-navbar>
+<ng-container *ngIf="isOpen$ | async">
+  <app-navbar></app-navbar>
+</ng-container>
 <div class="home">
   <div class="home__container">
     <header>
@@ -18,7 +20,7 @@
       <ng-container *ngTemplateOutlet="button; context:{description:'Search', icon: 'magnifier'}"></ng-container>
       <ng-container *ngTemplateOutlet="button; context:{description:'Map', icon: 'mapLocation'}"></ng-container>
     </div>
-    <div class="home__menu-btn">
+    <div class="home__menu-btn" (click)="toggleMenu()">
       <ng-container *ngTemplateOutlet="button; context:{description: 'menu', icon: 'menu'}"></ng-container>
     </div>
     <button (click)="logoutUser()">Logout</button>
@@ -60,9 +62,9 @@
   </div>
 </div>
 
-<ng-template let-btn_info="description" let-btn_icon="icon" #button>
+<ng-template let-btn_info="description" let-btn_icon="icon" let-triggerAction="triggerEvent" #button>
   <div class="home__button-container">
-    <button class="home__{{ btn_info }}">
+    <button class="home__{{ btn_info }}" (click)=triggerAction>
       <picture class="home__btn-donate">
         <source media="(min-width: 640px)" srcset="assets/Buttons/{{ btn_icon }}-75x75.png">
         <img src="./assets/Buttons/{{ btn_icon }}-50x50.png" alt="button">
