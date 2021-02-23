@@ -6,8 +6,8 @@ Error: File to import not found or unreadable: ./src/app/variables.
 2: @import "./src/app/mixins";
 3: 
 4: .navbar {
-5:   height: 100vh;
-6: 
+5:   position: absolute;
+6:   top: 0;
 
 Backtrace:
 navbar.component.scss:1
@@ -46,4 +46,4 @@ navbar.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ./src/app/variables.\A         on line 1 of navbar.component.scss\A \A 1: @import \"./src/app/variables\";\A 2: @import \"./src/app/mixins\";\A 3: \A 4: .navbar {\A 5:   height: 100vh;\A 6: "; }
+  content: "Error: File to import not found or unreadable: ./src/app/variables.\A         on line 1 of navbar.component.scss\A \A 1: @import \"./src/app/variables\";\A 2: @import \"./src/app/mixins\";\A 3: \A 4: .navbar {\A 5:   position: absolute;\A 6:   top: 0;"; }

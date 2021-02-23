@@ -2,7 +2,11 @@
 @import "./src/app/mixins";
 
 .navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100vh;
+  z-index: 2;
 
   &__user-info {
     @include flexColumnDirection;
@@ -71,3 +75,7 @@
   width: 50px;
   font-size: 40px;
 }
+
+//mat-sidenav-content {
+//  background-color: transparent;
+//}

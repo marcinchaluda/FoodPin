@@ -1,5 +1,5 @@
-<mat-sidenav-container class="navbar">
-  <mat-sidenav class="navbar__slide" [(opened)]="isOpen$" position="end">
+<div class="navbar">
+  <div class="navbar__slide" position="end">
     <ng-container class="test" *ngIf="loggedUser">
       <div class="navbar__user-info">
         <fa-icon class="content__icon" [icon]="userIcon"></fa-icon>
@@ -44,6 +44,5 @@
         <a routerLink="#">Sign out</a>
       </div>
     </ng-container>
-  </mat-sidenav>
-  <mat-sidenav-content></mat-sidenav-content>
-</mat-sidenav-container>
+  </div>
+</div>
