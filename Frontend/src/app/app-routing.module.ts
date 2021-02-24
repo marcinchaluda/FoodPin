@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'navbar', component: NavbarComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'account', loadChildren: () => import('./components/user-account/user-account.module').then(m => m.UserAccountModule)},
 ];
 
 @NgModule({
