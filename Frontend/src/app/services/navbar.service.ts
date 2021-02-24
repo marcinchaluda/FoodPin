@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class NavbarService {
-  isOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private _router: Router) {}
 

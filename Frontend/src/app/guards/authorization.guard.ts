@@ -1,12 +1,27 @@
-import {Injectable} from '@angular/core';
-import {CanLoad, Route} from '@angular/router';
+import {Injectable, OnInit} from '@angular/core';
+import {CanLoad, Route, Router} from '@angular/router';
+import {BehaviorSubject} from "rxjs";
+import {AuthorizationService} from "../services/authorization.service";
+import {NavbarService} from "../services/navbar.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationGuard implements CanLoad {
-  canLoad(route: Route): boolean {
-    return undefined;
-  }
 
+  constructor(
+    private _authService: AuthorizationService,
+    private _navbarService: NavbarService,
+    private _router: Router,
+    ) {}
+
+  canLoad(route: Route): boolean {
+    if (this._authService.loggedUser$.value) {
+      this._navbarService.toggleNavbar();
+      return true;
+    }
+    this._navbarService.toggleNavbar();
+    this._router.navigate(['login']).then(console.log);
+    return false;
+  }
 }
