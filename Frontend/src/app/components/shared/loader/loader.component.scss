@@ -1,21 +1,32 @@
 @import "../../../variables";
 
 .loader {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   height: 100vh;
-  width: 100%;
-  background-color: $colorWhite;
-  z-index: 1;
-}
-
-.loader__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
   width: 100vw;
+  background-color: transparentize($colorOrange, 0.8);
+  z-index: 100;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  &__container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100px;
+    width: 300px;
+    background-color: $colorWhite;
+    border-radius: 60px;
+    box-shadow: 0 0 100px 100px rgba(247,149,33,0.35);
+  }
 }
 
 @keyframes arrows {
@@ -34,6 +45,6 @@ fa-icon {
   --delay: 0s;
   color: $colorOrange;
   font-size: 2em;
-  padding: 0 0.2em;
+  padding: 0.5em 0.2em;
   animation: arrows 1s var(--delay) infinite ease-in;
 }
