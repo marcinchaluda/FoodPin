@@ -4,6 +4,7 @@
   justify-content: space-between;
   align-items: center;
   min-width: 350px;
+  height: 100%;
   height: 100vh; }
   @media (min-width: 1024px) {
     .home {
@@ -11,9 +12,10 @@
   .home__container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 100%; }
+    width: 100%;
+    height: 100%; }
     @media (min-width: 1024px) {
       .home__container {
         width: 100%; } }
@@ -64,19 +66,23 @@
       .home__user-buttons {
         display: flex;
         justify-content: flex-end;
+        align-items: center;
         margin: 0 15% 0.5em 0;
-        width: 50%; } }
+        width: 50%;
+        font-size: 2.4em;
+        color: #f79521; }
+        .home__user-buttons p {
+          padding: 1em 0.5em;
+          font-size: 0.6em; } }
     @media (min-width: 1280px) {
       .home__user-buttons {
         margin: 0 20% 0.5em 0; } }
     .home__user-buttons button {
       padding: 0 1em 0 0;
       border: none;
-      font-size: 2.4em;
-      color: #f79521;
       background-color: white;
-      transition: 0.5s;
-      flex-grow: 1; }
+      color: #f79521;
+      transition: 0.5s; }
       .home__user-buttons button span {
         padding-top: 5px; }
     .home__user-buttons button .content__icon:hover, .home__user-buttons button .material-icons:hover {
@@ -155,7 +161,7 @@
     z-index: 3; }
     @media (min-width: 1024px) {
       .home__menu-btn {
-        top: 25%; } }
+        top: 21%; } }
     .home__menu-btn small {
       display: none; }
     .home__menu-btn .home__button-container {
@@ -166,6 +172,12 @@
     @media (min-width: 1024px) {
       .home__child-image {
         display: none; } }
+  .home__content {
+    display: flex;
+    flex-grow: 1; }
+    @media (min-width: 1024px) {
+      .home__content {
+        height: 50%; } }
   .home__footer {
     display: flex;
     justify-content: center;
@@ -274,10 +286,7 @@
   padding: 0; }
 
 .navbar-open {
-  right: 55%; }
-  @media (min-width: 1024px) {
-    .navbar-open {
-      top: 25%; } }
+  display: none; }
 
 .btn-white {
   background-color: white; }

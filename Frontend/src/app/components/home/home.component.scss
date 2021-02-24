@@ -25,8 +25,16 @@
     @include mediaQuery(tabletLarge) {
       display: flex;
       justify-content: flex-end;
+      align-items: center;
       margin: 0 15% 0.5em 0;
       width: 50%;
+      font-size: 2.4em;
+      color: $colorOrange;
+
+      p {
+        padding: 1em 0.5em;
+        font-size: 0.6em;
+      }
     }
 
     @include mediaQuery(desktop) {
@@ -36,11 +44,9 @@
     & button {
       padding: 0 1em 0 0;
       border: none;
-      font-size: 2.4em;
-      color: $colorOrange;
       background-color: $colorWhite;
+      color: $colorOrange;
       transition: 0.5s;
-      flex-grow: 1;
 
       span {
         padding-top: 5px;
@@ -145,7 +151,7 @@
     z-index: 3;
 
     @include mediaQuery(tabletLarge) {
-      top: 25%;
+      top: 21%;
     }
 
     small {
@@ -163,6 +169,15 @@
 
     @include mediaQuery(tabletLarge) {
       display: none;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-grow: 1;
+
+    @include mediaQuery(tabletLarge) {
+      height: 50%;
     }
   }
 
@@ -294,11 +309,7 @@
 }
 
 .navbar-open {
-  right: 55%;
-
-  @include mediaQuery(tabletLarge) {
-    top: 25%;
-  }
+  display: none;
 }
 
 .btn-white {

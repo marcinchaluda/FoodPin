@@ -27,20 +27,36 @@
       color: white;
       text-align: center;
     }
+
+    @include mediaQuery(tabletLarge) {
+      display: none;
+    }
   }
 
   &__slide {
     display: block;
     float: right;
     padding-top: 2em;
-    width: 55%;
+    width: 210px;
     height: 100%;
     background-color: $colorOrange;
+
+    @include mediaQuery(tabletLarge) {
+      width: 100%;
+      height: 10%;
+      padding-top: 0.5em;
+      margin-top: 6em;
+    }
   }
 
   &__menu {
     @include flexColumnDirection;
     flex-grow: 1;
+
+    @include mediaQuery(tabletLarge) {
+      @include flexRowCenter;
+      flex-direction: row;
+    }
   }
 
   &__item {
@@ -53,6 +69,10 @@
       fa-icon {
         width: 50px;
         font-size: 1.5em;
+      }
+
+      @include mediaQuery(tabletLarge) {
+        @include flexColumnDirection;
       }
     }
 
@@ -73,10 +93,58 @@
     a:hover {
       color: darken($colorOrange, 20%);
     }
+
+    @include mediaQuery(tabletLarge) {
+      display: none;
+    }
+  }
+
+  &__button-container {
+    @include flexColumnCenter;
+    margin: 0 0.7em;
+
+    @include mediaQuery(smartphoneLarge) {
+      margin: 0 1em;
+    }
+    @include mediaQuery(tabletLarge) {
+      margin: 0 1.5em;
+    }
+
+    button {
+      position: fixed;
+      top: 57%;
+      right: 210px;
+      width: 50px;
+      height: 50px;
+      border: 1px solid $colorOrange;
+      color: $colorOrange;
+      border-bottom-left-radius: 50%;
+      border-top-left-radius: 50%;
+      background-color: $colorWhite;
+      font-size: 1.8em;
+      transition: 0.5s;
+      z-index: 2;
+
+      @include mediaQuery(tabletLarge) {
+        top: 21%;
+        right: 0;
+        border-top-left-radius: 0;
+      }
+    }
+
+    button:hover {
+      box-shadow:0 0 20px 4px $colorOrange;
+    }
   }
 }
 
 .material-icons {
   width: 50px;
   font-size: 40px;
+}
+
+.login, .register {
+  @include mediaQuery(tabletLarge) {
+    display: none;
+  }
 }

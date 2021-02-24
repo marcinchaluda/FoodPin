@@ -1,16 +1,18 @@
 <app-loader></app-loader>
-<ng-container *ngIf="isOpen$ | async">
-  <app-navbar></app-navbar>
-</ng-container>
 <div class="home">
   <div class="home__container">
     <header>
       <ng-container *ngTemplateOutlet="logo"></ng-container>
       <div class="home__user-buttons">
-        <button routerLink="/login"><fa-icon class="content__icon" [icon]="userIcon"></fa-icon></button>
-        <button routerLink="/register"><span class="material-icons">app_registration</span></button>
+        <ng-container *ngIf="loggedUser$ | async; else login">
+          <p>{{loggedUser$.value}}</p>
+          <button (click)="logoutUser()"><fa-icon class="content__icon" [icon]="logoutIcon"></fa-icon></button>
+        </ng-container>
       </div>
     </header>
+    <ng-container *ngIf="isOpen$ | async">
+      <app-navbar></app-navbar>
+    </ng-container>
     <div class="home__quotation">
       <h1>Want to share food?</h1>
       <p>Choose anyone</p>
@@ -22,6 +24,8 @@
     </div>
     <div class="home__menu-btn" (click)="toggleMenu()" [ngClass]="{'navbar-open': isOpen$ | async}">
       <ng-container *ngTemplateOutlet="button; context:{description: 'menu', icon: 'menu'}"></ng-container>
+    </div>
+    <div class="home__content">
     </div>
     <div class="home__child-image">
       <picture>
@@ -82,4 +86,9 @@
     </picture>
     <h1 class="home__brand-name">FoodPin</h1>
   </div>
+</ng-template>
+
+<ng-template #login>
+  <button routerLink="/login"><fa-icon class="content__icon" [icon]="userIcon"></fa-icon></button>
+  <button routerLink="/register"><span class="material-icons">app_registration</span></button>
 </ng-template>

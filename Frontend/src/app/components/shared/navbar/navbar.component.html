@@ -8,10 +8,10 @@
     </ng-container>
     <ul class="navbar__menu">
       <ng-container *ngIf="!loggedUser$.value">
-        <li class="navbar__item">
+        <li class="navbar__item login">
           <button routerLink="/login"><fa-icon class="content__icon" [icon]="userIcon"></fa-icon><p>Sign in</p></button>
         </li>
-        <li class="navbar__item">
+        <li class="navbar__item register">
           <button routerLink="/register"><span class="material-icons">app_registration</span><p>Sign up</p></button>
         </li>
       </ng-container>
@@ -44,5 +44,10 @@
         <a routerLink="/home" (click)="logoutUser()">Sign out</a>
       </div>
     </ng-container>
+  </div>
+  <div class="navbar__button-container" (click)="toggleMenu()">
+    <button class="navbar__close">
+      <fa-icon class="content__icon" [icon]="closeIcon"></fa-icon>
+    </button>
   </div>
 </div>
