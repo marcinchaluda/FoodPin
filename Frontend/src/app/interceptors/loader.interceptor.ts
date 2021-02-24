@@ -17,11 +17,11 @@ export class LoaderInterceptor implements HttpInterceptor {
   constructor(private _loaderService: LoaderService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this._loaderService.showLoader();
+    this._loaderService.toggleLoader();
     return next.handle(request)
       .pipe(
         finalize(() => {
-          this._loaderService.hideLoader();
+          this._loaderService.toggleLoader();
         }),
       );
   }
