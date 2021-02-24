@@ -5,11 +5,10 @@
   @include mainComponentStyles;
   @include mainContainerStyles;
   @include logoStylesDesktop;
-  position: relative;
-  overflow: hidden;
+  height: 100vh;
 
-  @include mediaQuery(tabletLarge) {
-    height: 100vh;
+  &__container {
+    height: 100%;
   }
 
   header {
@@ -26,8 +25,16 @@
     @include mediaQuery(tabletLarge) {
       display: flex;
       justify-content: flex-end;
+      align-items: center;
       margin: 0 15% 0.5em 0;
       width: 50%;
+      font-size: 2.4em;
+      color: $colorOrange;
+
+      p {
+        padding: 1em 0.5em;
+        font-size: 0.6em;
+      }
     }
 
     @include mediaQuery(desktop) {
@@ -37,9 +44,8 @@
     & button {
       padding: 0 1em 0 0;
       border: none;
-      font-size: 2.4em;
-      color: $colorOrange;
       background-color: $colorWhite;
+      color: $colorOrange;
       transition: 0.5s;
 
       span {
@@ -142,9 +148,10 @@
     position: fixed;
     top: 57%;
     right: 0;
+    z-index: 3;
 
     @include mediaQuery(tabletLarge) {
-      top: 25%;
+      top: 21%;
     }
 
     small {
@@ -159,26 +166,32 @@
 
   &__child-image {
     margin-top: 3.6em;
-    position: fixed;
-    bottom: 5%;
 
     @include mediaQuery(tabletLarge) {
       display: none;
     }
   }
 
+  &__content {
+    display: flex;
+    flex-grow: 1;
+
+    @include mediaQuery(tabletLarge) {
+      height: 50%;
+    }
+  }
+
   &__footer {
-    position: fixed;
-    bottom: 0;
+    @include flexRowCenter;
     width: 100%;
     height: 3em;
     background-color: $colorOrange;
     text-align: center;
-    line-height: 3em;
 
     p {
       color: $colorWhite;
       font-size: 1.2em;
+      padding-top: 0.5em;
 
       @include mediaQuery(smartphoneLarge) {
         font-size: 1.5em;
@@ -189,11 +202,9 @@
     }
 
     @include mediaQuery(tabletLarge) {
+      display: flex;
       margin-top: 1em;
-      position: absolute;
-      bottom: 0;
       width: 100%;
-      height: 23%;
       background-color: $colorWhite;
       color: $colorOrange;
     }
@@ -207,7 +218,7 @@
       flex-direction: column;
       justify-content: center;
       width: 100%;
-      margin: 2em auto;
+      margin: 2em auto 0 auto;
       background-color: lighten($colorOrange, 40%);
     }
   }
@@ -290,10 +301,17 @@
   background-color: $colorOrange;
 }
 
-
 .material-icons {
   font-size: 50px;
   align-self: flex-end;
   margin: 0;
   padding: 0;
+}
+
+.navbar-open {
+  display: none;
+}
+
+.btn-white {
+  background-color: $colorWhite;
 }

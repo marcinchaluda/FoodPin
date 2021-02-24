@@ -1,21 +1,21 @@
 <div class="navbar">
-  <div class="navbar__slide" position="end">
-    <ng-container class="test" *ngIf="loggedUser">
+  <div class="navbar__slide">
+    <ng-container class="test" *ngIf="loggedUser$ | async">
       <div class="navbar__user-info">
         <fa-icon class="content__icon" [icon]="userIcon"></fa-icon>
-        <p>{{loggedUser}}</p>
+        <p>{{loggedUser$.value}}</p>
       </div>
     </ng-container>
     <ul class="navbar__menu">
-      <ng-container *ngIf="!loggedUser">
-        <li class="navbar__item">
+      <ng-container *ngIf="!loggedUser$.value">
+        <li class="navbar__item login">
           <button routerLink="/login"><fa-icon class="content__icon" [icon]="userIcon"></fa-icon><p>Sign in</p></button>
         </li>
-        <li class="navbar__item">
+        <li class="navbar__item register">
           <button routerLink="/register"><span class="material-icons">app_registration</span><p>Sign up</p></button>
         </li>
       </ng-container>
-      <ng-container *ngIf="loggedUser">
+      <ng-container *ngIf="loggedUser$ | async">
         <li class="navbar__item">
           <button routerLink="#"><fa-icon class="content__icon" [icon]="accountIcon"></fa-icon><p>Account</p></button>
         </li>
@@ -39,10 +39,15 @@
         <button routerLink="#"><fa-icon class="content__icon" [icon]="emailIcon"></fa-icon><p>Mail</p></button>
       </li>
     </ul>
-    <ng-container *ngIf="loggedUser">
+    <ng-container *ngIf="loggedUser$ | async">
       <div class="navbar__logout">
-        <a routerLink="#">Sign out</a>
+        <a routerLink="/home" (click)="logoutUser()">Sign out</a>
       </div>
     </ng-container>
+  </div>
+  <div class="navbar__button-container" (click)="toggleMenu()">
+    <button class="navbar__close">
+      <fa-icon class="content__icon" [icon]="closeIcon"></fa-icon>
+    </button>
   </div>
 </div>

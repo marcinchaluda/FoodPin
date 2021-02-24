@@ -1,17 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthorizationService} from "../../services/authorization.service";
-import {Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
-import {faUserCircle, faEnvelope} from "@fortawesome/free-solid-svg-icons"
+import {faEnvelope, faSignOutAlt, faUserCircle} from "@fortawesome/free-solid-svg-icons"
 import {faFacebookF, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons"
-import {NavbarComponent} from "../shared/navbar/navbar.component";
 import {NavbarService} from "../../services/navbar.service";
 import {BehaviorSubject} from "rxjs";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   userIcon = faUserCircle;
@@ -19,17 +17,23 @@ export class HomeComponent implements OnInit {
   twitterIcon = faTwitter;
   instagramIcon = faInstagram;
   emailIcon = faEnvelope;
+  logoutIcon = faSignOutAlt;
   isOpen$: BehaviorSubject<boolean>;
+  loggedUser$: BehaviorSubject<string>;
 
   constructor(
     private _authService: AuthorizationService,
-    private _router: Router,
-    private _toastr: ToastrService,
     private _navbar: NavbarService,
+    private _toastr: ToastrService,
     ) { }
 
   public ngOnInit(): void {
     this.isOpen$ = this._navbar.isOpen$;
+    this.loggedUser$ = this._authService.loggedUser$;
+  }
+
+  public toggleMenu() {
+    this._navbar.toggleNavbar();
   }
 
   public logoutUser(): void {
@@ -40,9 +44,5 @@ export class HomeComponent implements OnInit {
         },
       );
     }
-  }
-
-  public toggleMenu() {
-    this._navbar.toggleNavbar();
   }
 }

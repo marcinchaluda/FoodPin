@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import {faEnvelope, faInfoCircle, faSignal, faUserCircle, faUserCog} from "@fortawesome/free-solid-svg-icons";
+import {Component, OnInit} from '@angular/core';
+import {faEnvelope, faInfoCircle, faSignal, faTimes, faUserCircle, faUserCog} from "@fortawesome/free-solid-svg-icons";
 import {faFacebookF, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons";
 import {AuthorizationService} from "../../../services/authorization.service";
+import {BehaviorSubject} from "rxjs";
+import {ToastrService} from "ngx-toastr";
+import {NavbarService} from "../../../services/navbar.service";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
   userIcon = faUserCircle;
@@ -17,12 +20,32 @@ export class NavbarComponent implements OnInit {
   twitterIcon = faTwitter;
   instagramIcon = faInstagram;
   emailIcon = faEnvelope;
-  isOpen$ = true;
-  loggedUser: string;
+  closeIcon = faTimes;
+  loggedUser$: BehaviorSubject<string>;
+  isOpen$: BehaviorSubject<boolean>;
 
-  constructor(private _authService: AuthorizationService) { }
+  constructor(
+    private _authService: AuthorizationService,
+    private _toastr: ToastrService,
+    private _navbarService: NavbarService,
+    ) { }
 
   ngOnInit(): void {
-    this.loggedUser = this._authService.loggedUser;
+    this.isOpen$ = this._navbarService.isOpen$;
+    this.loggedUser$ = this._authService.loggedUser$;
+  }
+
+  public logoutUser(): void {
+    if (!this._authService.getRefreshToken() !== null) {
+      this._authService.logout$().subscribe(
+        _ => {
+          this._toastr.success("Successfully logged out");
+        },
+      );
+    }
+  }
+
+  public toggleMenu() {
+    this._navbarService.toggleNavbar();
   }
 }

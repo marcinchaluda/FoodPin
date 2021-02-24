@@ -87,8 +87,7 @@
 
 @mixin mainComponentStyles {
   @include flexColumnDirection;
-  min-width: 400px;
-  margin: 3em auto 0 auto;
+  min-width: 350px;
   height: 100%;
 
   @include mediaQuery(tabletLarge) {
@@ -98,8 +97,9 @@
 
 @mixin mainContainerStyles {
   &__container {
-    @include flexColumnDirection;
-    width: 90%;
+    @include flexColumnCenter;
+    width: 100%;
+    height: 100%;
 
     @include mediaQuery(tabletLarge) {
       width: 100%;

@@ -14,7 +14,7 @@ export class LoaderComponent implements OnInit {
   iceCreamIcon = faIceCream;
   pepperIcon = faPepperHot;
   appleIcon = faAppleAlt;
-  isLoading: BehaviorSubject<boolean> = this._loaderService.isLoading;
+  isLoading$: BehaviorSubject<boolean> = this._loaderService.isLoading$;
 
   constructor(private _loaderService: LoaderService) { }
 
