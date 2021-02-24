@@ -9,6 +9,7 @@ import {faAt, faLock, faUser} from "@fortawesome/free-solid-svg-icons";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {timeout} from "rxjs/operators";
+import {NavbarService} from "../../services/navbar.service";
 
 @Component({
   selector: 'app-register',
@@ -27,6 +28,7 @@ export class RegisterComponent implements OnInit {
     private _registrationService: RegistrationService,
     private _router: Router,
     private _toastr: ToastrService,
+    private _navbar: NavbarService,
     ) { }
 
   public ngOnInit(): void {
@@ -74,5 +76,9 @@ export class RegisterComponent implements OnInit {
         this._router.navigate(["login"]).then(console.log);
       },
     )
+  }
+
+  public homePageRedirect(): void {
+    this._navbar.redirectToHomePage();
   }
 }

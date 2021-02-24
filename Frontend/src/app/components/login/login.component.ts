@@ -6,6 +6,7 @@ import {ToastrService} from "ngx-toastr";
 import {AuthorizationService} from "../../services/authorization.service";
 import {User} from "../../models/User";
 import {faAt, faLock} from "@fortawesome/free-solid-svg-icons";
+import {NavbarService} from "../../services/navbar.service";
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
     private _authService: AuthorizationService,
     private _router: Router,
     private _toastr: ToastrService,
+    private _navbar: NavbarService,
   ) { }
 
   public ngOnInit(): void {
@@ -69,5 +71,9 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value['password1'],
     });
     return user;
+  }
+
+  public homePageRedirect(): void {
+    this._navbar.redirectToHomePage();
   }
 }
