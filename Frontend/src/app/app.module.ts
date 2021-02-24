@@ -19,6 +19,7 @@ import {LoaderInterceptor} from "./interceptors/loader.interceptor";
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import {MatSidenavModule} from '@angular/material/sidenav'
 import {MatIconModule} from '@angular/material/icon';
+import {AuthorizationGuard} from "./guards/authorization.guard";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,9 @@ import {MatIconModule} from '@angular/material/icon';
     multi: true,
     },
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    LoaderService],
+    LoaderService,
+    AuthorizationGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
