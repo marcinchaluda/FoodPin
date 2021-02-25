@@ -3,7 +3,7 @@
 
 .header {
   width: 100vw;
-  padding: 0.5em 0;
+  padding-top: 0.3em;
   background-color: $colorOrange;
 
   &__container {
@@ -19,7 +19,7 @@
     @include flexRowCenter;
     width: 45%;
     margin: 0 auto;
-    
+
     h1 {
       color: $colorWhite;
       font-size: 1.5em;

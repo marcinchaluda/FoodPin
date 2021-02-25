@@ -16,7 +16,7 @@
     color: $colorOrange;
 
     h3 {
-      padding: 0.5em 0;
+      padding-top: 0.5em;
     }
   }
 
@@ -89,5 +89,25 @@
         border: none;
       }
     }
+  }
+
+  &__buttons {
+    @include flexColumnCenter;
+    width: 70%;
+    margin-top: 0.5em;
+    flex-grow: 1;
+
+    button {
+      width: 100%;
+      margin: 0.2em 0;
+      @include activeButton;
+    }
+  }
+
+  &__legend {
+    font-size: 0.8em;
+    width: 80%;
+    color: $colorGrey;
+    padding-top: 1em;
   }
 }
