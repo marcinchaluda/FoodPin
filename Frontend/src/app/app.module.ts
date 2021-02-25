@@ -22,36 +22,38 @@ import {MatIconModule} from '@angular/material/icon';
 import {AuthorizationGuard} from "./guards/authorization.guard";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RegisterComponent,
-    LoginComponent,
-    InputErrorPipe,
-    HomeComponent,
-    LoaderComponent,
-    NavbarComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FontAwesomeModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    MatSidenavModule,
-    MatIconModule,
-  ],
-  providers: [
-    {
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpErrorInterceptor,
-    multi: true,
-    },
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    LoaderService,
-    AuthorizationGuard,
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        RegisterComponent,
+        LoginComponent,
+        InputErrorPipe,
+        HomeComponent,
+        LoaderComponent,
+        NavbarComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        FontAwesomeModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
+        MatSidenavModule,
+        MatIconModule,
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HttpErrorInterceptor,
+            multi: true,
+        },
+        {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
+        LoaderService,
+        AuthorizationGuard,
+    ],
+    exports: [
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

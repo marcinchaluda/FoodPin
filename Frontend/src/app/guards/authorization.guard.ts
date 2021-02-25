@@ -1,6 +1,5 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {CanLoad, Route, Router} from '@angular/router';
-import {BehaviorSubject} from "rxjs";
 import {AuthorizationService} from "../services/authorization.service";
 import {NavbarService} from "../services/navbar.service";
 

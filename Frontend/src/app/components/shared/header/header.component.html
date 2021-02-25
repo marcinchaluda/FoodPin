@@ -1,0 +1,23 @@
+<div class="header">
+  <div class="header__container">
+    <div class="header__logo">
+      <img src="./assets/Logo/logo-50x38.png" alt="food pin logo">
+      <h1 class="home__brand-name">FoodPin</h1>
+    </div>
+    <div class="header__hamburger-menu" (click)="toggleMenu()" [ngClass]="{'navbar-open': isOpen$ | async}">
+      <ng-container *ngTemplateOutlet="button; context:{description: '', icon: 'menu'}"></ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template let-btn_info="description" let-btn_icon="icon" #button>
+  <div class="home__button-container">
+    <button class="home__{{ btn_info }}">
+      <picture class="home__btn-donate">
+        <source media="(min-width: 640px)" srcset="assets/Buttons/{{ btn_icon }}-75x75.png">
+        <img src="./assets/Buttons/{{ btn_icon }}-50x50.png" alt="button">
+      </picture>
+    </button>
+    <small class="home__btn-info">{{ btn_info }}</small>
+  </div>
+</ng-template>

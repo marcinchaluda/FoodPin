@@ -76,4 +76,5 @@ export class LoginComponent implements OnInit {
   public logoutUser(): void {
     this._navbar.redirectToHomePage();
   }
+
 }
