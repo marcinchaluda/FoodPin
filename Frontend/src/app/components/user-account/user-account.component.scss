@@ -1,0 +1,113 @@
+@import "./src/app/variables";
+@import "./src/app/mixins";
+
+.account {
+  width: 100%;
+
+  &__container {
+    @include flexColumnCenter;
+    width: 100%;
+    margin-bottom: 2em;
+  }
+
+  &__user-info {
+    @include flexColumnCenter;
+    font-size: 1.5em;
+    color: $colorOrange;
+
+    h3 {
+      padding-top: 0.5em;
+    }
+  }
+
+  &__personal-details {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__avatar {
+    margin: 1em auto 0 auto;
+    padding: 0.2em;
+    background-color: $colorWhite;
+    border: 2px solid $colorOrange;
+    border-radius: 50%;
+  }
+
+  &__title {
+    @include flexRowCenter;
+    color: $colorGrey;
+    width: 100%;
+    padding: 0.8em 0;
+
+    p {
+      padding-right: 0.5em;
+    }
+    div {
+      flex-grow: 1;
+      padding: 0 0.5em;
+      border-top: 1px solid lighten($colorGrey, 40%);
+      height: 1px;
+      line-height: 0.1em;
+
+      button {
+        float: right;
+        position: relative;
+        top: -20px;
+        width: 40px;
+        height: 40px;
+        background: $colorWhite;
+        border: 1px solid $colorOrange;
+        border-radius: 50%;
+
+        fa-icon {
+          font-size: 1.2em;
+          color: $colorOrange;
+          padding: 4px;
+        }
+      }
+    }
+  }
+
+  &__details, &__address {
+    div {
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: flex-start;
+
+      p {
+        color: $colorOrange;
+      }
+
+      input {
+        width: 50%;
+        padding-left: 0.5em;
+      }
+
+      input:disabled {
+        background-color: $colorWhite;
+        border: none;
+      }
+    }
+  }
+
+  &__buttons {
+    @include flexColumnCenter;
+    width: 70%;
+    margin-top: 0.5em;
+    flex-grow: 1;
+
+    button {
+      width: 100%;
+      margin: 0.2em 0;
+      @include activeButton;
+    }
+  }
+
+  &__legend {
+    font-size: 0.8em;
+    width: 80%;
+    color: $colorGrey;
+    padding-top: 1em;
+  }
+}

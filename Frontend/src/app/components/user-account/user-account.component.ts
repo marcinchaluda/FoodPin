@@ -8,6 +8,8 @@ import {faEdit} from "@fortawesome/free-solid-svg-icons";
 })
 export class UserAccountComponent implements OnInit {
   editIcon = faEdit;
+  isDetailsActive = true;
+  isAddressActive = true;
 
   constructor() { }
 
