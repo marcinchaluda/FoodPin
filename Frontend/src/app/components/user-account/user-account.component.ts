@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {faEdit} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-user-account',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-account.component.scss']
 })
 export class UserAccountComponent implements OnInit {
+  editIcon = faEdit;
 
   constructor() { }
 
