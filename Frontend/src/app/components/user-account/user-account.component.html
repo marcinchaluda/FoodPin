@@ -11,20 +11,20 @@
       <div class="account__title">
         <p>Personal details</p>
         <div>
-          <fa-icon [icon]="editIcon"></fa-icon>
+          <button><fa-icon [icon]="editIcon"></fa-icon></button>
         </div>
       </div>
       <div class="account__details">
-        <p>Username: <span>username</span></p>
-        <p>First Name: <span>first name</span></p>
-        <p>Last Name: <span>last name</span></p>
-        <p>Email: <span>email</span></p>
-        <p>Mobile(*): <span>mobile</span></p>
+        <div><p>Username: </p><input type="text" placeholder="username" [disabled]="isDetailsActive"></div>
+        <div><p>First Name: </p><input type="text" placeholder="first name" [disabled]="isDetailsActive"></div>
+        <div><p>Last Name: </p><input type="text" placeholder="last name" [disabled]="isDetailsActive"></div>
+        <div><p>Email: </p><input type="text" placeholder="email" [disabled]="isDetailsActive"></div>
+        <div><p>Mobile(*): </p><input type="text" placeholder="mobile" [disabled]="isDetailsActive"></div>
       </div>
       <div class="account__title">
         <p>Address</p>
         <div>
-          <fa-icon [icon]="editIcon"></fa-icon>
+          <button><fa-icon [icon]="editIcon"></fa-icon></button>
         </div>
       </div>
       <div class="account__address">
@@ -35,12 +35,12 @@
         <p>Country: <span>country</span></p>
       </div>
     </section>
-    <section class="account__buttons">
-      <button class="account_donations">Your donations</button>
-      <button class="account_purchase">Saved food</button>
-    </section>
-    <section class="account__legend">
-      <small>(*) - Optional</small>
-    </section>
   </div>
+  <section class="account__buttons">
+    <button class="account_donations">Your donations</button>
+    <button class="account_purchase">Saved food</button>
+  </section>
+  <section class="account__legend">
+    <small>(*) - Optional</small>
+  </section>
 </div>
