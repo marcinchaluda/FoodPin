@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {mapTo, tap} from "rxjs/operators";
 import {Tokens} from "../models/Tokens";
 import {User} from "../models/User";
+import {HttpService} from "./http.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +12,16 @@ import {User} from "../models/User";
 export class AuthorizationService {
   private readonly JWT_TOKEN: string = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN: string = 'REFRESH_TOKEN';
-  readonly apiUrl: string = environment.apiUrl;
+  private readonly loginUri: string = 'sessions/login/';
+  private readonly logoutUri: string = 'sessions/logout/';
+  private readonly refreshTokenUri: string = 'sessions/token/refresh/';
   public loggedUser$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
-  constructor(private _http: HttpClient) {
+  constructor(private _httpService: HttpService) {
   }
 
   public login$(user: User): Observable<boolean> {
-    return this._http.post<any>(`${this.apiUrl}sessions/login/`, user)
+    return this._httpService._apiPost(this.loginUri, user)
       .pipe(
         tap(tokens => this.doLoginUser(user.email, tokens)),
         mapTo(true),
@@ -44,7 +46,7 @@ export class AuthorizationService {
       return;
     }
 
-    return this._http.post<any>(`${this.apiUrl}sessions/logout/`, refreshToken)
+    return this._httpService._apiPost(this.logoutUri, refreshToken)
       .pipe(
         tap(() => this.doLogoutUser()),
         mapTo(true),
@@ -67,7 +69,7 @@ export class AuthorizationService {
 
   public refreshToken(): Observable<any> {
     const refreshToken: Tokens = this.createRefreshToken();
-    return this._http.post<any>(`${this.apiUrl}sessions/token/refresh/`, refreshToken)
+    return this._httpService._apiPost(this.refreshTokenUri, refreshToken)
       .pipe(
         tap((tokens: Tokens) => {
           this.storeJwtToken(tokens.access_token);
