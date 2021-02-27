@@ -1,17 +1,16 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { environment } from '../../environments/environment'
+import {Injectable} from '@angular/core';
+import {Observable} from "rxjs";
+import {HttpService} from "./http.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistrationService {
-  readonly apiUrl = environment.apiUrl;
+  private readonly registrationUri = 'sessions/registration/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private _httpService: HttpService) { }
 
   registerUser$(userData): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}sessions/registration/`, userData);
+    return this._httpService._apiPost(this.registrationUri, userData);
   }
 }
