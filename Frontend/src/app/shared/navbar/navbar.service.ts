@@ -8,12 +8,16 @@ export class NavbarService {
 
   constructor(private _router: Router) {}
 
-  public toggleNavbar(): void {
-    this.isOpen$.next(!this.isOpen$.value);
+  public showNavbar(): void {
+    this.isOpen$.next(true);
+  }
+
+  public hideNavbar(): void {
+    this.isOpen$.next(false);
   }
 
   public redirectToHomePage() {
-    this.isOpen$.next(!this.isOpen$.value);
-    this._router.navigate(["home"]).then(console.log);
+    this.hideNavbar();
+    this._router.navigate(["home"]);
   }
 }

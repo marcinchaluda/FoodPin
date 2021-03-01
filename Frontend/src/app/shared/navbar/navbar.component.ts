@@ -6,6 +6,7 @@ import {BehaviorSubject} from "rxjs";
 import {ToastrService} from "ngx-toastr";
 import {NavbarService} from "./navbar.service";
 import {Router} from "@angular/router";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-navbar',
@@ -38,22 +39,27 @@ export class NavbarComponent implements OnInit {
   }
 
   public logoutUser(): void {
-    if (!this._authService.getRefreshToken() !== null) {
+    if (this._authService.getRefreshToken() !== null) {
       this._authService.logout$().subscribe(
         _ => {
           this._toastr.success("Successfully logged out");
+          this.homePageRedirect();
         },
       );
     }
   }
 
-  public toggleMenu() {
-    console.log("działa")
-    this._navbarService.toggleNavbar();
+  public hideMenu(): void {
+    this._navbarService.hideNavbar();
   }
 
-  public redirectToAccount() {
-    // this.toggleMenu();
+  public redirectToAccount(): void {
+    this.hideMenu();
     this._router.navigate(['account']);
+  }
+
+  public homePageRedirect(): void {
+    this.hideMenu();
+    this._navbarService.redirectToHomePage();
   }
 }

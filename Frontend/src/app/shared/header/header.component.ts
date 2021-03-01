@@ -11,14 +11,19 @@ export class HeaderComponent implements OnInit {
   isOpen$: BehaviorSubject<boolean>;
 
   constructor(
-    private _navbar: NavbarService,
+    private _navbarService: NavbarService,
   ) { }
 
   ngOnInit(): void {
-    this.isOpen$ = this._navbar.isOpen$;
+    this.isOpen$ = this._navbarService.isOpen$;
   }
 
-  public toggleMenu() {
-    this._navbar.toggleNavbar();
+  public showMenu() {
+    this._navbarService.showNavbar();
+  }
+
+  public homePageRedirect(): void {
+    console.log(this.isOpen$.value)
+    this._navbarService.redirectToHomePage();
   }
 }

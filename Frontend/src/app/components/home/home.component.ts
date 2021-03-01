@@ -25,18 +25,18 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private _authService: AuthorizationService,
-    private _navbar: NavbarService,
+    private _navbarService: NavbarService,
     private _toastr: ToastrService,
     private _router: Router,
     ) { }
 
   public ngOnInit(): void {
-    this.isOpen$ = this._navbar.isOpen$;
+    this.isOpen$ = this._navbarService.isOpen$;
     this.loggedUser$ = this._authService.loggedUser$;
   }
 
-  public toggleMenu() {
-    this._navbar.toggleNavbar();
+  public showMenu() {
+    this._navbarService.showNavbar();
   }
 
   public logoutUser(): void {
@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
       ).subscribe(
         _ => {
           this._toastr.success("Successfully logged out");
+          this._navbarService.hideNavbar();
           this._router.navigate(['/home']);
         },
       );

@@ -22,7 +22,7 @@
       <ng-container *ngTemplateOutlet="button; context:{description:'Search', icon: 'magnifier'}"></ng-container>
       <ng-container *ngTemplateOutlet="button; context:{description:'Map', icon: 'mapLocation'}"></ng-container>
     </div>
-    <div class="home__menu-btn" (click)="toggleMenu()" [ngClass]="{'navbar-open': isOpen$ | async}">
+    <div class="home__menu-btn" (click)="showMenu()" [ngClass]="{'navbar-open': isOpen$ | async}">
       <ng-container *ngTemplateOutlet="button; context:{description: 'menu', icon: 'menu'}"></ng-container>
     </div>
     <div class="home__content">
