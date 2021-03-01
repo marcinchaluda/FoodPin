@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'account',
     loadChildren: () => import('./components/user-account/user-account.module').then(m => m.UserAccountModule),
-    canLoad: [AuthorizationGuard],
+    // canLoad: [AuthorizationGuard],
   },
 ];
 

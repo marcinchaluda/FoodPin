@@ -2,11 +2,17 @@
   width: 100vw;
   padding-top: 0.3em;
   background-color: #f79521; }
+  @media (min-width: 1024px) {
+    .header {
+      padding: 0; } }
   .header__container {
     display: flex;
     width: 100%; }
   .header__logo-container {
     width: 100%; }
+    @media (min-width: 1024px) {
+      .header__logo-container {
+        padding: 0.5em; } }
   .header__logo {
     display: flex;
     justify-content: center;
@@ -28,5 +34,11 @@
     background-color: #f79521;
     color: white;
     border: none; }
+
+.navbar-open {
+  display: none; }
+
+.faded-orange {
+  background-color: #fab86b; }
 
 /*# sourceMappingURL=header.component.css.map */

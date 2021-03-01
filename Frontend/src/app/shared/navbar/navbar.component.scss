@@ -43,9 +43,7 @@
 
     @include mediaQuery(tabletLarge) {
       width: 100%;
-      height: 10%;
       padding-top: 0.5em;
-      margin-top: 6em;
     }
   }
 
@@ -55,6 +53,7 @@
 
     @include mediaQuery(tabletLarge) {
       @include flexRowCenter;
+      position: sticky;
       flex-direction: row;
     }
   }
@@ -65,6 +64,8 @@
     button {
       @include navbarButton;
       transition: 0.5s;
+      height: 100%;
+      padding-bottom: 1em;
 
       fa-icon {
         width: 50px;
@@ -100,14 +101,16 @@
   }
 
   &__button-container {
-    @include flexColumnCenter;
-    margin: 0 0.7em;
+    width: 100%;
+    //@include flexColumnCenter;
+    //margin: 0 0.7em;
 
     @include mediaQuery(smartphoneLarge) {
-      margin: 0 1em;
+      //margin: 0 1em;
     }
     @include mediaQuery(tabletLarge) {
-      margin: 0 1.5em;
+      height: 0px;
+      width: 100%;
     }
 
     button {
@@ -126,21 +129,41 @@
       z-index: 2;
 
       @include mediaQuery(tabletLarge) {
-        top: 21%;
-        right: 0;
+        @include flexColumnCenter;
+        position: static;
+        transform: translate(0, -50%);
+        border-bottom-left-radius: 0;
         border-top-left-radius: 0;
+        height: 107px;
       }
     }
 
     button:hover {
       box-shadow:0 0 20px 4px $colorOrange;
     }
+
+    @include mediaQuery(tabletLarge) {
+      @include flexRowCenter;
+      justify-content: flex-end;
+    }
+  }
+
+  @include mediaQuery(tabletLarge) {
+    @include flexRowCenter;
+    flex-wrap: wrap;
+    position: static;
+    justify-content: flex-end;
+    width: 100vw;
+    height: 99px;
   }
 }
 
 .material-icons {
   width: 50px;
-  font-size: 40px;
+  font-size: 36px;
+}
+fa-icon {
+  text-decoration: none;
 }
 
 .login, .register {
