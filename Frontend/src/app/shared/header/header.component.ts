@@ -23,7 +23,6 @@ export class HeaderComponent implements OnInit {
   }
 
   public homePageRedirect(): void {
-    console.log(this.isOpen$.value)
     this._navbarService.redirectToHomePage();
   }
 }
