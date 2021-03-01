@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',  # TODO add script on server to clean database daily after deploying
+    'address',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -114,6 +116,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
