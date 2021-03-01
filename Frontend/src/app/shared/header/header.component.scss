@@ -6,6 +6,10 @@
   padding-top: 0.3em;
   background-color: $colorOrange;
 
+  @include mediaQuery(tabletLarge) {
+    padding: 0;
+  }
+
   &__container {
     display: flex;
     width: 100%;
@@ -13,6 +17,10 @@
 
   &__logo-container {
     width: 100%;
+
+    @include mediaQuery(tabletLarge) {
+      padding: 0.5em;
+    }
   }
 
   &__logo {
@@ -36,4 +44,12 @@
   &__menu {
     @include activeButton;
   }
+}
+
+.navbar-open {
+  display: none;
+}
+
+.faded-orange {
+  background-color: lighten($colorOrange, 15%);
 }

@@ -155,7 +155,7 @@
       border-top-right-radius: 0;
       background-color: #f79521; }
   .home__menu-btn {
-    position: fixed;
+    position: absolute;
     top: 57%;
     right: 0;
     z-index: 3; }

@@ -1,12 +1,14 @@
 <div class="header">
-  <div class="header__container">
-    <div class="header__logo-container">
-      <div class="header__logo" (click)="homePageRedirect()">
-        <img src="../../../assets/Logo/logo-50x44-white.png" alt="food pin logo">
-        <h1 class="home__brand-name">FoodPin</h1>
+  <div class="header__container" [ngClass]="{'faded-orange': isOpen$ | async}">
+    <ng-container>
+      <div class="header__logo-container">
+        <div class="header__logo" (click)="homePageRedirect()">
+          <img src="../../../assets/Logo/logo-50x44-white.png" alt="food pin logo">
+          <h1 class="home__brand-name">FoodPin</h1>
+        </div>
       </div>
-    </div>
-    <div class="header__hamburger-menu" (click)="showMenu()">
+    </ng-container>
+    <div class="header__hamburger-menu" (click)="showMenu()" [ngClass]="{'navbar-open': isOpen$ | async}">
       <ng-container *ngTemplateOutlet="button; context:{description: 'menu', icon: 'menu'}"></ng-container>
     </div>
   </div>
