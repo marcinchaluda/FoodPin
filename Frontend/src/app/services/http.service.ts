@@ -15,5 +15,7 @@ export class HttpService {
     return this._http.post<any>(`${this._apiUrl}${uri}`, data);
   }
 
-
+  public _apiGet(uri: string): Observable<any> {
+    return this._http.get(`${this._apiUrl}${uri}`);
+  }
 }
