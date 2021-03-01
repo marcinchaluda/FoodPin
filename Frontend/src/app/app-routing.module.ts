@@ -13,12 +13,12 @@ const routes: Routes = [
   {
     path: 'account',
     loadChildren: () => import('./components/user-account/user-account.module').then(m => m.UserAccountModule),
-    // canLoad: [AuthorizationGuard],
+    canLoad: [AuthorizationGuard],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

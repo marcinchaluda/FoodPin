@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {faEdit} from "@fortawesome/free-solid-svg-icons";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {patternValidator} from "../../validators/patternValidator.validator";
+import {BehaviorSubject} from "rxjs";
+import {NavbarService} from "../../shared/navbar/navbar.service";
 
 @Component({
   selector: 'app-user-account',
@@ -14,14 +16,17 @@ export class UserAccountComponent implements OnInit {
   isAddressActive = true;
   accountForm: FormGroup;
   addressForm: FormGroup;
+  isOpen$: BehaviorSubject<boolean>;
 
   constructor(
     private _formBuilder: FormBuilder,
+    private _navbarService: NavbarService,
   ) { }
 
   ngOnInit(): void {
     this.addressForm = this.generateAddressForm();
     this.accountForm = this.generateAccountForm();
+    this.isOpen$ = this._navbarService.isOpen$;
   }
 
   private generateAccountForm(): FormGroup {

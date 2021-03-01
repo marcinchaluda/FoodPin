@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {faEnvelope, faInfoCircle, faSignal, faTimes, faUserCircle, faUserCog} from "@fortawesome/free-solid-svg-icons";
 import {faFacebookF, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons";
-import {AuthorizationService} from "../../../services/authorization.service";
+import {AuthorizationService} from "../../services/authorization.service";
 import {BehaviorSubject} from "rxjs";
 import {ToastrService} from "ngx-toastr";
-import {NavbarService} from "../../../services/navbar.service";
+import {NavbarService} from "./navbar.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -28,6 +29,7 @@ export class NavbarComponent implements OnInit {
     private _authService: AuthorizationService,
     private _toastr: ToastrService,
     private _navbarService: NavbarService,
+    private _router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -46,6 +48,12 @@ export class NavbarComponent implements OnInit {
   }
 
   public toggleMenu() {
+    console.log("działa")
     this._navbarService.toggleNavbar();
+  }
+
+  public redirectToAccount() {
+    // this.toggleMenu();
+    this._router.navigate(['account']);
   }
 }

@@ -6,7 +6,7 @@ import {ToastrService} from "ngx-toastr";
 import {AuthorizationService} from "../../services/authorization.service";
 import {User} from "../../models/User";
 import {faAt, faLock} from "@fortawesome/free-solid-svg-icons";
-import {NavbarService} from "../../services/navbar.service";
+import {NavbarService} from "../../shared/navbar/navbar.service";
 
 @Component({
   selector: 'app-login',

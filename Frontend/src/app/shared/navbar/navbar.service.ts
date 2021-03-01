@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {Router} from "@angular/router";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class NavbarService {
   public isOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 

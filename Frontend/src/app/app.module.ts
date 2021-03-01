@@ -13,13 +13,11 @@ import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpErrorInterceptor} from "./interceptors/http-error.interceptor";
 import {HomeComponent} from './components/home/home.component';
-import {LoaderComponent} from './components/shared/loader/loader.component';
-import {LoaderService} from "./services/loader.service";
 import {LoaderInterceptor} from "./interceptors/loader.interceptor";
-import {NavbarComponent} from './components/shared/navbar/navbar.component';
 import {MatSidenavModule} from '@angular/material/sidenav'
 import {MatIconModule} from '@angular/material/icon';
 import {AuthorizationGuard} from "./guards/authorization.guard";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
     declarations: [
@@ -28,20 +26,19 @@ import {AuthorizationGuard} from "./guards/authorization.guard";
         LoginComponent,
         InputErrorPipe,
         HomeComponent,
-        LoaderComponent,
-        NavbarComponent,
     ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        FontAwesomeModule,
-        BrowserAnimationsModule,
-        ToastrModule.forRoot(),
-        MatSidenavModule,
-        MatIconModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    MatSidenavModule,
+    MatIconModule,
+    SharedModule,
+  ],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,
@@ -49,12 +46,9 @@ import {AuthorizationGuard} from "./guards/authorization.guard";
             multi: true,
         },
         {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
-        LoaderService,
         AuthorizationGuard,
     ],
   exports: [
-    LoaderComponent,
-    NavbarComponent
   ],
     bootstrap: [AppComponent]
 })

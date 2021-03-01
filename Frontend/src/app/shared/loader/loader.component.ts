@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {faAppleAlt, faCarrot, faDrumstickBite, faIceCream, faPepperHot} from "@fortawesome/free-solid-svg-icons";
 import {BehaviorSubject} from "rxjs";
-import {LoaderService} from "../../../services/loader.service";
+import {LoaderService} from "./loader.service";
 
 @Component({
   selector: 'app-loader',

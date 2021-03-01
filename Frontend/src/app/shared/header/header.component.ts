@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NavbarService} from "../../../services/navbar.service";
+import {NavbarService} from "../navbar/navbar.service";
 import {BehaviorSubject} from "rxjs";
 
 @Component({

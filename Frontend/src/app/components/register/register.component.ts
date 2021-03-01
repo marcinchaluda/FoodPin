@@ -9,7 +9,7 @@ import {faAt, faLock, faUser} from "@fortawesome/free-solid-svg-icons";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {timeout} from "rxjs/operators";
-import {NavbarService} from "../../services/navbar.service";
+import {NavbarService} from "../../shared/navbar/navbar.service";
 
 @Component({
   selector: 'app-register',

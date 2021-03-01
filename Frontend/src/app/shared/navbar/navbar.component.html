@@ -17,7 +17,7 @@
       </ng-container>
       <ng-container *ngIf="loggedUser$ | async">
         <li class="navbar__item">
-          <button routerLink="/account"><fa-icon class="content__icon" [icon]="accountIcon"></fa-icon><p>Account</p></button>
+          <button (click)="redirectToAccount()"><fa-icon class="content__icon" [icon]="accountIcon"></fa-icon><p>Account</p></button>
         </li>
       </ng-container>
       <li class="navbar__item">
@@ -41,7 +41,7 @@
     </ul>
     <ng-container *ngIf="loggedUser$ | async">
       <div class="navbar__logout">
-        <a routerLink="/home" (click)="logoutUser()">Sign out</a>
+        <a (click)="logoutUser()">Sign out</a>
       </div>
     </ng-container>
   </div>

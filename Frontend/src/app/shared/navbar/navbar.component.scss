@@ -1,5 +1,5 @@
-@import "./src/app/variables";
-@import "./src/app/mixins";
+@import "../../variables";
+@import "../../mixins";
 
 .navbar {
   position: fixed;
@@ -147,4 +147,8 @@
   @include mediaQuery(tabletLarge) {
     display: none;
   }
+}
+
+.navbar-open {
+  display: none;
 }

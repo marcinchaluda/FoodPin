@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CanLoad, Route, Router} from '@angular/router';
 import {AuthorizationService} from "../services/authorization.service";
-import {NavbarService} from "../services/navbar.service";
+import {NavbarService} from "../shared/navbar/navbar.service";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class AuthorizationGuard implements CanLoad {
       return true;
     }
     this._navbarService.toggleNavbar();
-    this._router.navigate(['login']).then(console.log);
+    this._router.navigate(['login']);
     return false;
   }
 }
