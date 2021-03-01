@@ -18,4 +18,8 @@ export class HttpService {
   public _apiGet(uri: string): Observable<any> {
     return this._http.get(`${this._apiUrl}${uri}`);
   }
+
+  public _apiPatch(uri: string, data:any): Observable<any> {
+    return this._http.patch(`${this._apiUrl}${uri}`, data);
+  }
 }
