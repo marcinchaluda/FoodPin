@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private _authService: AuthorizationService,
     private _router: Router,
     private _toastr: ToastrService,
-    private _navbar: NavbarService,
+    private navbarService: NavbarService,
   ) { }
 
   public ngOnInit(): void {
@@ -60,7 +60,8 @@ export class LoginComponent implements OnInit {
     this._authService.login$(user).subscribe(
       _ => {
         this._toastr.success("Successfully logged in");
-        this._router.navigate(["home"]).then(console.log);
+        this.navbarService.hideNavbar();
+        this._router.navigate(["home"]);
       },
     );
   }
@@ -73,8 +74,7 @@ export class LoginComponent implements OnInit {
     return user;
   }
 
-  public logoutUser(): void {
-    this._navbar.redirectToHomePage();
+  public homePageRedirect(): void {
+    this.navbarService.redirectToHomePage();
   }
-
 }

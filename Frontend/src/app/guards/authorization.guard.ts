@@ -16,10 +16,10 @@ export class AuthorizationGuard implements CanLoad {
 
   canLoad(route: Route): boolean {
     if (this._authService.loggedUser$.value) {
-      this._navbarService.toggleNavbar();
+      this._navbarService.hideNavbar();
       return true;
     }
-    this._navbarService.toggleNavbar();
+    this._navbarService.hideNavbar();
     this._router.navigate(['login']);
     return false;
   }
