@@ -11,12 +11,12 @@
     <form class="register__user-info" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="icon-container">
         <fa-icon [icon]="userIcon"></fa-icon>
-      <input id="user-name" class="register__userName" placeholder="user name" type="text" formControlName="username">
+      <input id="user-name" class="register__userName" placeholder="user name" type="text" (change)="retainValue($event)" formControlName="username">
       </div>
       <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:userName}"></ng-container>
       <div class="icon-container">
         <fa-icon [icon]="emailIcon"></fa-icon>
-      <input id="email" class="register__email" placeholder="email" type="email" formControlName="email">
+      <input id="email" class="register__email" placeholder="email" type="email" (change)="retainValue($event)" formControlName="email">
       </div>
       <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:email}"></ng-container>
       <div class="icon-container">

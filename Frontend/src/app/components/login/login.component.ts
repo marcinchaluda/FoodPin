@@ -7,6 +7,7 @@ import {AuthorizationService} from "../../services/authorization.service";
 import {User} from "../../models/User";
 import {faAt, faLock} from "@fortawesome/free-solid-svg-icons";
 import {NavbarService} from "../../shared/navbar/navbar.service";
+import {LocalStorageService} from "../../services/local-storage.service";
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
     private _authService: AuthorizationService,
     private _router: Router,
     private _toastr: ToastrService,
-    private navbarService: NavbarService,
+    private _navbarService: NavbarService,
+    private _localStorageService: LocalStorageService,
   ) { }
 
   public ngOnInit(): void {
@@ -40,7 +42,8 @@ export class LoginComponent implements OnInit {
 
   private generateLoginForm(): FormGroup {
     return this._formBuilder.group({
-      email: [null , Validators.compose([Validators.required, Validators.email])],
+      email: [this._localStorageService.getItem('email'),
+        Validators.compose([Validators.required, Validators.email])],
       password1: [null , Validators.compose([
         Validators.required,
         // consist a number in a password
@@ -60,7 +63,7 @@ export class LoginComponent implements OnInit {
     this._authService.login$(user).subscribe(
       _ => {
         this._toastr.success("Successfully logged in");
-        this.navbarService.hideNavbar();
+        this._navbarService.hideNavbar();
         this._router.navigate(["home"]);
       },
     );
@@ -75,6 +78,6 @@ export class LoginComponent implements OnInit {
   }
 
   public homePageRedirect(): void {
-    this.navbarService.redirectToHomePage();
+    this._navbarService.redirectToHomePage();
   }
 }
