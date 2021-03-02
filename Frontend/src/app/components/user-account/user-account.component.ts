@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {faEdit} from "@fortawesome/free-solid-svg-icons";
+import {faEdit, faSave} from "@fortawesome/free-solid-svg-icons";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {patternValidator} from "../../validators/patternValidator.validator";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {NavbarService} from "../../shared/navbar/navbar.service";
 import {User} from "../../models/User";
 import {Address} from "../../models/Address";
+import {UserService} from "../../services/user.service";
+import {log} from "util";
 
 @Component({
   selector: 'app-user-account',
@@ -14,8 +16,7 @@ import {Address} from "../../models/Address";
 })
 export class UserAccountComponent implements OnInit {
   editIcon = faEdit;
-  isDetailsActive = true;
-  isAddressActive = true;
+  saveIcon = faSave;
   accountForm: FormGroup;
   addressForm: FormGroup;
   isOpen$: BehaviorSubject<boolean>;
@@ -24,6 +25,7 @@ export class UserAccountComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _navbarService: NavbarService,
+    private _userService: UserService,
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class UserAccountComponent implements OnInit {
     this.accountForm = this.generateAccountForm();
     this.isOpen$ = this._navbarService.isOpen$;
     this.user = this.setUserData();
+    this.accountForm.disable();
   }
 
   private generateAccountForm(): FormGroup {
@@ -55,10 +58,17 @@ export class UserAccountComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    console.log('submitted');
+    this.accountForm.disable();
+    this.updateUserData(this.user);
+    console.log(this.user);
+  }
+
+  public enableForm(): void {
+    this.accountForm.enable();
   }
 
   private setUserData(): User {
+    const userData = this.getUserData();
     const address = this.setUserAddress();
     const user: User = ({
       username: "",
@@ -72,6 +82,11 @@ export class UserAccountComponent implements OnInit {
     return user;
   }
 
+  private getUserData(): Observable<any> {
+    const userId: number = 1;
+    return this._userService.getUser(userId);
+  }
+
   private setUserAddress(): Address {
     const address: Address = ({
       street: "",
@@ -81,5 +96,12 @@ export class UserAccountComponent implements OnInit {
       country: "",
     });
     return address;
+  }
+
+  private updateUserData(user: object): void {
+    Object.entries(user).forEach((entry) => {
+      console.log(entry)
+    });
+    this.user.username = this.accountForm.get('username').value;
   }
 }

@@ -5,6 +5,7 @@ import {mapTo, tap} from "rxjs/operators";
 import {Tokens} from "../models/Tokens";
 import {User} from "../models/User";
 import {HttpService} from "./http.service";
+import {LocalStorageService} from "./local-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,10 @@ export class AuthorizationService {
   private readonly refreshTokenUri: string = 'sessions/token/refresh/';
   public loggedUser$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
-  constructor(private _httpService: HttpService) {
-  }
+  constructor(
+    private _httpService: HttpService,
+    private _localStorageService: LocalStorageService,
+  ) { }
 
   public login$(user: User): Observable<boolean> {
     return this._httpService._apiPost(this.loginUri, user)
@@ -60,6 +63,7 @@ export class AuthorizationService {
   private doLogoutUser(): void {
     this.loggedUser$.next(null);
     this.removeTokens();
+    this._localStorageService.clear();
   }
 
   private removeTokens(): void {
