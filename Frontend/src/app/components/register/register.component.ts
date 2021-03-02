@@ -88,7 +88,6 @@ export class RegisterComponent implements OnInit {
 
   public retainValue(event: any): void {
     const key: string = (event.target.id).replace(/([-])/, "");
-    console.log(key)
     this._localStorageService.setItem(key, event.target.value);
   }
 }
