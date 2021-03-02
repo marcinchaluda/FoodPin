@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from dj_rest_auth.views import UserDetailsView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('sessions/login/', CustomLoginView.as_view(), name='my_custom_login'),
+    path('users/<int:user_id>/', UserDetailsView.as_view()),
+
     path('sessions/', include('dj_rest_auth.urls')),
     path('sessions/registration/', include('dj_rest_auth.registration.urls'))
 ]
