@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
 import {HttpService} from "./http.service";
 
 @Injectable({
@@ -15,7 +15,22 @@ export class UserService {
     return this._httpService._apiPost(this.registrationUri, userData);
   }
 
-  public getUser(userId: number): Observable<any> {
-    return this._httpService._apiGet(`this.usersUri${userId}`);
+  public getUser(userId: number): object {
+    // return this._httpService._apiGet(`this.usersUri${userId}`);
+    return {
+      username: "test",
+      firstname: "jan",
+      lastname: "bąk",
+      email: "test@test.pl",
+      password: "",
+      phone: "777777777",
+      address: {
+        street: "first",
+        localnumber: "4",
+        postalcode: "33333",
+        city: "Kraków",
+        country: "Polska",
+      },
+    }
   }
 }

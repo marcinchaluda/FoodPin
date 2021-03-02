@@ -7,7 +7,6 @@ import {NavbarService} from "../../shared/navbar/navbar.service";
 import {User} from "../../models/User";
 import {Address} from "../../models/Address";
 import {UserService} from "../../services/user.service";
-import {log} from "util";
 
 @Component({
   selector: 'app-user-account',
@@ -29,38 +28,38 @@ export class UserAccountComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.user = this.setUserData();
     this.addressForm = this.generateAddressForm();
     this.accountForm = this.generateAccountForm();
     this.isOpen$ = this._navbarService.isOpen$;
-    this.user = this.setUserData();
     this.accountForm.disable();
   }
 
   private generateAccountForm(): FormGroup {
     return this._formBuilder.group({
-      username: [null , Validators.compose([Validators.minLength(6)])],
-      firstname: [null],
-      lastname: [null],
-      email: [null , Validators.compose([Validators.email])],
-      phone: [null , patternValidator(/^[+]*[(]?[0-9]{1,4}[)]?[-\s\./0-9]*$/, {invalidNumber: true})],
+      username: [this.user.username , Validators.compose([Validators.minLength(6)])],
+      firstname: [this.user.firstname],
+      lastname: [this.user.lastname],
+      email: [this.user.email , Validators.compose([Validators.email])],
+      phone: [this.user.phone , patternValidator(/^[+]*[(]?[0-9]{1,4}[)]?[-\s\./0-9]*$/, {invalidNumber: true})],
       address: this.addressForm,
     });
   }
 
   private generateAddressForm(): FormGroup {
     return this._formBuilder.group({
-      street: [null],
-      localnumber: [null],
-      postalcode: [null, patternValidator(/\d{2}-\d{3}/, {invalidPostalCode: true})],
-      city: [null],
-      country: [null],
+      street: [this.user.address['street']],
+      localnumber: [this.user.address['localnumber']],
+      postalcode: [this.user.address['postalcode'], patternValidator(/\d{2}-\d{3}/, {invalidPostalCode: true})],
+      city: [this.user.address['city']],
+      country: [this.user.address['country']],
     });
   }
 
   public onSubmit(): void {
     this.accountForm.disable();
     this.updateUserData(this.user);
-    console.log(this.user);
+    // console.log(this.user);
   }
 
   public enableForm(): void {
@@ -69,39 +68,40 @@ export class UserAccountComponent implements OnInit {
 
   private setUserData(): User {
     const userData = this.getUserData();
-    const address = this.setUserAddress();
+    const address = this.setUserAddress(userData['address']);
     const user: User = ({
-      username: "",
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-      phone: "",
+      username: userData['username'],
+      firstname: userData['firstname'],
+      lastname: userData['lastname'],
+      email: userData['email'],
+      phone: userData['phone'],
       address: address,
     });
     return user;
   }
 
-  private getUserData(): Observable<any> {
+  private getUserData() {
     const userId: number = 1;
     return this._userService.getUser(userId);
   }
 
-  private setUserAddress(): Address {
+  private setUserAddress(addressData: object): Address {
     const address: Address = ({
-      street: "",
-      localnumber: "",
-      postalcode: "",
-      city: "",
-      country: "",
+      street: addressData['street'],
+      localnumber: addressData['localnumber'],
+      postalcode: addressData['postalcode'],
+      city: addressData['city'],
+      country: addressData['country'],
     });
     return address;
   }
 
   private updateUserData(user: object): void {
-    Object.entries(user).forEach((entry) => {
-      console.log(entry)
+    Object.keys(user).forEach(
+      (key) => {
+        user[key] = this.accountForm.get(key).value;
     });
-    this.user.username = this.accountForm.get('username').value;
+    console.log(user);
+    //TODO patch user data
   }
 }
