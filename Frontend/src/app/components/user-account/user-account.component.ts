@@ -4,6 +4,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {patternValidator} from "../../validators/patternValidator.validator";
 import {BehaviorSubject} from "rxjs";
 import {NavbarService} from "../../shared/navbar/navbar.service";
+import {User} from "../../models/User";
+import {Address} from "../../models/Address";
 
 @Component({
   selector: 'app-user-account',
@@ -17,6 +19,7 @@ export class UserAccountComponent implements OnInit {
   accountForm: FormGroup;
   addressForm: FormGroup;
   isOpen$: BehaviorSubject<boolean>;
+  user: User;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -27,6 +30,7 @@ export class UserAccountComponent implements OnInit {
     this.addressForm = this.generateAddressForm();
     this.accountForm = this.generateAccountForm();
     this.isOpen$ = this._navbarService.isOpen$;
+    this.user = this.setUserData();
   }
 
   private generateAccountForm(): FormGroup {
@@ -52,5 +56,30 @@ export class UserAccountComponent implements OnInit {
 
   public onSubmit(): void {
     console.log('submitted');
+  }
+
+  private setUserData(): User {
+    const address = this.setUserAddress();
+    const user: User = ({
+      username: "",
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+      phone: "",
+      address: address,
+    });
+    return user;
+  }
+
+  private setUserAddress(): Address {
+    const address: Address = ({
+      street: "",
+      localnumber: "",
+      postalcode: "",
+      city: "",
+      country: "",
+    });
+    return address;
   }
 }
