@@ -1,11 +1,11 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from users.models import Profile
+from users.models import Customuser
 
 
 class Address(models.Model):
-    profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
+    customuser = models.OneToOneField(Customuser, on_delete=models.CASCADE)
     street = models.CharField(max_length=100, default='')
     local_number = models.IntegerField(default=0)
     postal_code = models.CharField(max_length=30, default='')
@@ -18,12 +18,12 @@ class Address(models.Model):
         return f'{self.street} {self.local_number}, {self.postal_code} {self.city}'
 
 
-@receiver(post_save, sender=Profile)
+@receiver(post_save, sender=Customuser)
 def create_user_address(sender, instance, created, **kwargs):
     if created:
-        Address.objects.create(profile=instance)
+        Address.objects.create(customuser=instance)
 
 
-@receiver(post_save, sender=Profile)
+@receiver(post_save, sender=Customuser)
 def save_user_address(sender, instance, **kwargs):
     instance.address.save()

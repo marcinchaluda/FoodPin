@@ -153,6 +153,8 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 
+AUTH_USER_MODEL = 'users.Customuser'
+
 AUTHENTICATION_BACKENDS = (
  # Needed to login by username in Django admin, regardless of `allauth`
  "django.contrib.auth.backends.ModelBackend",
