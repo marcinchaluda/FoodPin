@@ -20,7 +20,7 @@ export class UserService {
     return {
       username: "test",
       firstname: "jan",
-      lastname: "bąk",
+      lastname: "jan",
       email: "test@test.pl",
       password: "",
       phone: "777777777",
