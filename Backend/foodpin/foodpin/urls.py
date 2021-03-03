@@ -19,5 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/sessions/', include('dj_rest_auth.urls')),
-    path('api/sessions/registration/', include('dj_rest_auth.registration.urls'))
+    path('api/sessions/registration/', include('dj_rest_auth.registration.urls')),
+    # path('sessions/login/', CustomLoginView.as_view(), name='my_custom_login'),
+    path('api/users/<int:user_id>/', UserDetailsView.as_view()),
 ]
