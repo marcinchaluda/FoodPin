@@ -80,7 +80,7 @@
     .home__user-buttons button {
       padding: 0 1em 0 0;
       border: none;
-      background-color: white;
+      background-color: #ffffff;
       color: #f79521;
       transition: 0.5s; }
       .home__user-buttons button span {
@@ -134,7 +134,7 @@
       height: 65px;
       border: 1px solid #f79521;
       border-radius: 50%;
-      background-color: white;
+      background-color: #ffffff;
       transition: 0.5s; }
       @media (min-width: 640px) {
         .home__button-container button {
@@ -187,7 +187,7 @@
     background-color: #f79521;
     text-align: center; }
     .home__footer p {
-      color: white;
+      color: #ffffff;
       font-size: 1.2em;
       padding-top: 0.5em; }
       @media (min-width: 640px) {
@@ -201,7 +201,7 @@
         display: flex;
         margin-top: 1em;
         width: 100%;
-        background-color: white;
+        background-color: #ffffff;
         color: #f79521; } }
   .home__footer-container {
     display: none; }
@@ -255,7 +255,7 @@
     width: 100%;
     text-align: center;
     background-color: #f79521;
-    color: white; }
+    color: #ffffff; }
   .home__funpages {
     display: flex;
     justify-content: center;
@@ -265,7 +265,7 @@
       border-radius: 25px;
       font-size: 1.2em;
       background-color: #f79521;
-      color: white;
+      color: #ffffff;
       border: none;
       width: 40px;
       height: 40px;
@@ -289,6 +289,6 @@
   display: none; }
 
 .btn-white {
-  background-color: white; }
+  background-color: #ffffff; }
 
 /*# sourceMappingURL=home.component.css.map */
