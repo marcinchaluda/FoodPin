@@ -20,7 +20,7 @@
     width: 45%;
     margin: 0 auto; }
     .header__logo h1 {
-      color: white;
+      color: #ffffff;
       font-size: 1.5em;
       font-weight: 500; }
   .header__hamburger-menu {
@@ -32,7 +32,7 @@
     border-radius: 25px;
     font-size: 1.2em;
     background-color: #f79521;
-    color: white;
+    color: #ffffff;
     border: none; }
 
 .navbar-open {
