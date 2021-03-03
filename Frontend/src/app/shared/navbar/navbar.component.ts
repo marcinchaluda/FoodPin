@@ -36,6 +36,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.isOpen$ = this._navbarService.isOpen$;
     this.loggedUser$ = this._authService.loggedUser$;
+    console.log(this.loggedUser$);
   }
 
   public logoutUser(): void {

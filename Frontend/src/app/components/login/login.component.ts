@@ -64,6 +64,8 @@ export class LoginComponent implements OnInit {
       _ => {
         this._toastr.success("Successfully logged in");
         this._navbarService.hideNavbar();
+        // console.log(r);
+        // this._localStorageService.setItem('userId', '1');
         this._router.navigate(["home"]);
       },
     );

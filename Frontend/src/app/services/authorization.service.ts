@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {environment} from "../../environments/environment";
-import {mapTo, tap} from "rxjs/operators";
+import {map, mapTo, tap} from "rxjs/operators";
 import {Tokens} from "../models/Tokens";
 import {User} from "../models/User";
 import {HttpService} from "./http.service";
@@ -26,14 +25,18 @@ export class AuthorizationService {
   public login$(user: User): Observable<boolean> {
     return this._httpService._apiPost(this.loginUri, user)
       .pipe(
-        tap(tokens => this.doLoginUser(user.email, tokens)),
+        map(r => console.log(r)),
+        tap(response => this.doLoginUser(user, response)),
         mapTo(true),
       );
   }
 
-  private doLoginUser(email: string, tokens: Tokens): void {
-    this.loggedUser$.next(email);
-    this.storeTokens(tokens);
+  private doLoginUser(user: User, response): void {
+    console.log(response);
+    // const id = response['user'].id;
+    // this._localStorageService.setItem('userId', id);
+    this.loggedUser$.next(user.email);
+    // this.storeTokens(tokens);
   }
 
   private storeTokens(tokens: Tokens): void {
