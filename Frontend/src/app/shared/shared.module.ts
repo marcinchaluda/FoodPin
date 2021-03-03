@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {HeaderComponent} from "./header/header.component";
 import {LoaderComponent} from "./loader/loader.component";
 import {NavbarComponent} from "./navbar/navbar.component";
@@ -7,12 +7,14 @@ import {NavbarService} from "./navbar/navbar.service";
 import {LoaderService} from "./loader/loader.service";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {RouterModule} from "@angular/router";
+import {DonationComponent} from './donation/donation.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     LoaderComponent,
     NavbarComponent,
+    DonationComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,7 @@ import {RouterModule} from "@angular/router";
     HeaderComponent,
     LoaderComponent,
     NavbarComponent,
+    DonationComponent,
   ]
 })
 export class SharedModule { }

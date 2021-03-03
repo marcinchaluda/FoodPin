@@ -112,7 +112,7 @@
   &__logo {
     @include flexColumnDirection;
     font-size: 2em;
-    font-weight: bold;
+    font-weight: bolder;
     text-align: center;
 
     @include mediaQuery(tabletLarge) {
