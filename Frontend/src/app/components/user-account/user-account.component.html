@@ -15,26 +15,28 @@
       <div class="account__title">
         <p>Personal details</p>
         <div>
-          <button><fa-icon [icon]="editIcon"></fa-icon></button>
+          <ng-container *ngIf="accountForm.disabled; else saveBtn">
+            <button (click)="enableForm()"><fa-icon [icon]="editIcon"></fa-icon></button>
+          </ng-container>
         </div>
       </div>
-      <form class="account__details" [formGroup]="accountForm" (ngSubmit)="onSubmit()">
-        <div><p>Username: </p><input type="text" placeholder="username" [attr.disabled]="isDetailsActive" formControlName="username"></div>
-        <div><p>First Name: </p><input type="text" placeholder="first name" [attr.disabled]="isDetailsActive" formControlName="firstname"></div>
-        <div><p>Last Name: </p><input type="text" placeholder="last name" [attr.disabled]="isDetailsActive" formControlName="lastname"></div>
-        <div><p>Email: </p><input type="email" placeholder="email@email.com" [attr.disabled]="isDetailsActive" formControlName="email"></div>
-        <div><p>Mobile(*): </p><input type="number" placeholder="999888777" [attr.disabled]="isDetailsActive" formControlName="phone"></div>
+      <form class="account__details" [formGroup]="accountForm">
+        <div><p>Username: </p><input type="text" placeholder="username" formControlName="username"></div>
+        <div><p>First Name: </p><input type="text" placeholder="first name" formControlName="firstname"></div>
+        <div><p>Last Name: </p><input type="text" placeholder="last name" formControlName="lastname"></div>
+        <div><p>Email: </p><input type="email" placeholder="email@email.com" formControlName="email"></div>
+        <div><p>Mobile(*): </p><input type="number" placeholder="999888777" formControlName="phone"></div>
       </form>
       <div class="account__title">
         <p>Address</p>
         <div></div>
       </div>
-      <form class="account__address" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
-        <div><p>Street: </p><input type="text" placeholder="street" [attr.disabled]="isAddressActive" formControlName="street"></div>
-        <div><p>Local Number(*): </p><input type="number" placeholder="5" [attr.disabled]="isAddressActive" formControlName="localnumber"></div>
-        <div><p>Postal Code: </p><input type="number" placeholder="33333" [attr.disabled]="isAddressActive" formControlName="postalcode"></div>
-        <div><p>City: </p><input type="text" placeholder="city" [attr.disabled]="isAddressActive" formControlName="city"></div>
-        <div><p>Country: </p><input type="text" placeholder="country" [attr.disabled]="isAddressActive" formControlName="country"></div>
+      <form class="account__address" [formGroup]="addressForm">
+        <div><p>Street: </p><input type="text" placeholder="street" formControlName="street"></div>
+        <div><p>Local Number(*): </p><input type="number" placeholder="5" formControlName="localnumber"></div>
+        <div><p>Postal Code: </p><input type="number" placeholder="33333" formControlName="postalcode"></div>
+        <div><p>City: </p><input type="text" placeholder="city" formControlName="city"></div>
+        <div><p>Country: </p><input type="text" placeholder="country" formControlName="country"></div>
       </form>
     </section>
     <section class="account__buttons">
@@ -46,3 +48,7 @@
     </section>
   </div>
 </div>
+
+<ng-template #saveBtn>
+  <button [formGroup]="accountForm" type="submit" (click)="onSubmit()"><fa-icon [icon]="saveIcon"></fa-icon></button>
+</ng-template>

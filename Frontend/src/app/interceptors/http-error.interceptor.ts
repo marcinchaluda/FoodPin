@@ -40,10 +40,15 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         if (error.error instanceof ErrorEvent) {
           errorMessage = `${error.error.message} `;
         } else {
-          errorMessage = `${error.status}; `;
-          Object.values(error.error).forEach(err => {
-            errorMessage += err[this.ERR_MESSAGE] + " ";
-          });
+          if (error.status === 500) {
+            errorMessage = `${error.status}; `;
+            errorMessage += 'Internal Server Error';
+          } else {
+            errorMessage = `${error.status}; `;
+            Object.values(error.error).forEach(err => {
+              errorMessage += err[this.ERR_MESSAGE] + " ";
+            });
+          }
         }
         this._toastr.error(errorMessage);
         return throwError(errorMessage);
