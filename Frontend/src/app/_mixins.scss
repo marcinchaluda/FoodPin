@@ -112,7 +112,7 @@
   &__logo {
     @include flexColumnDirection;
     font-size: 2em;
-    font-weight: bold;
+    font-weight: bolder;
     text-align: center;
 
     @include mediaQuery(tabletLarge) {
@@ -193,4 +193,11 @@
       border: 2px solid $colorOrange;
     }
   }
+}
+
+@mixin backgroundImageCenterCover($imageUrl) {
+  background-image: url(#{$imageUrl});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }

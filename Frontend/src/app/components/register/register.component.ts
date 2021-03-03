@@ -4,7 +4,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/form
 import {passwordMatchValidator} from "../../validators/passwordMatch.validator";
 // @ts-ignore
 import {patternValidator} from "../../validators/patternValidator.validator";
-import {RegistrationService} from "../../services/registration.service";
+import {UserService} from "../../services/user.service";
 import {faAt, faLock, faUser} from "@fortawesome/free-solid-svg-icons";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
@@ -15,7 +15,7 @@ import {LocalStorageService} from "../../services/local-storage.service";
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  providers: [RegistrationService]
+  providers: [UserService]
 })
 export class RegisterComponent implements OnInit {
   userIcon = faUser;
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _registrationService: RegistrationService,
+    private _registrationService: UserService,
     private _router: Router,
     private _toastr: ToastrService,
     private _navbar: NavbarService,
