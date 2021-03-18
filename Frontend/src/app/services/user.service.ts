@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
 import {HttpService} from "./http.service";
+import {HttpHeaders} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class UserService {
   }
 
   public getUser(userId: number): Observable<any> {
-    return this._httpService._apiGet(this.usersUri + userId);
+    return this._httpService._apiGet(this.usersUri + userId + '/');
     // return {
     //   username: "test",
     //   firstname: "jan",
