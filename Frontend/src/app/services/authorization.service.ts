@@ -25,23 +25,24 @@ export class AuthorizationService {
   public login$(user: User): Observable<boolean> {
     return this._httpService._apiPost(this.loginUri, user)
       .pipe(
-        map(r => console.log(r)),
         tap(response => this.doLoginUser(user, response)),
         mapTo(true),
       );
   }
 
   private doLoginUser(user: User, response): void {
-    console.log(response);
-    // const id = response['user'].id;
-    // this._localStorageService.setItem('userId', id);
+    const tokens: Tokens = ({
+      access_token: response.access_token,
+      refresh_token: response.refresh_token,
+    });
     this.loggedUser$.next(user.email);
-    // this.storeTokens(tokens);
+    this.storeTokens(tokens);
   }
 
   private storeTokens(tokens: Tokens): void {
-    localStorage.setItem(this.JWT_TOKEN, tokens.access_token);
-    localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh_token);
+    console.log(tokens);
+    this._localStorageService.setItem(this.JWT_TOKEN, tokens.access_token);
+    this._localStorageService.setItem(this.REFRESH_TOKEN, tokens.refresh_token);
   }
 
   public logout$(): Observable<boolean> {
@@ -60,7 +61,7 @@ export class AuthorizationService {
   }
 
   public getRefreshToken(): string {
-    return localStorage.getItem(this.REFRESH_TOKEN);
+    return this._localStorageService.getItem(this.REFRESH_TOKEN);
   }
 
   private doLogoutUser(): void {
@@ -70,8 +71,8 @@ export class AuthorizationService {
   }
 
   private removeTokens(): void {
-    localStorage.removeItem(this.JWT_TOKEN);
-    localStorage.removeItem(this.REFRESH_TOKEN);
+    this._localStorageService.removeItem(this.JWT_TOKEN);
+    this._localStorageService.removeItem(this.REFRESH_TOKEN);
   }
 
   public refreshToken(): Observable<any> {
@@ -84,12 +85,13 @@ export class AuthorizationService {
       );
   }
 
+  // tslint:disable-next-line:typedef
   private storeJwtToken(jwt: string) {
-    localStorage.setItem(this.JWT_TOKEN, jwt);
+    this._localStorageService.setItem(this.JWT_TOKEN, jwt);
   }
 
   public getJwtToken(): string {
-    return localStorage.getItem(this.JWT_TOKEN);
+    return this._localStorageService.getItem(this.JWT_TOKEN);
   }
 
   private createRefreshToken(): Tokens {

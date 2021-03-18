@@ -7,7 +7,7 @@ import {HttpService} from "./http.service";
 })
 export class UserService {
   private readonly registrationUri = 'sessions/registration/';
-  private readonly usersUri = 'api/users/';
+  private readonly usersUri = 'users/';
 
   constructor(private _httpService: HttpService) { }
 
@@ -16,7 +16,7 @@ export class UserService {
   }
 
   public getUser(userId: number): Observable<any> {
-    return this._httpService._apiGet(`this.usersUri${userId}`);
+    return this._httpService._apiGet(this.usersUri + userId);
     // return {
     //   username: "test",
     //   firstname: "jan",

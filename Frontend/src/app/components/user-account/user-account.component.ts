@@ -7,6 +7,7 @@ import {NavbarService} from "../../shared/navbar/navbar.service";
 import {User} from "../../models/User";
 import {Address} from "../../models/Address";
 import {UserService} from "../../services/user.service";
+import {log} from "util";
 
 @Component({
   selector: 'app-user-account',
@@ -67,7 +68,7 @@ export class UserAccountComponent implements OnInit {
   }
 
   private setUserData(): User {
-    const userData = this.getUserData();
+    const userData = this.getUserData().subscribe(r => console.log);
     const address = this.setUserAddress(userData['address']);
     const user: User = ({
       username: userData['username'],
