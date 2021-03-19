@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from "rxjs";
-import {HttpService} from "./http.service";
-import {HttpHeaders} from "@angular/common/http";
+import {Observable, Subscription} from 'rxjs';
+import {HttpService} from './http.service';
+import {UserModel} from '../models/UserModel';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import {HttpHeaders} from "@angular/common/http";
 export class UserService {
   private readonly registrationUri = 'sessions/registration/';
   private readonly usersUri = 'users/';
+  private _userDetails: UserModel;
 
   constructor(private _httpService: HttpService) { }
 
@@ -16,22 +18,14 @@ export class UserService {
     return this._httpService._apiPost(this.registrationUri, userData);
   }
 
-  public getUser(userId: number): Observable<any> {
-    return this._httpService._apiGet(this.usersUri + userId + '/');
-    // return {
-    //   username: "test",
-    //   firstname: "jan",
-    //   lastname: "jan",
-    //   email: "test@test.pl",
-    //   password: "",
-    //   phone: "777777777",
-    //   address: {
-    //     street: "first",
-    //     localnumber: "4",
-    //     postalcode: "33333",
-    //     city: "Kraków",
-    //     country: "Polska",
-    //   },
-    // }
+  public getUser(userId: number): Subscription {
+    return this._httpService._apiGet(this.usersUri + userId + '/')
+      .pipe(
+        map(data => this._userDetails = new UserModel(data))
+      ).subscribe();
+  }
+
+  get userDetails(): UserModel {
+    return this._userDetails;
   }
 }

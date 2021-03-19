@@ -15,7 +15,7 @@
       <div class="account__title">
         <p>Personal details</p>
         <div>
-          <ng-container *ngIf="accountForm.disabled; else saveBtn">
+          <ng-container *ngIf="isDisabled; else saveBtn">
             <button (click)="enableForm()"><fa-icon [icon]="editIcon"></fa-icon></button>
           </ng-container>
         </div>
@@ -26,21 +26,21 @@
         <div><p>Last Name: </p><input type="text" placeholder="last name" formControlName="lastname"></div>
         <div><p>Email: </p><input type="email" placeholder="email@email.com" formControlName="email"></div>
         <div><p>Mobile(*): </p><input type="number" placeholder="999888777" formControlName="phone"></div>
-      </form>
       <div class="account__title">
         <p>Address</p>
         <div></div>
       </div>
-      <form class="account__address" [formGroup]="addressForm">
+      <fieldset class="account__address" formGroupName="address">
         <div><p>Street: </p><input type="text" placeholder="street" formControlName="street"></div>
-        <div><p>Local Number(*): </p><input type="number" placeholder="5" formControlName="localnumber"></div>
-        <div><p>Postal Code: </p><input type="number" placeholder="33333" formControlName="postalcode"></div>
+        <div><p>Local Number(*): </p><input type="number" placeholder="local number" formControlName="localnumber"></div>
+        <div><p>Postal Code: </p><input type="number" placeholder="postal code" formControlName="postalcode"></div>
         <div><p>City: </p><input type="text" placeholder="city" formControlName="city"></div>
         <div><p>Country: </p><input type="text" placeholder="country" formControlName="country"></div>
+      </fieldset>
       </form>
     </section>
     <section class="account__buttons">
-      <button class="account_donations">Your donations</button>
+      <button class="account_donations" (click)="onSubmit()">Your donations</button>
       <button class="account_purchase">Saved food</button>
     </section>
     <section class="account__legend">

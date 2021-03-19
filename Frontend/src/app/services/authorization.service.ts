@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
-import {map, mapTo, tap} from "rxjs/operators";
-import {Tokens} from "../models/Tokens";
-import {User} from "../models/User";
-import {HttpService} from "./http.service";
-import {LocalStorageService} from "./local-storage.service";
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map, mapTo, tap} from 'rxjs/operators';
+import {Tokens} from '../models/Tokens';
+import {User} from '../models/User';
+import {HttpService} from './http.service';
+import {LocalStorageService} from './local-storage.service';
+import {UserService} from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class AuthorizationService {
   constructor(
     private _httpService: HttpService,
     private _localStorageService: LocalStorageService,
+    private _userService: UserService,
   ) { }
 
   public login$(user: User): Observable<boolean> {
@@ -35,12 +37,13 @@ export class AuthorizationService {
       access_token: response.access_token,
       refresh_token: response.refresh_token,
     });
+    this._localStorageService.setItem('userId', response.user.id);
     this.loggedUser$.next(user.email);
     this.storeTokens(tokens);
+    this._userService.getUser(response.user.id);
   }
 
   private storeTokens(tokens: Tokens): void {
-    console.log(tokens);
     this._localStorageService.setItem(this.JWT_TOKEN, tokens.access_token);
     this._localStorageService.setItem(this.REFRESH_TOKEN, tokens.refresh_token);
   }

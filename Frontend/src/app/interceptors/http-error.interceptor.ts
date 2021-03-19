@@ -30,7 +30,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       retry(this.REPEAT_TIMES),
       catchError((error: HttpErrorResponse) => {
-        let errorMessage: string = '';
+        let errorMessage = '';
 
         if (error.error instanceof HttpErrorResponse && error.error.status === 401) {
           // attempt to refresh the token
@@ -58,7 +58,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
   private handleUnauthorizedUser(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // executing token refresh
-    if(this.isRefreshing) {
+    if (this.isRefreshing) {
       return this.refreshTokenSubject
         .pipe(
           filter(token => token !== null),
