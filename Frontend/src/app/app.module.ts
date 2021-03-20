@@ -21,13 +21,12 @@ import {SharedModule} from "./shared/shared.module";
 import {TokenInterceptor} from "./interceptors/token.interceptor";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        RegisterComponent,
-        LoginComponent,
-        InputErrorPipe,
-        HomeComponent,
-    ],
+  declarations: [
+      AppComponent,
+      RegisterComponent,
+      LoginComponent,
+      HomeComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -50,8 +49,8 @@ import {TokenInterceptor} from "./interceptors/token.interceptor";
         {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
         AuthorizationGuard,
     ],
-  exports: [
-  ],
+    exports: [
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

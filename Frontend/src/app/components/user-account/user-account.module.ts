@@ -3,22 +3,23 @@ import {CommonModule} from '@angular/common';
 
 import {UserAccountRoutingModule} from './user-account-routing.module';
 import {UserAccountComponent} from './user-account.component';
-import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {LoaderService} from "../../shared/loader/loader.service";
-import {ReactiveFormsModule} from "@angular/forms";
-import {SharedModule} from "../../shared/shared.module";
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {LoaderService} from '../../shared/loader/loader.service';
+import {ReactiveFormsModule} from '@angular/forms';
+import {SharedModule} from '../../shared/shared.module';
+import {InputErrorPipe} from '../../pipes/input-error.pipe';
 
 @NgModule({
   declarations: [
     UserAccountComponent,
   ],
-  imports: [
-    CommonModule,
-    UserAccountRoutingModule,
-    FontAwesomeModule,
-    ReactiveFormsModule,
-    SharedModule,
-  ],
+    imports: [
+        CommonModule,
+        UserAccountRoutingModule,
+        FontAwesomeModule,
+        ReactiveFormsModule,
+        SharedModule,
+    ],
   providers: [LoaderService],
 })
 export class UserAccountModule { }

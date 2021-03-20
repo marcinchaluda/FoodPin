@@ -25,6 +25,11 @@ export class UserService {
       ).subscribe();
   }
 
+  public updateUser(userId: string, user: UserModel): void {
+    this._httpService._apiPatch(this.usersUri + userId + '/', user)
+      .subscribe(r => console.log(r));
+  }
+
   get userDetails(): UserModel {
     return this._userDetails;
   }
