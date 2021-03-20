@@ -35,7 +35,7 @@
     border-radius: 50%;
   }
 
-  &__title {
+  &__title  {
     @include flexRowCenter;
     color: $colorGrey;
     width: 100%;
@@ -71,9 +71,15 @@
   }
 
   &__details, &__address {
-    .address__title {
+    .account__title {
+      @include flexRowCenter;
       width: 100%;
-      color: black;
+      padding: 0.8em 0;
+
+      p {
+        padding-right: 0.5em;
+        color: $colorGrey;
+      }
     }
     div {
       width: 90%;
