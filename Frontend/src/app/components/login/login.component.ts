@@ -8,6 +8,7 @@ import {User} from "../../models/User";
 import {faAt, faLock} from "@fortawesome/free-solid-svg-icons";
 import {NavbarService} from "../../shared/navbar/navbar.service";
 import {LocalStorageService} from "../../services/local-storage.service";
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -64,6 +65,8 @@ export class LoginComponent implements OnInit {
       _ => {
         this._toastr.success("Successfully logged in");
         this._navbarService.hideNavbar();
+        // console.log(r);
+        // this._localStorageService.setItem('userId', '1');
         this._router.navigate(["home"]);
       },
     );

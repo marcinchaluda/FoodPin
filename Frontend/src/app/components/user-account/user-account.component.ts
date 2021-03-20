@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {faEdit, faSave} from "@fortawesome/free-solid-svg-icons";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {patternValidator} from "../../validators/patternValidator.validator";
-import {BehaviorSubject, Observable} from "rxjs";
-import {NavbarService} from "../../shared/navbar/navbar.service";
-import {User} from "../../models/User";
-import {Address} from "../../models/Address";
-import {UserService} from "../../services/user.service";
+import {faEdit, faSave} from '@fortawesome/free-solid-svg-icons';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {patternValidator} from '../../validators/patternValidator.validator';
+import {BehaviorSubject} from 'rxjs';
+import {NavbarService} from '../../shared/navbar/navbar.service';
+import {Address} from '../../models/Address';
+import {UserService} from '../../services/user.service';
+import {LocalStorageService} from '../../services/local-storage.service';
+import {User} from '../../models/User';
 
 @Component({
   selector: 'app-user-account',
@@ -17,91 +18,55 @@ export class UserAccountComponent implements OnInit {
   editIcon = faEdit;
   saveIcon = faSave;
   accountForm: FormGroup;
-  addressForm: FormGroup;
   isOpen$: BehaviorSubject<boolean>;
-  user: User;
+  isDisabled = true;
+  private user: User;
+  private address: Address;
 
   constructor(
     private _formBuilder: FormBuilder,
     private _navbarService: NavbarService,
     private _userService: UserService,
+    private _localStorageService: LocalStorageService,
   ) { }
 
   ngOnInit(): void {
-    this.user = this.setUserData();
-    this.addressForm = this.generateAddressForm();
-    this.accountForm = this.generateAccountForm();
     this.isOpen$ = this._navbarService.isOpen$;
+    this.user = this._userService.userDetails;
+    this.accountForm = this.generateAccountForm();
     this.accountForm.disable();
   }
 
   private generateAccountForm(): FormGroup {
+    this.address = this.user.address;
     return this._formBuilder.group({
       username: [this.user.username , Validators.compose([Validators.minLength(6)])],
       firstname: [this.user.firstname],
       lastname: [this.user.lastname],
       email: [this.user.email , Validators.compose([Validators.email])],
-      phone: [this.user.phone , patternValidator(/^[+]*[(]?[0-9]{1,4}[)]?[-\s\./0-9]*$/, {invalidNumber: true})],
-      address: this.addressForm,
-    });
-  }
-
-  private generateAddressForm(): FormGroup {
-    return this._formBuilder.group({
-      street: [this.user.address['street']],
-      localnumber: [this.user.address['localnumber']],
-      postalcode: [this.user.address['postalcode'], patternValidator(/\d{2}-\d{3}/, {invalidPostalCode: true})],
-      city: [this.user.address['city']],
-      country: [this.user.address['country']],
+      phone: [this.user.phone , patternValidator(/^[+]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/, {invalidNumber: true})],
+      address: this._formBuilder.group({
+        street: [this.address.street],
+        localnumber: [this.address.localnumber],
+        postalcode: [this.address.postalcode, patternValidator(/\d{2}-\d{3}/, {invalidPostalCode: true})],
+        city: [this.address.city],
+        country: [this.address.country],
+      }),
     });
   }
 
   public onSubmit(): void {
+    this.isDisabled = true;
     this.accountForm.disable();
-    this.updateUserData(this.user);
-    // console.log(this.user);
+    this.updateUserData();
   }
 
   public enableForm(): void {
+    this.isDisabled = false;
     this.accountForm.enable();
   }
 
-  private setUserData(): User {
-    const userData = this.getUserData();
-    const address = this.setUserAddress(userData['address']);
-    const user: User = ({
-      username: userData['username'],
-      firstname: userData['firstname'],
-      lastname: userData['lastname'],
-      email: userData['email'],
-      phone: userData['phone'],
-      address: address,
-    });
-    return user;
-  }
-
-  private getUserData() {
-    const userId: number = 1;
-    return this._userService.getUser(userId);
-  }
-
-  private setUserAddress(addressData: object): Address {
-    const address: Address = ({
-      street: addressData['street'],
-      localnumber: addressData['localnumber'],
-      postalcode: addressData['postalcode'],
-      city: addressData['city'],
-      country: addressData['country'],
-    });
-    return address;
-  }
-
-  private updateUserData(user: object): void {
-    Object.keys(user).forEach(
-      (key) => {
-        user[key] = this.accountForm.get(key).value;
-    });
-    console.log(user);
-    //TODO patch user data
+  private updateUserData(): void {
+    console.log(this.accountForm.value);
   }
 }

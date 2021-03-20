@@ -18,6 +18,7 @@ import {MatSidenavModule} from '@angular/material/sidenav'
 import {MatIconModule} from '@angular/material/icon';
 import {AuthorizationGuard} from "./guards/authorization.guard";
 import {SharedModule} from "./shared/shared.module";
+import {TokenInterceptor} from "./interceptors/token.interceptor";
 
 @NgModule({
     declarations: [
@@ -46,6 +47,7 @@ import {SharedModule} from "./shared/shared.module";
             multi: true,
         },
         {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
         AuthorizationGuard,
     ],
   exports: [

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
-import {Observable} from "rxjs";
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +16,10 @@ export class HttpService {
   }
 
   public _apiGet(uri: string): Observable<any> {
-    return this._http.get(`${this._apiUrl}${uri}`);
+    return this._http.get<any>(`${this._apiUrl}${uri}`);
   }
 
-  public _apiPatch(uri: string, data:any): Observable<any> {
-    return this._http.patch(`${this._apiUrl}${uri}`, data);
+  public _apiPatch(uri: string, data: any): Observable<any> {
+    return this._http.patch<any>(`${this._apiUrl}${uri}`, data);
   }
 }

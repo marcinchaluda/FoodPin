@@ -71,6 +71,10 @@
   }
 
   &__details, &__address {
+    .address__title {
+      width: 100%;
+      color: black;
+    }
     div {
       width: 90%;
       margin: 0 auto;

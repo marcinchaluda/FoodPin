@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
-import {environment} from "../../environments/environment";
-import {mapTo, tap} from "rxjs/operators";
-import {Tokens} from "../models/Tokens";
-import {User} from "../models/User";
-import {HttpService} from "./http.service";
-import {LocalStorageService} from "./local-storage.service";
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map, mapTo, tap} from 'rxjs/operators';
+import {Tokens} from '../models/Tokens';
+import {User} from '../models/User';
+import {HttpService} from './http.service';
+import {LocalStorageService} from './local-storage.service';
+import {UserService} from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,24 +21,31 @@ export class AuthorizationService {
   constructor(
     private _httpService: HttpService,
     private _localStorageService: LocalStorageService,
+    private _userService: UserService,
   ) { }
 
   public login$(user: User): Observable<boolean> {
     return this._httpService._apiPost(this.loginUri, user)
       .pipe(
-        tap(tokens => this.doLoginUser(user.email, tokens)),
+        tap(response => this.doLoginUser(user, response)),
         mapTo(true),
       );
   }
 
-  private doLoginUser(email: string, tokens: Tokens): void {
-    this.loggedUser$.next(email);
+  private doLoginUser(user: User, response): void {
+    const tokens: Tokens = ({
+      access_token: response.access_token,
+      refresh_token: response.refresh_token,
+    });
+    this._localStorageService.setItem('userId', response.user.id);
+    this.loggedUser$.next(user.email);
     this.storeTokens(tokens);
+    this._userService.getUser(response.user.id);
   }
 
   private storeTokens(tokens: Tokens): void {
-    localStorage.setItem(this.JWT_TOKEN, tokens.access_token);
-    localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh_token);
+    this._localStorageService.setItem(this.JWT_TOKEN, tokens.access_token);
+    this._localStorageService.setItem(this.REFRESH_TOKEN, tokens.refresh_token);
   }
 
   public logout$(): Observable<boolean> {
@@ -57,7 +64,7 @@ export class AuthorizationService {
   }
 
   public getRefreshToken(): string {
-    return localStorage.getItem(this.REFRESH_TOKEN);
+    return this._localStorageService.getItem(this.REFRESH_TOKEN);
   }
 
   private doLogoutUser(): void {
@@ -67,8 +74,8 @@ export class AuthorizationService {
   }
 
   private removeTokens(): void {
-    localStorage.removeItem(this.JWT_TOKEN);
-    localStorage.removeItem(this.REFRESH_TOKEN);
+    this._localStorageService.removeItem(this.JWT_TOKEN);
+    this._localStorageService.removeItem(this.REFRESH_TOKEN);
   }
 
   public refreshToken(): Observable<any> {
@@ -81,12 +88,13 @@ export class AuthorizationService {
       );
   }
 
+  // tslint:disable-next-line:typedef
   private storeJwtToken(jwt: string) {
-    localStorage.setItem(this.JWT_TOKEN, jwt);
+    this._localStorageService.setItem(this.JWT_TOKEN, jwt);
   }
 
   public getJwtToken(): string {
-    return localStorage.getItem(this.JWT_TOKEN);
+    return this._localStorageService.getItem(this.JWT_TOKEN);
   }
 
   private createRefreshToken(): Tokens {
