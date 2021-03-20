@@ -26,8 +26,7 @@ export class UserService {
   }
 
   public updateUser(userId: string, user: UserModel): void {
-    this._httpService._apiPatch(this.usersUri + userId + '/', user)
-      .subscribe(r => console.log(r));
+    this._httpService._apiPatch(this.usersUri + userId + '/', user).subscribe();
   }
 
   get userDetails(): UserModel {

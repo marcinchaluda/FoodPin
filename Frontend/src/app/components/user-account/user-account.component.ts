@@ -43,10 +43,10 @@ export class UserAccountComponent implements OnInit {
   private generateAccountForm(): FormGroup {
     this.address = this.user.address;
     return this._formBuilder.group({
-      username: [this.user.username , Validators.compose([Validators.minLength(6)])],
+      username: [this.user.username , Validators.compose([Validators.required, Validators.minLength(6)])],
       firstname: [this.user.firstname],
       lastname: [this.user.lastname],
-      email: [this.user.email , Validators.compose([Validators.email])],
+      email: [this.user.email , Validators.compose([Validators.required, Validators.email])],
       phone: [this.user.phone , patternValidator(/^[+]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/, {invalidNumber: true})],
       address: this._formBuilder.group({
         street: [this.address.street],
