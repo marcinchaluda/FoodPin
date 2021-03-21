@@ -59,10 +59,10 @@ export class UserAccountComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    this.isDisabled = true;
     if (this.isReadyToUpdate()) {
       this.updateUserData();
       this.accountForm.disable();
+      this.isDisabled = true;
     } else {
       this._toastr.error('Invalid data in a form');
     }

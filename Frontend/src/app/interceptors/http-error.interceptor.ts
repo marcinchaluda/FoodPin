@@ -7,10 +7,10 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
-import {catchError, filter, retry, switchMap, take} from "rxjs/operators";
-import {ToastrService} from "ngx-toastr";
-import {AuthorizationService} from "../services/authorization.service";
-import {TokenInterceptor} from "./token.interceptor";
+import {catchError, filter, retry, switchMap, take} from 'rxjs/operators';
+import {ToastrService} from 'ngx-toastr';
+import {AuthorizationService} from '../services/authorization.service';
+import {TokenInterceptor} from './token.interceptor';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -28,7 +28,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     return next.handle(request).pipe(
-      retry(this.REPEAT_TIMES),
       catchError((error: HttpErrorResponse) => {
         let errorMessage = '';
 
@@ -46,7 +45,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           } else {
             errorMessage = `${error.status}; `;
             Object.values(error.error).forEach(err => {
-              errorMessage += err[this.ERR_MESSAGE] + " ";
+              errorMessage += err[this.ERR_MESSAGE] + ' ';
             });
           }
         }
@@ -71,7 +70,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     }
     // blocking and releasing all queries that started during refreshing process that was put on hold until invoking access token
     this.isRefreshing = !this.isRefreshing;
-    // setting refresh token value to null to block all the ongoing requests until the value is different than null (filter method in else block)
+    // setting refresh token value to null to block all the ongoing requests until the value is different than null
+    // (filter method in else block)
     this.refreshTokenSubject.next(null);
 
     return this._authService.refreshToken()

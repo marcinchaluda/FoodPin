@@ -25,17 +25,27 @@
   &__personal-details {
     width: 80%;
     margin: 0 auto;
+
+    input {
+      box-sizing: content-box;
+      border: none;
+      background-color: lighten($colorOrange, 35%);
+    }
+
+    input:focus {
+      border: 1px solid $colorOrange;
+    }
   }
 
   &__avatar {
-    margin: 1em auto 0 auto;
+    margin: 0.5em auto 0 auto;
     padding: 0.2em;
     background-color: $colorWhite;
     border: 2px solid $colorOrange;
     border-radius: 50%;
   }
 
-  &__title  {
+  &__title {
     @include flexRowCenter;
     color: $colorGrey;
     width: 100%;
@@ -44,6 +54,7 @@
     p {
       padding-right: 0.5em;
     }
+
     div {
       flex-grow: 1;
       padding: 0 0.5em;
@@ -77,10 +88,17 @@
       padding: 0.8em 0;
 
       p {
+        width: auto;
         padding-right: 0.5em;
         color: $colorGrey;
       }
     }
+
+    p {
+      width: 150px;
+      line-height: 1.4em;
+    }
+
     div {
       width: 90%;
       margin: 0 auto;
@@ -122,6 +140,7 @@
     color: $colorGrey;
     padding-top: 1em;
   }
+
   small {
     min-width: 400px;
     max-width: 700px;
