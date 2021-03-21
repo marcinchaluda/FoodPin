@@ -32,14 +32,14 @@ export class AuthorizationService {
       );
   }
 
-  private doLoginUser(user: User, response): void {
+  private async doLoginUser(user: User, response): Promise<void> {
     const tokens: Tokens = ({
       access_token: response.access_token,
       refresh_token: response.refresh_token,
     });
     this._localStorageService.setItem('userId', response.user.id);
     this.loggedUser$.next(user.email);
-    this.storeTokens(tokens);
+    await this.storeTokens(tokens);
     this._userService.getUser(response.user.id);
   }
 

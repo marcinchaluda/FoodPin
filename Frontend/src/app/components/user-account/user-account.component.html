@@ -22,25 +22,35 @@
       </div>
       <form class="account__details" [formGroup]="accountForm">
         <div><p>Username: </p><input type="text" placeholder="username" formControlName="username"></div>
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:username}"></ng-container>
         <div><p>First Name: </p><input type="text" placeholder="first name" formControlName="firstname"></div>
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:firstname}"></ng-container>
         <div><p>Last Name: </p><input type="text" placeholder="last name" formControlName="lastname"></div>
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:lastname}"></ng-container>
         <div><p>Email: </p><input type="email" placeholder="email@email.com" formControlName="email"></div>
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:email}"></ng-container>
         <div><p>Mobile(*): </p><input type="number" placeholder="999888777" formControlName="phone"></div>
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:phone}"></ng-container>
       <div class="account__title">
         <p>Address</p>
         <div></div>
       </div>
       <fieldset class="account__address" formGroupName="address">
         <div><p>Street: </p><input type="text" placeholder="street" formControlName="street"></div>
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:street}"></ng-container>
         <div><p>Local Number(*): </p><input type="number" placeholder="local number" formControlName="localnumber"></div>
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:localnumber}"></ng-container>
         <div><p>Postal Code: </p><input type="number" placeholder="postal code" formControlName="postalcode"></div>
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:postalcode}"></ng-container>
         <div><p>City: </p><input type="text" placeholder="city" formControlName="city"></div>
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:city}"></ng-container>
         <div><p>Country: </p><input type="text" placeholder="country" formControlName="country"></div>
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:country}"></ng-container>
       </fieldset>
       </form>
     </section>
     <section class="account__buttons">
-      <button class="account_donations" (click)="onSubmit()">Your donations</button>
+      <button class="account_donations">Your donations</button>
       <button class="account_purchase">Saved food</button>
     </section>
     <section class="account__legend">
@@ -51,4 +61,10 @@
 
 <ng-template #saveBtn>
   <button [formGroup]="accountForm" type="submit" (click)="onSubmit()"><fa-icon [icon]="saveIcon"></fa-icon></button>
+</ng-template>
+
+<ng-template let-error="inputFieldValue" #validationError>
+  <div class="inputErrors" *ngIf="error.invalid && error.touched">
+    <small [innerHTML]="error.errors | inputError"></small>
+  </div>
 </ng-template>
