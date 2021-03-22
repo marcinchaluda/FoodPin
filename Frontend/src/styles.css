@@ -6,10 +6,8 @@ Error: File to import not found or unreadable: ~ngx-toastr/toastr.
 2: @import "reset";
 3: @import '~ngx-toastr/toastr';
 4: 
-5: body {
-6:   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;;
-7: }
-8: 
+5: html, body { height: 100%; }
+6: body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 Backtrace:
 styles.scss:3
@@ -48,4 +46,4 @@ styles.scss:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~ngx-toastr/toastr.\A         on line 3 of styles.scss\A \A 1: /* You can add global styles to this file, and also import other style files */\A 2: @import \"reset\";\A 3: @import '~ngx-toastr/toastr';\A 4: \A 5: body {\A 6:   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;;\A 7: }\A 8: "; }
+  content: "Error: File to import not found or unreadable: ~ngx-toastr/toastr.\A         on line 3 of styles.scss\A \A 1: /* You can add global styles to this file, and also import other style files */\A 2: @import \"reset\";\A 3: @import '~ngx-toastr/toastr';\A 4: \A 5: html, body { height: 100%; }\A 6: body { margin: 0; font-family: Roboto, \"Helvetica Neue\", sans-serif; }"; }

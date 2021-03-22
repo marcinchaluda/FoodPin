@@ -11,7 +11,18 @@
   &__info {
     margin: 0 auto;
     width: 80%;
+    min-width: 280px;
     text-align: center;
     font-size: 1.2em;
+
+    @include mediaQuery(smartphoneLarge) {
+      width: 75%;
+      font-size: 1.5em;
+    }
+
+    @include mediaQuery(tablet) {
+      width: 65%;
+      font-size: 1.8em;
+    }
   }
 }

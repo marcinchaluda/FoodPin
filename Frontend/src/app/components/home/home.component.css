@@ -55,6 +55,9 @@
           margin-bottom: 0; } }
   .home__container {
     height: 100%; }
+    @media (min-width: 1024px) {
+      .home__container {
+        min-height: 1200px; } }
   @media (min-width: 1024px) {
     .home header {
       display: flex;
@@ -179,14 +182,12 @@
     @media (min-width: 1024px) {
       .home__content {
         display: flex;
-        flex-grow: 1;
-        height: 50%; } }
+        flex-grow: 1; } }
   .home__footer {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 3em;
     background-color: #f79521;
     text-align: center; }
     .home__footer p {
