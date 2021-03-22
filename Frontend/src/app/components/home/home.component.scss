@@ -10,7 +10,7 @@
   &__container {
     height: 100%;
     @include mediaQuery(tabletLarge) {
-      min-height: 1200px;
+      min-height: 1250px;
     }
   }
 
