@@ -9,6 +9,9 @@
 
   &__container {
     height: 100%;
+    @include mediaQuery(tabletLarge) {
+      min-height: 1200px;
+    }
   }
 
   header {
@@ -151,14 +154,12 @@
     @include mediaQuery(tabletLarge) {
       display: flex;
       flex-grow: 1;
-      height: 50%;
     }
   }
 
   &__footer {
     @include flexRowCenter;
     width: 100%;
-    height: 3em;
     background-color: $colorOrange;
     text-align: center;
 
