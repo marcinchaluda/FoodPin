@@ -24,7 +24,7 @@
         <button routerLink="#"><span class="material-icons">insights</span><p>Statistics</p></button>
       </li>
       <li class="navbar__item">
-        <button routerLink="/waste"><fa-icon class="content__icon" [icon]="infoIcon"></fa-icon><p>About</p></button>
+        <button (click)="redirectToAbout()"><fa-icon class="content__icon" [icon]="infoIcon"></fa-icon><p>About</p></button>
       </li>
       <li class="navbar__item">
         <button routerLink="#"><fa-icon class="content__icon" [icon]="facebookIcon"></fa-icon><p>Facebook</p></button>
