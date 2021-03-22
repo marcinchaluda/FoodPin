@@ -1,0 +1,17 @@
+@import "../../variables";
+@import "../../mixins";
+
+.waste {
+  @include flexColumnCenter;
+
+  &__logo {
+    margin: 2em auto 1em auto;
+  }
+
+  &__info {
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    font-size: 1.2em;
+  }
+}
