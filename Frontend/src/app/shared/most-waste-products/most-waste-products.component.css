@@ -1,3 +1,14 @@
-
+.waste {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .waste__logo {
+    margin: 2em auto 1em auto; }
+  .waste__info {
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    font-size: 1.2em; }
 
 /*# sourceMappingURL=most-waste-products.component.css.map */
