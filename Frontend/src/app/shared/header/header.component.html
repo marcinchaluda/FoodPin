@@ -8,14 +8,19 @@
         </div>
       </div>
     </ng-container>
-    <div class="header__hamburger-menu" (click)="showMenu()" [ngClass]="{'navbar-open': isOpen$ | async}">
-      <ng-container *ngTemplateOutlet="button; context:{description: 'menu', icon: 'menu'}"></ng-container>
-    </div>
+      <div class="header__hamburger-menu" (click)="showMenu()" [ngClass]="{'faded-orange': isOpen$ | async}">
+        <div class="header__user-buttons">
+          <ng-container *ngIf="loggedUser$ | async; else login">
+            <button (click)="logoutUser()"><fa-icon class="content__icon" [icon]="logoutIcon"></fa-icon></button>
+          </ng-container>
+        </div>
+        <ng-container *ngTemplateOutlet="button; context:{description: 'menu', icon: 'menu'}"></ng-container>
+      </div>
   </div>
 </div>
 
 <ng-template let-btn_info="description" let-btn_icon="icon" #button>
-  <div class="header__button-container">
+  <div class="header__button-container" [ngClass]="{'navbar-open': isOpen$ | async}">
     <button class="header__{{ btn_info }}">
       <picture class="header__btn-{{btn_info}}">
         <source media="(min-width: 640px)" srcset="assets/Buttons/{{ btn_icon }}-75x75.png">
@@ -23,4 +28,9 @@
       </picture>
     </button>
   </div>
+</ng-template>
+
+<ng-template #login>
+  <button routerLink="/login"><fa-icon class="content__icon" [icon]="userIcon"></fa-icon></button>
+  <button routerLink="/register"><span class="material-icons">app_registration</span></button>
 </ng-template>

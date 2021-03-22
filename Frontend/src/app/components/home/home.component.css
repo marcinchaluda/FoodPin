@@ -80,11 +80,12 @@
     .home__user-buttons button {
       padding: 0 1em 0 0;
       border: none;
-      background-color: #ffffff;
       color: #f79521;
       transition: 0.5s; }
       .home__user-buttons button span {
         padding-top: 5px; }
+    .home__user-buttons button {
+      background-color: #ffffff; }
     .home__user-buttons button .content__icon:hover, .home__user-buttons button .material-icons:hover {
       color: #ac6006; }
   .home__quotation {

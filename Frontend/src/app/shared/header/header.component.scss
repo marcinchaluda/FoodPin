@@ -36,13 +36,37 @@
   }
 
   &__hamburger-menu {
-    width: 50px;
+    @include flexRowCenter;
     text-align: right;
     padding-right: 1em;
   }
 
   &__menu {
     @include activeButton;
+  }
+
+  &__logout-btn {
+    width: 50px;
+    padding: 0.5em 0;
+    font-size: 2em;
+    background-color: lighten($colorOrange, 15%);
+    color: $colorWhite;
+    border: none;
+  }
+
+  &__user-buttons {
+    @include header-user-btn($colorWhite, '2em');
+    button {
+      background-color: inherit;
+    }
+
+    & button .content__icon:hover, & button .material-icons:hover {
+      color: darken($colorOrange, 20%);
+    }
+
+    @include mediaQuery(tabletLarge) {
+      margin: 0;
+    }
   }
 }
 
@@ -51,5 +75,13 @@
 }
 
 .faded-orange {
+  margin: 0 auto;
   background-color: lighten($colorOrange, 15%);
+}
+
+.material-icons {
+  font-size: 40px;
+  align-self: flex-end;
+  margin: 0;
+  padding: 0;
 }
