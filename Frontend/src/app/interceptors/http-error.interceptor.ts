@@ -31,12 +31,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         let errorMessage = '';
 
-        if (error.error instanceof HttpErrorResponse && error.error.status === 401) {
+        if (error.status === 401) {
           // attempt to refresh the token
           return this.handleUnauthorizedUser(request, next);
-        }
-
-        if (error.error instanceof ErrorEvent) {
+        } else if (error.error instanceof ErrorEvent) {
           errorMessage = `${error.error.message} `;
         } else {
           if (error.status === 500) {
@@ -57,29 +55,28 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
   private handleUnauthorizedUser(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // executing token refresh
-    if (this.isRefreshing) {
-      return this.refreshTokenSubject
+    if (!this.isRefreshing) {
+      // blocking and releasing all queries that started during refreshing process that was put on hold until invoking access token
+      this.isRefreshing = !this.isRefreshing;
+      // setting refresh token value to null to block all the ongoing requests until the value is different than null
+      // (filter method in else block)
+      this.refreshTokenSubject.next(null);
+      return this._authService.refreshToken()
         .pipe(
-          filter(token => token !== null),
-          // transform refresh token into observable which emits only first emitted value
-          take(this.REPEAT_TIMES),
-          switchMap(jwt => {
-            return next.handle(this._tokenInterceptor.addToken(request, jwt));
+          switchMap((token: any) => {
+            this.isRefreshing = !this.isRefreshing;
+            this.refreshTokenSubject.next(token.access);
+            return next.handle(this._tokenInterceptor.addToken(request, token.access));
           })
         );
     }
-    // blocking and releasing all queries that started during refreshing process that was put on hold until invoking access token
-    this.isRefreshing = !this.isRefreshing;
-    // setting refresh token value to null to block all the ongoing requests until the value is different than null
-    // (filter method in else block)
-    this.refreshTokenSubject.next(null);
-
-    return this._authService.refreshToken()
+    return this.refreshTokenSubject
       .pipe(
-        switchMap((token: any) => {
-          this.isRefreshing = !this.isRefreshing;
-          this.refreshTokenSubject.next(token.access);
-          return next.handle(this._tokenInterceptor.addToken(request, token.access));
+        filter(token => token !== null),
+        // transform refresh token into observable which emits only first emitted value
+        take(this.REPEAT_TIMES),
+        switchMap(jwt => {
+          return next.handle(this._tokenInterceptor.addToken(request, jwt));
         })
       );
   }

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {map, mapTo, tap} from 'rxjs/operators';
+import {mapTo, tap} from 'rxjs/operators';
 import {Tokens} from '../models/Tokens';
 import {User} from '../models/User';
 import {HttpService} from './http.service';
@@ -79,15 +79,14 @@ export class AuthorizationService {
   }
 
   public refreshToken(): Observable<any> {
-    const refreshToken: Tokens = this.createRefreshToken();
+    const refreshToken: object = this.createRefreshToken();
     return this._httpService._apiPost(this.refreshTokenUri, refreshToken)
       .pipe(
-        tap((tokens: Tokens) => {
-          this.storeJwtToken(tokens.access_token);
+        tap((tokens) => {
+          this.storeJwtToken(tokens.access);
         }),
       );
   }
-
   // tslint:disable-next-line:typedef
   private storeJwtToken(jwt: string) {
     this._localStorageService.setItem(this.JWT_TOKEN, jwt);
@@ -97,10 +96,10 @@ export class AuthorizationService {
     return this._localStorageService.getItem(this.JWT_TOKEN);
   }
 
-  private createRefreshToken(): Tokens {
-    const refreshToken: Tokens = ({
-      refresh_token: this.getRefreshToken(),
-    });
+  private createRefreshToken(): object {
+    const refreshToken: object = {
+      refresh: this.getRefreshToken()
+    };
     return refreshToken;
   }
 }
