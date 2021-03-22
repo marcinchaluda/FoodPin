@@ -52,6 +52,9 @@
         flex-direction: row; } }
   .navbar__item {
     width: 100%; }
+    @media (min-width: 1024px) {
+      .navbar__item {
+        width: 15%; } }
     .navbar__item button {
       display: flex;
       justify-content: flex-start;
@@ -159,5 +162,9 @@ fa-icon {
 
 .navbar-open {
   display: none; }
+
+@media (min-width: 1024px) {
+  .stats, .about {
+    display: none; } }
 
 /*# sourceMappingURL=navbar.component.css.map */

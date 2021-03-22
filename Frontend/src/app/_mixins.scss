@@ -201,3 +201,37 @@
   background-size: cover;
   background-position: center;
 }
+
+@mixin header-user-btn($color, $font-size) {
+  display: none;
+
+  @include mediaQuery(tabletLarge) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 15% 0.5em 0;
+    width: 50%;
+    font-size: #{$font-size};
+    color: $color;
+
+    p {
+      padding: 1em 0.5em;
+      font-size: 0.6em;
+    }
+  }
+
+  @include mediaQuery(desktop) {
+    margin: 0 20% 0.5em 0;
+  }
+
+  & button {
+    padding: 0 1em 0 0;
+    border: none;
+    color: $color;
+    transition: 0.5s;
+
+    span {
+      padding-top: 5px;
+    }
+  }
+}

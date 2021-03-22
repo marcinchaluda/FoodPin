@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {faEnvelope, faInfoCircle, faSignal, faTimes, faUserCircle, faUserCog} from "@fortawesome/free-solid-svg-icons";
-import {faFacebookF, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons";
-import {AuthorizationService} from "../../services/authorization.service";
-import {BehaviorSubject} from "rxjs";
-import {ToastrService} from "ngx-toastr";
-import {NavbarService} from "./navbar.service";
-import {Router} from "@angular/router";
-import {tap} from "rxjs/operators";
+import {faEnvelope, faInfoCircle, faSignal, faTimes, faUserCircle, faUserCog} from '@fortawesome/free-solid-svg-icons';
+import {faFacebookF, faInstagram, faTwitter} from '@fortawesome/free-brands-svg-icons';
+import {AuthorizationService} from '../../services/authorization.service';
+import {BehaviorSubject} from 'rxjs';
+import {ToastrService} from 'ngx-toastr';
+import {NavbarService} from './navbar.service';
+import {Router} from '@angular/router';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
     if (this._authService.getRefreshToken() !== null) {
       this._authService.logout$().subscribe(
         _ => {
-          this._toastr.success("Successfully logged out");
+          this._toastr.success('Successfully logged out');
           this.homePageRedirect();
         },
       );
@@ -56,6 +56,11 @@ export class NavbarComponent implements OnInit {
   public redirectToAccount(): void {
     this.hideMenu();
     this._router.navigate(['account']);
+  }
+
+  public redirectToAbout(): void {
+    this.hideMenu();
+    this._router.navigate(['about']);
   }
 
   public homePageRedirect(): void {

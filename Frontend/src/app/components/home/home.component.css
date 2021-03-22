@@ -80,11 +80,12 @@
     .home__user-buttons button {
       padding: 0 1em 0 0;
       border: none;
-      background-color: #ffffff;
       color: #f79521;
       transition: 0.5s; }
       .home__user-buttons button span {
         padding-top: 5px; }
+    .home__user-buttons button {
+      background-color: #ffffff; }
     .home__user-buttons button .content__icon:hover, .home__user-buttons button .material-icons:hover {
       color: #ac6006; }
   .home__quotation {
@@ -116,7 +117,8 @@
     justify-content: center;
     align-items: center;
     margin: 1em auto;
-    max-width: 700px; }
+    max-width: 700px;
+    flex-grow: 1; }
   .home__button-container {
     display: flex;
     flex-direction: column;
@@ -173,10 +175,11 @@
       .home__child-image {
         display: none; } }
   .home__content {
-    display: flex;
-    flex-grow: 1; }
+    display: none; }
     @media (min-width: 1024px) {
       .home__content {
+        display: flex;
+        flex-grow: 1;
         height: 50%; } }
   .home__footer {
     display: flex;

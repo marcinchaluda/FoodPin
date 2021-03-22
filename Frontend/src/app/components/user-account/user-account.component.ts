@@ -8,7 +8,6 @@ import {Address} from '../../models/Address';
 import {UserService} from '../../services/user.service';
 import {LocalStorageService} from '../../services/local-storage.service';
 import {User} from '../../models/User';
-import {retry} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({

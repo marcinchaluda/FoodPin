@@ -9,6 +9,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {RouterModule} from "@angular/router";
 import {DonationComponent} from './donation/donation.component';
 import {InputErrorPipe} from '../pipes/input-error.pipe';
+import { MostWasteProductsComponent } from './most-waste-products/most-waste-products.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {InputErrorPipe} from '../pipes/input-error.pipe';
     NavbarComponent,
     DonationComponent,
     InputErrorPipe,
+    MostWasteProductsComponent,
   ],
   imports: [
     CommonModule,
@@ -27,12 +29,13 @@ import {InputErrorPipe} from '../pipes/input-error.pipe';
     NavbarService,
     LoaderService,
   ],
-  exports: [
-    HeaderComponent,
-    LoaderComponent,
-    NavbarComponent,
-    DonationComponent,
-    InputErrorPipe,
-  ]
+    exports: [
+        HeaderComponent,
+        LoaderComponent,
+        NavbarComponent,
+        DonationComponent,
+        InputErrorPipe,
+        MostWasteProductsComponent,
+    ]
 })
 export class SharedModule { }

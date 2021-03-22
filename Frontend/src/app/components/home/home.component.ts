@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthorizationService} from "../../services/authorization.service";
-import {faEnvelope, faSignOutAlt, faUserCircle} from "@fortawesome/free-solid-svg-icons"
-import {faFacebookF, faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons"
-import {NavbarService} from "../../shared/navbar/navbar.service";
-import {BehaviorSubject} from "rxjs";
-import {ToastrService} from "ngx-toastr";
-import {Router} from "@angular/router";
-import {first, take} from "rxjs/operators";
+import {AuthorizationService} from '../../services/authorization.service';
+import {faEnvelope, faSignOutAlt, faUserCircle} from '@fortawesome/free-solid-svg-icons';
+import {faFacebookF, faInstagram, faTwitter} from '@fortawesome/free-brands-svg-icons';
+import {NavbarService} from '../../shared/navbar/navbar.service';
+import {BehaviorSubject} from 'rxjs';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
+import {first, take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -35,21 +35,19 @@ export class HomeComponent implements OnInit {
     this.loggedUser$ = this._authService.loggedUser$;
   }
 
-  public showMenu() {
+  public showMenu(): void {
     this._navbarService.showNavbar();
   }
 
   public logoutUser(): void {
-    if (!this._authService.getRefreshToken() !== null) {
-      this._authService.logout$().pipe(
-        first(),
-      ).subscribe(
-        _ => {
-          this._toastr.success("Successfully logged out");
-          this._navbarService.hideNavbar();
-          this._router.navigate(['/home']);
-        },
-      );
-    }
+    this._authService.logout$().pipe(
+      first(),
+    ).subscribe(
+      _ => {
+        this._toastr.success('Successfully logged out');
+        this._navbarService.hideNavbar();
+        this._router.navigate(['/home']);
+      },
+    );
   }
 }

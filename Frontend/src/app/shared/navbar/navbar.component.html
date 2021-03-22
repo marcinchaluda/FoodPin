@@ -20,11 +20,11 @@
           <button (click)="redirectToAccount()"><fa-icon class="content__icon" [icon]="accountIcon"></fa-icon><p>Account</p></button>
         </li>
       </ng-container>
-      <li class="navbar__item">
+      <li class="navbar__item stats">
         <button routerLink="#"><span class="material-icons">insights</span><p>Statistics</p></button>
       </li>
-      <li class="navbar__item">
-        <button routerLink="#"><fa-icon class="content__icon" [icon]="infoIcon"></fa-icon><p>About</p></button>
+      <li class="navbar__item about">
+        <button (click)="redirectToAbout()"><fa-icon class="content__icon" [icon]="infoIcon"></fa-icon><p>About</p></button>
       </li>
       <li class="navbar__item">
         <button routerLink="#"><fa-icon class="content__icon" [icon]="facebookIcon"></fa-icon><p>Facebook</p></button>
