@@ -29,12 +29,13 @@ import { MostWasteProductsComponent } from './most-waste-products/most-waste-pro
     NavbarService,
     LoaderService,
   ],
-  exports: [
-    HeaderComponent,
-    LoaderComponent,
-    NavbarComponent,
-    DonationComponent,
-    InputErrorPipe,
-  ]
+    exports: [
+        HeaderComponent,
+        LoaderComponent,
+        NavbarComponent,
+        DonationComponent,
+        InputErrorPipe,
+        MostWasteProductsComponent,
+    ]
 })
 export class SharedModule { }

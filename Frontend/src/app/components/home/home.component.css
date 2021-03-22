@@ -117,7 +117,8 @@
     justify-content: center;
     align-items: center;
     margin: 1em auto;
-    max-width: 700px; }
+    max-width: 700px;
+    flex-grow: 1; }
   .home__button-container {
     display: flex;
     flex-direction: column;
@@ -174,10 +175,11 @@
       .home__child-image {
         display: none; } }
   .home__content {
-    display: flex;
-    flex-grow: 1; }
+    display: none; }
     @media (min-width: 1024px) {
       .home__content {
+        display: flex;
+        flex-grow: 1;
         height: 50%; } }
   .home__footer {
     display: flex;
