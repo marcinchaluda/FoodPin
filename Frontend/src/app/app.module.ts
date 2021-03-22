@@ -19,6 +19,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {AuthorizationGuard} from "./guards/authorization.guard";
 import {SharedModule} from "./shared/shared.module";
 import {TokenInterceptor} from "./interceptors/token.interceptor";
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {TokenInterceptor} from "./interceptors/token.interceptor";
       RegisterComponent,
       LoginComponent,
       HomeComponent,
+      AboutComponent,
   ],
   imports: [
     BrowserModule,

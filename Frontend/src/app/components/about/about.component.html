@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <app-header></app-header>
+  <ng-container *ngIf="isOpen$ | async">
+    <app-navbar></app-navbar>
+  </ng-container>
+  <div class="container">
+    <app-most-waste-products></app-most-waste-products>
+  </div>
+  <div class="child-image">
+    <picture>
+      <source media="(min-width: 640px)" srcset="assets/Buttons/child-50x50.png">
+      <img src="./assets/Buttons/child-40x40.png" alt="sad child">
+    </picture>
+  </div>
+  <footer class="footer">
+    <p class="child-quotation">I need some food</p>
+  </footer>
+</div>

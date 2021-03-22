@@ -13,16 +13,17 @@
     width: 80%;
     min-width: 280px;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1em;
+    max-height: 150px;
 
     @include mediaQuery(smartphoneLarge) {
       width: 75%;
-      font-size: 1.5em;
+      font-size: 1.2em;
     }
 
     @include mediaQuery(tablet) {
       width: 65%;
-      font-size: 1.8em;
+      font-size: 1.4em;
     }
   }
 }

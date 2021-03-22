@@ -1,0 +1,30 @@
+@import "../../variables";
+@import "../../mixins";
+
+.wrapper {
+  @include flexColumnCenter;
+  height: 100%;
+
+}
+
+.container {
+  height: 100%;
+  @include mediaQuery(tabletLarge) {
+    min-height: 400px;
+  }
+}
+
+.child-image {
+  margin: 0 auto;
+}
+
+.footer {
+  width: 100%;
+  line-height: 2em;
+  background-color: $colorOrange;
+}
+
+.child-quotation {
+  color: $colorWhite;
+  text-align: center;
+}

@@ -10,14 +10,15 @@
     width: 80%;
     min-width: 280px;
     text-align: center;
-    font-size: 1.2em; }
+    font-size: 1em;
+    max-height: 150px; }
     @media (min-width: 640px) {
       .waste__info {
         width: 75%;
-        font-size: 1.5em; } }
+        font-size: 1.2em; } }
     @media (min-width: 800px) {
       .waste__info {
         width: 65%;
-        font-size: 1.8em; } }
+        font-size: 1.4em; } }
 
 /*# sourceMappingURL=most-waste-products.component.css.map */
