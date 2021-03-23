@@ -38,6 +38,7 @@ import { InfoStatsComponent } from './info-stats/info-stats.component';
         DonationComponent,
         InputErrorPipe,
         MostWasteProductsComponent,
+        InfoStatsComponent,
     ]
 })
 export class SharedModule { }
