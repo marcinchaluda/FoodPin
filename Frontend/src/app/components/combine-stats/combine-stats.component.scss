@@ -1,0 +1,93 @@
+@import "../../variables";
+@import "../../mixins";
+
+.wrapper {
+  @include flexColumnDirection;
+}
+
+.pizza {
+  @include flexRowCenter;
+  justify-content: space-evenly;
+  width: 60%;
+  margin-top: 3em;
+
+  &__info {
+    width: 35%;
+    font-size: 2em;
+    font-weight: 500;
+    color: $colorOrange;
+  }
+}
+
+.participate {
+  margin-top: 2em;
+  width: 100%;
+  background-color: #ffefd9;
+  height: 470px;
+
+  &__join {
+    align-self: flex-start;
+    padding: 2em 0  0 5em;
+
+    img {
+      transform: rotate(-30deg) translate(150%, 30%);
+    }
+  }
+
+  &__donate {
+    align-self: flex-end;
+    transform: translate(0%, -55%);
+
+    img {
+      transform: rotate(0deg) translate(-40%, 5%);
+    }
+  }
+
+  &__save {
+    transform: translate(20%, -300%);
+  }
+}
+
+.partnership {
+  @include flexRowCenter;
+  padding: 3em 0;
+
+  h1 {
+    width: 50%;
+    padding: 1em 0;
+    font-size: 2em;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+}
+
+.container {
+  @include flexColumnDirection;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 640px;
+
+  h1 {
+    padding: 1em 0;
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: 3px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+
+  p {
+    width: 100%;
+    color: $colorOrange;
+  }
+}
+
+.info-stats {
+  margin-top: 3em;
+  width: 80%;
+}
