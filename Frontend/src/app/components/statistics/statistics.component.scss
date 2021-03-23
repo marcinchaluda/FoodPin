@@ -1,0 +1,27 @@
+@import "../../variables";
+@import "../../mixins";
+
+.wrapper {
+  @include flexColumnCenter;
+  height: 100%;
+
+  .stats-container {
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  .child-image {
+    margin: 0 auto;
+  }
+
+  .footer {
+    width: 100%;
+    line-height: 2em;
+    background-color: $colorOrange;
+  }
+
+  .child-quotation {
+    color: $colorWhite;
+    text-align: center;
+  }
+}
