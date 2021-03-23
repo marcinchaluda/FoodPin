@@ -57,7 +57,7 @@
     height: 100%; }
     @media (min-width: 1024px) {
       .home__container {
-        min-height: 1250px; } }
+        min-height: 2000px; } }
   @media (min-width: 1024px) {
     .home header {
       display: flex;
