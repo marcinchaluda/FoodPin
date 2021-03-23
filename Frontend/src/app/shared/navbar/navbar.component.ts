@@ -67,4 +67,9 @@ export class NavbarComponent implements OnInit {
     this.hideMenu();
     this._navbarService.redirectToHomePage();
   }
+
+  public redirectToStats(): void {
+    this.hideMenu();
+    this._router.navigate(['statistics']);
+  }
 }
