@@ -7,6 +7,7 @@ import {AuthorizationGuard} from './guards/authorization.guard';
 import {DonationComponent} from './shared/donation/donation.component';
 import {AboutComponent} from './components/about/about.component';
 import {StatisticsComponent} from './components/statistics/statistics.component';
+import {CombineStatsComponent} from './components/combine-stats/combine-stats.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
