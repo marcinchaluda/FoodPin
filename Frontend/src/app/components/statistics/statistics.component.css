@@ -1,3 +1,20 @@
-
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; }
+  .wrapper .stats-container {
+    width: 100%;
+    flex-grow: 1; }
+  .wrapper .child-image {
+    margin: 0 auto; }
+  .wrapper .footer {
+    width: 100%;
+    line-height: 2em;
+    background-color: #f79521; }
+  .wrapper .child-quotation {
+    color: #ffffff;
+    text-align: center; }
 
 /*# sourceMappingURL=statistics.component.css.map */
