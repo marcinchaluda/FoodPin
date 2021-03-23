@@ -1,0 +1,62 @@
+@import "../../variables";
+@import "../../mixins";
+
+.container {
+  @include flexRowCenter;
+  flex-wrap: wrap;
+  margin: 0.5em auto;
+  min-width: 340px;
+
+  @include mediaQuery(smartphone) {
+    width: 80%;
+  }
+
+  @include mediaQuery(smartphoneLarge) {
+    width: 70%;
+  }
+
+  @include mediaQuery(tabletLarge) {
+    width: 60%;
+    justify-content: space-around;
+  }
+
+  .mark {
+    @include flexColumnCenter;
+    width: 45%;
+    height: 160px;
+    margin: 0 auto;
+    background-image: url("../../../assets/mark-1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: $colorBlack;
+    font-weight: 500;
+
+    &__stat-counter {
+      font-size: 1.5em;
+    }
+
+    p {
+      width: 50%;
+    }
+
+    @include mediaQuery(tabletLarge) {
+      width: 33%;
+      flex-wrap: nowrap;
+    }
+  }
+
+  .mark:last-child {
+    transform: translate(20%,-15%);
+    color: $colorGrey;
+    @include mediaQuery(tabletLarge) {
+      transform: translate(0,0);
+    }
+  }
+
+  .mark:first-child {
+    color: $colorPurple;
+  }
+}
+
+

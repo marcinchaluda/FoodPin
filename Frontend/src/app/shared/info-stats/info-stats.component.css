@@ -1,3 +1,49 @@
-
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0.5em auto;
+  min-width: 340px; }
+  @media (min-width: 460px) {
+    .container {
+      width: 80%; } }
+  @media (min-width: 640px) {
+    .container {
+      width: 70%; } }
+  @media (min-width: 1024px) {
+    .container {
+      width: 60%;
+      justify-content: space-around; } }
+  .container .mark {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 160px;
+    margin: 0 auto;
+    background-image: url("../../../assets/mark-1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: black;
+    font-weight: 500; }
+    .container .mark__stat-counter {
+      font-size: 1.5em; }
+    .container .mark p {
+      width: 50%; }
+    @media (min-width: 1024px) {
+      .container .mark {
+        width: 33%;
+        flex-wrap: nowrap; } }
+  .container .mark:last-child {
+    transform: translate(20%, -15%);
+    color: #6D6D6D; }
+    @media (min-width: 1024px) {
+      .container .mark:last-child {
+        transform: translate(0, 0); } }
+  .container .mark:first-child {
+    color: #706CC4; }
 
 /*# sourceMappingURL=info-stats.component.css.map */
