@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="container">
+    <ng-container *ngTemplateOutlet="mark; context:{counter: 20.110, description: 'people join this initiative'}"></ng-container>
+    <ng-container *ngTemplateOutlet="mark; context:{counter: 2.345, description: 'business partners'}"></ng-container>
+    <ng-container *ngTemplateOutlet="mark; context:{counter: 215.66, description: 'parcels donated'}"></ng-container>
+  </div>
+</div>
+
+<ng-template let-number="counter" let-desc="description" #mark>
+  <div class="mark">
+    <div class="mark__stat-counter">{{number}}</div>
+    <p class="mark__description">{{desc}}</p>
+  </div>
+</ng-template>
