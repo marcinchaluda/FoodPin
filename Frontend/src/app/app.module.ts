@@ -20,6 +20,7 @@ import {AuthorizationGuard} from "./guards/authorization.guard";
 import {SharedModule} from "./shared/shared.module";
 import {TokenInterceptor} from "./interceptors/token.interceptor";
 import { AboutComponent } from './components/about/about.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AboutComponent } from './components/about/about.component';
       LoginComponent,
       HomeComponent,
       AboutComponent,
+      StatisticsComponent,
   ],
   imports: [
     BrowserModule,
