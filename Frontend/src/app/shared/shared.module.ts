@@ -10,6 +10,7 @@ import {RouterModule} from "@angular/router";
 import {DonationComponent} from './donation/donation.component';
 import {InputErrorPipe} from '../pipes/input-error.pipe';
 import { MostWasteProductsComponent } from './most-waste-products/most-waste-products.component';
+import { InfoStatsComponent } from './info-stats/info-stats.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MostWasteProductsComponent } from './most-waste-products/most-waste-pro
     DonationComponent,
     InputErrorPipe,
     MostWasteProductsComponent,
+    InfoStatsComponent,
   ],
   imports: [
     CommonModule,
