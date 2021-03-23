@@ -21,6 +21,7 @@ import {SharedModule} from "./shared/shared.module";
 import {TokenInterceptor} from "./interceptors/token.interceptor";
 import { AboutComponent } from './components/about/about.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
+import { CombineStatsComponent } from './components/combine-stats/combine-stats.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
       HomeComponent,
       AboutComponent,
       StatisticsComponent,
+      CombineStatsComponent,
   ],
   imports: [
     BrowserModule,
