@@ -4,10 +4,9 @@ import {RegisterComponent} from './components/register/register.component';
 import {LoginComponent} from './components/login/login.component';
 import {HomeComponent} from './components/home/home.component';
 import {AuthorizationGuard} from './guards/authorization.guard';
-import {DonationComponent} from './shared/donation/donation.component';
 import {AboutComponent} from './components/about/about.component';
 import {StatisticsComponent} from './components/statistics/statistics.component';
-import {CombineStatsComponent} from './components/combine-stats/combine-stats.component';
+import {DonationsComponent} from './components/donations/donations.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -21,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./components/user-account/user-account.module').then(m => m.UserAccountModule),
     canLoad: [AuthorizationGuard],
   },
-  {path: 'donation', component: DonationComponent},
+  {path: 'donations', component: DonationsComponent},
 ];
 
 @NgModule({

@@ -22,6 +22,7 @@ import {TokenInterceptor} from "./interceptors/token.interceptor";
 import { AboutComponent } from './components/about/about.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { CombineStatsComponent } from './components/combine-stats/combine-stats.component';
+import { DonationsComponent } from './components/donations/donations.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CombineStatsComponent } from './components/combine-stats/combine-stats.
       AboutComponent,
       StatisticsComponent,
       CombineStatsComponent,
+      DonationsComponent,
   ],
   imports: [
     BrowserModule,
