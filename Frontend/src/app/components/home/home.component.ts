@@ -50,4 +50,17 @@ export class HomeComponent implements OnInit {
       },
     );
   }
+
+  public donate(): void {
+    console.log('donate');
+  }
+
+  public search(): void {
+    this._navbarService.hideNavbar();
+    this._router.navigate(['donations']);
+  }
+
+  public displayMap(): void {
+    console.log('map');
+  }
 }

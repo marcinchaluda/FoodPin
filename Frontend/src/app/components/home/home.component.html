@@ -18,9 +18,9 @@
       <p>Choose anyone</p>
     </div>
     <div class="home__buttons">
-      <ng-container *ngTemplateOutlet="button; context:{description:'Donate', icon: 'donateIcon'}"></ng-container>
-      <ng-container *ngTemplateOutlet="button; context:{description:'Search', icon: 'magnifier'}"></ng-container>
-      <ng-container *ngTemplateOutlet="button; context:{description:'Map', icon: 'mapLocation'}"></ng-container>
+      <ng-container *ngTemplateOutlet="button; context:{description:'Donate', icon: 'donateIcon', methodToInvoke: 1}"></ng-container>
+      <ng-container *ngTemplateOutlet="button; context:{description:'Search', icon: 'magnifier', methodToInvoke: 2}"></ng-container>
+      <ng-container *ngTemplateOutlet="button; context:{description:'Map', icon: 'mapLocation', methodToInvoke: 3}"></ng-container>
     </div>
     <div class="home__menu-btn" (click)="showMenu()" [ngClass]="{'navbar-open': isOpen$ | async}">
       <ng-container *ngTemplateOutlet="button; context:{description: 'menu', icon: 'menu'}"></ng-container>
@@ -68,16 +68,28 @@
   </div>
 </div>
 
-<ng-template let-btn_info="description" let-btn_icon="icon" #button>
-  <div class="home__button-container">
-    <button class="home__{{ btn_info }}">
-      <picture class="home__btn-donate">
-        <source media="(min-width: 640px)" srcset="assets/Buttons/{{ btn_icon }}-75x75.png">
-        <img src="./assets/Buttons/{{ btn_icon }}-50x50.png" alt="button">
-      </picture>
-    </button>
-    <small class="home__btn-info">{{ btn_info }}</small>
-  </div>
+<ng-template let-btn_info="description" let-btn_icon="icon" let-onClick="methodToInvoke" #button>
+  <ng-container [ngSwitch]="onClick">
+    <div *ngSwitchCase="1" class="home__button-container" (click)="donate()">
+      <ng-container *ngTemplateOutlet="buttonStyle; context:{description: btn_info, icon: btn_icon}"></ng-container>
+    </div>
+    <div *ngSwitchCase="2" class="home__button-container" (click)="search()">
+      <ng-container *ngTemplateOutlet="buttonStyle; context:{description: btn_info, icon: btn_icon}"></ng-container>
+    </div>
+    <div *ngSwitchCase="3" class="home__button-container" (click)="displayMap()">
+      <ng-container *ngTemplateOutlet="buttonStyle; context:{description: btn_info, icon: btn_icon}"></ng-container>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #buttonStyle let-btn_info="description" let-btn_icon="icon" >
+  <button class="home__{{ btn_info }}">
+    <picture class="home__btn-donate">
+      <source media="(min-width: 640px)" srcset="assets/Buttons/{{ btn_icon }}-75x75.png">
+      <img src="./assets/Buttons/{{ btn_icon }}-50x50.png" alt="button {{btn_info}}">
+    </picture>
+  </button>
+  <small class="home__btn-info">{{ btn_info }}</small>
 </ng-template>
 
 <ng-template #logo>
