@@ -1,1 +1,4 @@
-<p>donations works!</p>
+<app-header></app-header>
+<ng-container *ngIf="isOpen$ | async">
+  <app-navbar></app-navbar>
+</ng-container>
