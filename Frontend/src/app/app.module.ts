@@ -15,12 +15,13 @@ import {HomeComponent} from './components/home/home.component';
 import {LoaderInterceptor} from './interceptors/loader.interceptor';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
-import {AuthorizationGuard} from './guards/authorization.guard';
-import {SharedModule} from './shared/shared.module';
-import {TokenInterceptor} from './interceptors/token.interceptor';
-import {AboutComponent} from './components/about/about.component';
-import {StatisticsComponent} from './components/statistics/statistics.component';
-import {CombineStatsComponent} from './components/combine-stats/combine-stats.component';
+import {AuthorizationGuard} from "./guards/authorization.guard";
+import {SharedModule} from "./shared/shared.module";
+import {TokenInterceptor} from "./interceptors/token.interceptor";
+import { AboutComponent } from './components/about/about.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { CombineStatsComponent } from './components/combine-stats/combine-stats.component';
+import { DonationsComponent } from './components/donations/donations.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {CombineStatsComponent} from './components/combine-stats/combine-stats.co
       AboutComponent,
       StatisticsComponent,
       CombineStatsComponent,
+      DonationsComponent,
   ],
   imports: [
     BrowserModule,
