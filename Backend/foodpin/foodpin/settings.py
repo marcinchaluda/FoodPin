@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',  # TODO add script on server to clean database daily after deploying
     'address',
     'users',
+    'donations',
 ]
 
 MIDDLEWARE = [
