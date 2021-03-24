@@ -2,3 +2,8 @@
 <ng-container *ngIf="isOpen$ | async">
   <app-navbar></app-navbar>
 </ng-container>
+<ng-container *ngIf="donations$ | async as donations">
+  <div *ngFor="let donation of donations">
+    <app-donation [donation]="donation"></app-donation>
+  </div>
+</ng-container>
