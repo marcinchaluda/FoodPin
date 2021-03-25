@@ -25,6 +25,7 @@ import { DonationsComponent } from './components/donations/donations.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DonateFoodComponent } from './components/donate-food/donate-food.component';
 import {NgxSliderModule} from '@angular-slider/ngx-slider';
+import { SingularPluralPipe } from './pipes/singular-plural.pipe';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {NgxSliderModule} from '@angular-slider/ngx-slider';
       DonationsComponent,
       PageNotFoundComponent,
       DonateFoodComponent,
+      SingularPluralPipe,
   ],
   imports: [
     BrowserModule,

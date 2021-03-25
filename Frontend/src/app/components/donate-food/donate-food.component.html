@@ -20,7 +20,7 @@
       <div class="unit">
         <label id="quantity" for="units">Quantity:</label>
           <select id="units" name="units" [(ngModel)]="selectedUnit">
-            <option *ngFor="let unit of quantity" [value]="unit">{{unit}}</option>
+            <option *ngFor="let unit of quantity" [value]="unit">{{unit | singularPlural: value}}</option>
           </select>
       </div>
       <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
