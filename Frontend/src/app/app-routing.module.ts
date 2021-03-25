@@ -8,6 +8,7 @@ import {AboutComponent} from './components/about/about.component';
 import {StatisticsComponent} from './components/statistics/statistics.component';
 import {DonationsComponent} from './components/donations/donations.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {DonateFoodComponent} from './components/donate-food/donate-food.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'statistics', component: StatisticsComponent},
+  {path: 'donate-food', component: DonateFoodComponent},
   {
     path: 'account',
     loadChildren: () => import('./components/user-account/user-account.module').then(m => m.UserAccountModule),
