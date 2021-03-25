@@ -17,7 +17,7 @@ export class DonateFoodComponent implements OnInit {
   value = 0;
   options: Options = {
     floor: 0,
-    ceil: 50
+    ceil: 50,
   };
 
   constructor() { }

@@ -23,7 +23,9 @@
             <option *ngFor="let unit of quantity" [value]="unit">{{unit | singularPlural: value}}</option>
           </select>
       </div>
-      <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+      <div class="donate__slider">
+        <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+      </div>
     </section>
     <section class="donate__photos">
       <p>Photos:</p>

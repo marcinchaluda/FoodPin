@@ -1,0 +1,36 @@
+@import "../../variables";
+@import "../../mixins";
+
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+.donate {
+  &__slider {
+    ::ng-deep {
+      .ngx-slider .ngx-slider-pointer {
+        background-color: $colorOrange;
+        width: 20px;
+        height: 20px;
+        top: auto;
+        transform: translate(0, -50%);
+      }
+
+      .ngx-slider .ngx-slider-pointer:after {
+        background-color: $colorOrange;
+        left: 20%;
+        top: 5%;
+      }
+
+      .ngx-slider .ngx-slider-bar {
+        background-color: $colorLightGrey;
+        height: 1px;
+      }
+
+      .ngx-slider .ngx-slider-bubble {
+        color: $colorGrey;
+      }
+    }
+  }
+}
+

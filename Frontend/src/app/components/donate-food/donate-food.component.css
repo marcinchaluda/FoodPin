@@ -1,3 +1,21 @@
+.wrapper {
+  width: 90%;
+  margin: 0 auto; }
 
+.donate__slider ::ng-deep .ngx-slider .ngx-slider-pointer {
+  background-color: #f79521;
+  width: 20px;
+  height: 20px;
+  top: auto;
+  transform: translate(0, -50%); }
+.donate__slider ::ng-deep .ngx-slider .ngx-slider-pointer:after {
+  background-color: #f79521;
+  left: 20%;
+  top: 5%; }
+.donate__slider ::ng-deep .ngx-slider .ngx-slider-bar {
+  background-color: #E5E5E5;
+  height: 1px; }
+.donate__slider ::ng-deep .ngx-slider .ngx-slider-bubble {
+  color: #6D6D6D; }
 
 /*# sourceMappingURL=donate-food.component.css.map */
