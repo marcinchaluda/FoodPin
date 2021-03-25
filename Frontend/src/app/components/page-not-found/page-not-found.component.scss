@@ -1,0 +1,25 @@
+@import "../../variables";
+@import "../../mixins";
+
+.container {
+  @include logoStyles;
+  margin: 10vh auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+
+  &__message {
+    width: 40%;
+    padding: 1em;
+    font-size: 2em;
+    text-align: center;
+    color: $colorOrange;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    @include mediaQuery(tabletLarge) {
+      font-size: 4em;
+    }
+  }
+}
