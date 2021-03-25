@@ -10,6 +10,17 @@
   .donate__header h1 {
     color: #f79521;
     font-size: 1.3em; }
+.donate__field-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0.5em 0;
+  font-size: 1em; }
+.donate__field {
+  padding-top: 5px;
+  border: none;
+  border-bottom: 1px solid #E5E5E5;
+  color: #6D6D6D; }
 .donate__close button {
   background-color: #ffffff;
   border-radius: 50%;
