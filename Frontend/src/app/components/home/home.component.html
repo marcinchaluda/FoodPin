@@ -79,6 +79,9 @@
     <div *ngSwitchCase="3" class="home__button-container" (click)="displayMap()">
       <ng-container *ngTemplateOutlet="buttonStyle; context:{description: btn_info, icon: btn_icon}"></ng-container>
     </div>
+    <div *ngSwitchDefault class="home__button-container">
+      <ng-container *ngTemplateOutlet="buttonStyle; context:{description: btn_info, icon: btn_icon}"></ng-container>
+    </div>
   </ng-container>
 </ng-template>
 

@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -23,6 +23,8 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
 import { CombineStatsComponent } from './components/combine-stats/combine-stats.component';
 import { DonationsComponent } from './components/donations/donations.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DonateFoodComponent } from './components/donate-food/donate-food.component';
+import {NgxSliderModule} from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
       CombineStatsComponent,
       DonationsComponent,
       PageNotFoundComponent,
+      DonateFoodComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatSidenavModule,
     MatIconModule,
     SharedModule,
+    NgxSliderModule,
+    FormsModule,
   ],
     providers: [
         {
