@@ -32,6 +32,14 @@
   width: 30px;
   height: 30px;
   padding: 3px 0.5px 0 0; }
+.donate__quantity {
+  padding-top: 1.5em; }
+  .donate__quantity label {
+    padding-right: 0.5em; }
+  .donate__quantity select {
+    border: none;
+    background-color: #fcdcb5;
+    padding-left: 0.2em; }
 .donate__slider ::ng-deep .ngx-slider .ngx-slider-pointer {
   background-color: #f79521;
   width: 20px;
