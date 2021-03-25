@@ -6,7 +6,6 @@ import {BehaviorSubject} from 'rxjs';
 import {ToastrService} from 'ngx-toastr';
 import {NavbarService} from './navbar.service';
 import {Router} from '@angular/router';
-import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {faPlus, faTimesCircle} from '@fortawesome/free-solid-svg-icons';
+import {faPlus, faTimes} from '@fortawesome/free-solid-svg-icons';
 import { Options } from '@angular-slider/ngx-slider';
 
 @Component({
@@ -9,7 +9,7 @@ import { Options } from '@angular-slider/ngx-slider';
 })
 export class DonateFoodComponent implements OnInit {
   private FIRST = 0;
-  closeIcon = faTimesCircle;
+  closeIcon = faTimes;
   plusIcon = faPlus;
   donatePictures: Array<string> = ['stew.jpg', 'tomatoes.jpg'];
   quantity: Array<string> = ['Item', 'Kilogram'];

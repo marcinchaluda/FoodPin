@@ -6,6 +6,33 @@
   margin: 0 auto;
 }
 .donate {
+  &__header {
+    padding: 1em 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+      color: $colorOrange;
+      font-size: 1.3em;
+    }
+  }
+
+  &__close {
+    button {
+      background-color: $colorWhite;
+      border-radius: 50%;
+      font-size: 1.2em;
+      color: $colorGrey;
+      z-index: -1;
+      border: 2px solid $colorGrey;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      padding: 3px 0.5px 0 0;
+    }
+  }
+
   &__slider {
     ::ng-deep {
       .ngx-slider .ngx-slider-pointer {

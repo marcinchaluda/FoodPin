@@ -2,6 +2,25 @@
   width: 90%;
   margin: 0 auto; }
 
+.donate__header {
+  padding: 1em 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  .donate__header h1 {
+    color: #f79521;
+    font-size: 1.3em; }
+.donate__close button {
+  background-color: #ffffff;
+  border-radius: 50%;
+  font-size: 1.2em;
+  color: #6D6D6D;
+  z-index: -1;
+  border: 2px solid #6D6D6D;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 3px 0.5px 0 0; }
 .donate__slider ::ng-deep .ngx-slider .ngx-slider-pointer {
   background-color: #f79521;
   width: 20px;
