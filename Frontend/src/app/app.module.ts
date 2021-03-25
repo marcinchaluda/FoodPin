@@ -22,6 +22,7 @@ import { AboutComponent } from './components/about/about.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { CombineStatsComponent } from './components/combine-stats/combine-stats.component';
 import { DonationsComponent } from './components/donations/donations.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { DonationsComponent } from './components/donations/donations.component';
       StatisticsComponent,
       CombineStatsComponent,
       DonationsComponent,
+      PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
