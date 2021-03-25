@@ -1,3 +1,35 @@
-
+.container {
+  margin: 10vh auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center; }
+  .container__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bolder;
+    text-align: center; }
+    @media (min-width: 1024px) {
+      .container__logo {
+        font-size: 4em; } }
+  .container__image {
+    margin: 0 auto; }
+  .container__brand-name {
+    color: #f79521;
+    margin-bottom: 0.5em; }
+  .container__message {
+    width: 40%;
+    padding: 1em;
+    font-size: 2em;
+    text-align: center;
+    color: #f79521;
+    font-weight: bold;
+    letter-spacing: 2px; }
+    @media (min-width: 1024px) {
+      .container__message {
+        font-size: 4em; } }
 
 /*# sourceMappingURL=page-not-found.component.css.map */

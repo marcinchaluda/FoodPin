@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {NavbarService} from '../../shared/navbar/navbar.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -7,4 +8,12 @@ import {Component} from '@angular/core';
 })
 export class PageNotFoundComponent {
 
+  constructor(
+    private _navbarService: NavbarService,
+  ) {
+  }
+
+  public homePageRedirect(): void {
+    this._navbarService.redirectToHomePage();
+  }
 }
