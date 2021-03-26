@@ -4,6 +4,7 @@
 .wrapper {
   width: 90%;
   margin: 0 auto;
+  max-width: 480px;
 }
 .donate {
   &__header {
@@ -86,6 +87,42 @@
       .ngx-slider .ngx-slider-bubble {
         color: $colorGrey;
       }
+    }
+  }
+
+  &__photos {
+    padding-top: 1.5em;
+  }
+
+  &__gallery {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.5em 0;
+  }
+
+  &__img-container, &__add-picture {
+    justify-content: center;
+    margin-right: 0.5em;
+
+    img  {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      background-position: center;
+    }
+  }
+
+  &__add-picture {
+    border: 1px solid$colorOrange;
+
+    button {
+      background-color: $colorWhite;
+      border: none;
+      color: $colorOrange;
+      text-align: center;
+      width: 100px;
+      height: 100px;
+      font-size: 2em;
     }
   }
 }
