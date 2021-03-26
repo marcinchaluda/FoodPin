@@ -59,7 +59,7 @@
   color: #6D6D6D;
   font-size: 1em; }
 .donate__photos {
-  padding-top: 1.5em; }
+  padding-top: 0.5em; }
 .donate__gallery {
   display: flex;
   justify-content: flex-start;
@@ -90,5 +90,46 @@
     padding-bottom: 0.5em; }
   .donate__description textarea {
     border: 1px solid #E5E5E5; }
+.donate__checkbox {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  padding: 0.5em 0;
+  color: #f79521;
+  line-height: 15px; }
+  .donate__checkbox input {
+    width: 15px;
+    height: 15px;
+    margin-right: 0.5em;
+    appearance: none;
+    border: 1px solid #f79521;
+    transition-duration: 0.3s;
+    background-color: #ffffff;
+    cursor: pointer; }
+  .donate__checkbox input:checked {
+    background-color: #f79521; }
+  .donate__checkbox input:checked + label::before {
+    content: '\2713';
+    font-size: 1.5em;
+    display: block;
+    text-align: center;
+    color: #ffffff;
+    position: absolute;
+    left: 0;
+    bottom: 6px; }
+.donate__buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+.donate__submit {
+  padding: 0.5em 0;
+  border-radius: 25px;
+  font-size: 1.2em;
+  background-color: #f79521;
+  color: #ffffff;
+  border: none;
+  width: 150px;
+  margin-top: 0.5em; }
 
 /*# sourceMappingURL=donate-food.component.css.map */

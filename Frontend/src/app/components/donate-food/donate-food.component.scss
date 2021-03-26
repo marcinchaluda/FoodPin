@@ -95,7 +95,7 @@
   }
 
   &__photos {
-    padding-top: 1.5em;
+    padding-top: 0.5em;
   }
 
   &__gallery {
@@ -143,5 +143,49 @@
       border: 1px solid $colorLightGrey;
     }
   }
-}
 
+  &__checkbox {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    padding: 0.5em 0;
+    color: $colorOrange;
+    line-height: 15px;
+
+    input {
+      width: 15px;
+      height: 15px;
+      margin-right: 0.5em;
+      appearance: none;
+      border: 1px solid $colorOrange;
+      transition-duration: 0.3s;
+      background-color: $colorWhite;
+      cursor: pointer;
+    }
+
+    input:checked {
+      background-color: $colorOrange;
+    }
+
+    input:checked + label::before {
+      content: '\2713';
+      font-size: 1.5em;
+      display: block;
+      text-align: center;
+      color: $colorWhite;
+      position: absolute;
+      left: 0;
+      bottom: 6px;
+    }
+  }
+
+  &__buttons {
+    @include flexColumnCenter;
+  }
+
+  &__submit {
+    @include activeButton;
+    width: 150px;
+    margin-top: 0.5em;
+  }
+}
