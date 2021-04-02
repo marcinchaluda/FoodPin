@@ -23,11 +23,17 @@
     }
   }
 
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   &__field-group {
     display: flex;
+    width: 45%;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 0.5em 0;
+    padding: 0.5em;
   }
 
   &__field {

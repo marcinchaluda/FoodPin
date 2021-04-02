@@ -13,11 +13,15 @@
   .donate__header h1 {
     color: #f79521;
     font-size: 1.3em; }
+.donate__info {
+  display: flex;
+  flex-wrap: wrap; }
 .donate__field-group {
   display: flex;
+  width: 45%;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 0.5em 0; }
+  padding: 0.5em; }
 .donate__field {
   padding-top: 5px;
   border: none;
