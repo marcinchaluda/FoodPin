@@ -2,13 +2,24 @@
 @import "../../mixins";
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
   width: 90%;
+  height: 100%;
   margin: 0 auto;
   max-width: 480px;
 }
 .donate {
   &__details {
     font-size: 0.8em;
+
+    @include mediaQuery(smartphoneLarge) {
+      font-size: 1em;
+    }
+
+    @include mediaQuery(tabletLarge) {
+      font-size: 1.2em;
+    }
   }
 
   &__header {
@@ -20,6 +31,14 @@
     h1 {
       color: $colorOrange;
       font-size: 1.3em;
+
+      @include mediaQuery(smartphoneLarge) {
+        font-size: 1.5em;
+      }
+
+      @include mediaQuery(tabletLarge) {
+        font-size: 1.7em;
+      }
     }
   }
 
@@ -34,6 +53,8 @@
     flex-direction: column;
     justify-content: flex-start;
     padding: 0.5em;
+    margin: 0 auto;
+
   }
 
   &__field {
@@ -193,5 +214,13 @@
     @include activeButton;
     width: 150px;
     margin-top: 0.5em;
+
+    @include mediaQuery(smartphoneLarge) {
+      width: 190px;
+    }
+
+    @include mediaQuery(tabletLarge) {
+      width: 230px;
+    }
   }
 }
