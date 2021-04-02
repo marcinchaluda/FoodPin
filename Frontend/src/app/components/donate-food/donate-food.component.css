@@ -1,10 +1,19 @@
 .wrapper {
+  display: flex;
+  flex-direction: column;
   width: 90%;
+  height: 100%;
   margin: 0 auto;
   max-width: 480px; }
 
 .donate__details {
   font-size: 0.8em; }
+  @media (min-width: 640px) {
+    .donate__details {
+      font-size: 1em; } }
+  @media (min-width: 1024px) {
+    .donate__details {
+      font-size: 1.2em; } }
 .donate__header {
   padding: 1em 0;
   display: flex;
@@ -13,11 +22,22 @@
   .donate__header h1 {
     color: #f79521;
     font-size: 1.3em; }
+    @media (min-width: 640px) {
+      .donate__header h1 {
+        font-size: 1.5em; } }
+    @media (min-width: 1024px) {
+      .donate__header h1 {
+        font-size: 1.7em; } }
+.donate__info {
+  display: flex;
+  flex-wrap: wrap; }
 .donate__field-group {
   display: flex;
+  width: 45%;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 0.5em 0; }
+  padding: 0.5em;
+  margin: 0 auto; }
 .donate__field {
   padding-top: 5px;
   border: none;
@@ -131,5 +151,11 @@
   border: none;
   width: 150px;
   margin-top: 0.5em; }
+  @media (min-width: 640px) {
+    .donate__submit {
+      width: 190px; } }
+  @media (min-width: 1024px) {
+    .donate__submit {
+      width: 230px; } }
 
 /*# sourceMappingURL=donate-food.component.css.map */
