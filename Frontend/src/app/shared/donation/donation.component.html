@@ -4,13 +4,13 @@
       <div class="donation__info-container">
         <div class="donation__avatar-container"><div class="donation__user-avatar"></div></div>
         <div class="donation__info">
-          <p class="donation__user">Username - food item</p>
+          <p class="donation__user">{{donation['userName']}}</p>
           <section class="donation__product-info">
             <p class="donation__distance">
-              <img src="assets/Icons/distance-20x20.png"><span>1.1km</span>
+              <img src="assets/Icons/distance-20x20.png"><span>{{donation['distance']}}</span>
             </p>
             <p class="donation__distance">
-              <img src="assets/Icons/clock-20x20.png"><span>23.02.2021</span>
+              <img src="assets/Icons/clock-20x20.png"><span>{{donation['date']}}</span>
             </p>
           </section>
         </div>

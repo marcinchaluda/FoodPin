@@ -6,7 +6,7 @@ import {NavbarService} from '../../shared/navbar/navbar.service';
 import {BehaviorSubject} from 'rxjs';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
-import {first, take} from 'rxjs/operators';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
   public ngOnInit(): void {
     this.isOpen$ = this._navbarService.isOpen$;
     this.loggedUser$ = this._authService.loggedUser$;
+    console.log(this.loggedUser$);
   }
 
   public showMenu(): void {
@@ -49,5 +50,18 @@ export class HomeComponent implements OnInit {
         this._router.navigate(['/home']);
       },
     );
+  }
+
+  public donate(): void {
+    this._router.navigate(['donate-food']);
+  }
+
+  public search(): void {
+    this._navbarService.hideNavbar();
+    this._router.navigate(['donations']);
+  }
+
+  public displayMap(): void {
+    console.log('map');
   }
 }

@@ -1,0 +1,81 @@
+<div class="wrapper">
+  <div class="donate">
+    <header class="donate__header">
+      <h1 class="donate__title">Donate food details</h1>
+      <div class="donate__close">
+        <button><fa-icon class="donate__icon" [icon]="closeIcon"></fa-icon></button>
+      </div>
+    </header>
+  </div>
+  <form class="donate__details">
+    <section class="donate__info">
+      <div class="donate__field-group">
+        <label for="street">Street</label>
+        <input class="donate__field" id="street" type="text" placeholder="street">
+      </div>
+      <div class="donate__field-group">
+        <label for="local-number">Local number</label>
+        <input class="donate__field" id="local-number" type="number" placeholder="local number">
+      </div>
+      <div class="donate__field-group">
+        <label for="postal-code">Postal code</label>
+        <input class="donate__field" id="postal-code" type="number" placeholder="postal code">
+      </div>
+      <div class="donate__field-group">
+        <label for="city">City</label>
+        <input class="donate__field" id="city" type="text" placeholder="city">
+      </div>
+      <div class="donate__field-group">
+        <label for="country">Country</label>
+        <input class="donate__field" id="country" type="text" placeholder="country">
+      </div>
+      <div class="donate__field-group">
+        <label for="food-item">Food item(s):</label>
+        <input class="donate__field" id="food-item" type="text" placeholder="food product">
+      </div>
+      <div class="donate__field-group">
+        <label for="time">Preferred time:</label>
+        <input class="donate__field" id="time" type="time" placeholder="time to pick up">
+      </div>
+      <div class="donate__field-group">
+        <label for="date">Pickup date:</label>
+        <input class="donate__field" id="date" type="date" placeholder="pick up date">
+      </div>
+    </section>
+    <section class="donate__quantity">
+      <div class="unit">
+        <label id="quantity" for="units">Quantity:</label>
+        <select id="units" name="units" [(ngModel)]="selectedUnit">
+          <option *ngFor="let unit of quantity" [value]="unit">{{unit | singularPlural: value}}</option>
+        </select>
+      </div>
+      <div class="donate__slider">
+        <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+      </div>
+    </section>
+    <section class="donate__photos">
+      <p>Photos:</p>
+      <div class="donate__gallery">
+        <ng-container *ngFor="let picture of donatePictures">
+          <div class="donate__img-container">
+            <img src="./assets/{{picture}}" alt="food image">
+          </div>
+        </ng-container>
+        <div class="donate__add-picture">
+          <button><fa-icon class="donate__icon" [icon]="plusIcon"></fa-icon></button>
+        </div>
+      </div>
+    </section>
+    <section class="donate__description">
+      <label for="description">Description:</label>
+      <textarea id='description' name="description" cols="40" rows="6" placeholder="add product description"></textarea>
+    </section>
+    <section class="donate__buttons">
+      <div class="donate__checkbox">
+        <input type="checkbox" id="food-quality">
+        <label for="food-quality">I assure that food quality and hygiene has maintained</label>
+      </div>
+      <button type='submit' class="donate__submit" (click)="onSubmit()">Donate</button>
+    </section>
+  </form>
+</div>
