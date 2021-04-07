@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import return_dummy_donations_data
+from .views import ListDonations
 
 urlpatterns = [
-    path('', return_dummy_donations_data),
+    path('', ListDonations.as_view()),
 ]
