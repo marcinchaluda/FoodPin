@@ -117,4 +117,3 @@ FoodPin Icons/
 *venv/
 __pycache__
 .env
-*migrations/

@@ -17,14 +17,14 @@ class CustomUserDetailSerializer(serializers.ModelSerializer):
         user.save()
         serializer = AddressSerializer(data=address)
         if serializer.is_valid(raise_exception=True):
-            address = serializer.save(customuser=user)
+            serializer.save(customuser=user)
 
         return user
 
     def update(self, instance, validated_data):
         address = validated_data.pop('address')
 
-        address_instance = Address.objects.get(customuser=instance.id)
+        address_instance = Address.objects.get(customuser=instance.id) # TODO poprawic
         address_instance.street = address.get('street', address_instance.street)
         address_instance.local_number = address.get('local_number', address_instance.local_number)
         address_instance.postal_code = address.get('postal_code', address_instance.postal_code)
