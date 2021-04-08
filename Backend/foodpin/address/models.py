@@ -11,4 +11,4 @@ class Address(models.Model):
     longitude = models.DecimalField(max_digits=14, decimal_places=10, default=0.0, blank=True)
 
     def __str__(self):
-        return f'{self.street} {self.local_number}, {self.postal_code} {self.city}'
+        return f'ID: {self.id} {self.street} {self.local_number}, {self.postal_code} {self.city}'
