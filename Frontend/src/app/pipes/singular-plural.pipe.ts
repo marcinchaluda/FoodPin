@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SingularPluralPipe implements PipeTransform {
 
   transform(value: string, quantity: number): string {
-    return quantity <= 1 ? value : value + 's';
+    return quantity <= 1 ? value : value + '\'s';
   }
 
 }

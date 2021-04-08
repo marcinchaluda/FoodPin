@@ -15,9 +15,9 @@ import {HomeComponent} from './components/home/home.component';
 import {LoaderInterceptor} from './interceptors/loader.interceptor';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
-import {AuthorizationGuard} from "./guards/authorization.guard";
-import {SharedModule} from "./shared/shared.module";
-import {TokenInterceptor} from "./interceptors/token.interceptor";
+import {AuthorizationGuard} from './guards/authorization.guard';
+import {SharedModule} from './shared/shared.module';
+import {TokenInterceptor} from './interceptors/token.interceptor';
 import { AboutComponent } from './components/about/about.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { CombineStatsComponent } from './components/combine-stats/combine-stats.component';
@@ -26,6 +26,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { DonateFoodComponent } from './components/donate-food/donate-food.component';
 import {NgxSliderModule} from '@angular-slider/ngx-slider';
 import { SingularPluralPipe } from './pipes/singular-plural.pipe';
+import {InitDataResolver} from './resolvers/init-data.resolver';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { SingularPluralPipe } from './pipes/singular-plural.pipe';
         {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
         {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
         AuthorizationGuard,
+        InitDataResolver,
     ],
     exports: [
     ],

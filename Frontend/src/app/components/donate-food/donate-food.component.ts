@@ -5,7 +5,10 @@ import {NavbarService} from '../../shared/navbar/navbar.service';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LocalStorageService} from '../../services/local-storage.service';
 import {DonationsService} from '../../services/donations.service';
-import {Observable} from 'rxjs';
+import {InitDataModel} from '../../models/InitDataModel';
+import {ActivatedRoute} from '@angular/router';
+import {Address} from '../../models/Address';
+import {Unit} from '../../models/Unit';
 
 @Component({
   selector: 'app-donate-food',
@@ -18,9 +21,9 @@ export class DonateFoodComponent implements OnInit {
   plusIcon = faPlus;
   isChecked = false;
   donatePictures: Array<string> = ['stew.jpg', 'tomatoes.jpg'];
-  quantity: Array<string> = ['Item', 'Kilogram'];
-  selectedUnit: string = this.quantity[this.FIRST];
-  initData: Observable<object>;
+  quantity: Array<Unit>;
+  selectedUnit: Unit;
+  initData: InitDataModel;
   value = 0;
   options: Options = {
     floor: 0,
@@ -34,14 +37,16 @@ export class DonateFoodComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _localStorageService: LocalStorageService,
     private _donationService: DonationsService,
+    private _actRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this._donationService.getInitData(Number(this._localStorageService.getItem('userId'))).subscribe(r => {
-      console.log(r);
-      this.initData = r;
+    this._actRoute.data.subscribe(data => {
+      this.initData = data.initDataResolver;
     });
-    this.addressForm = this.generateAddress();
+    this.quantity = this.initData.units;
+    this.selectedUnit = this.quantity[this.FIRST];
+    this.addressForm = this.generateAddress(this.initData.address);
     this.donateForm = this.generateDonationForm();
   }
 
@@ -56,18 +61,18 @@ export class DonateFoodComponent implements OnInit {
       create_date: this.generateCurrentDate(),
       pickup_date: ['', Validators.compose([Validators.required])],
       quantity: [this.value, Validators.compose([Validators.required])],
-      unit: 1,
+      unit: this.selectedUnit.id,
       address: this.addressForm,
     });
   }
 
-  private generateAddress(): FormGroup {
+  private generateAddress(address: Address): FormGroup {
     return this._formBuilder.group({
-      street: ['' , Validators.compose([Validators.required])],
-      local_number: ['' , Validators.compose([Validators.required])],
-      postal_code: ['' , Validators.compose([Validators.required])],
-      city: ['' , Validators.compose([Validators.required])],
-      country: ['' , Validators.compose([Validators.required])],
+      street: [address.street , Validators.compose([Validators.required])],
+      local_number: [address.local_number, Validators.compose([Validators.required])],
+      postal_code: [address.postal_code , Validators.compose([Validators.required])],
+      city: [address.city , Validators.compose([Validators.required])],
+      country: [address.country , Validators.compose([Validators.required])],
     });
   }
 
@@ -81,6 +86,9 @@ export class DonateFoodComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    console.log(this.selectedUnit.id);
+    this.donateForm.get('quantity').setValue(this.value);
+    this.donateForm.get('unit').setValue(this.selectedUnit.id);
     this._donationService.postDonation(this.donateForm.value);
   }
 
