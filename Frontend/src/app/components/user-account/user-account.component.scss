@@ -146,4 +146,8 @@
     max-width: 700px;
     color: red;
   }
+
+  .inputErrors {
+    @include flexColumnCenter;
+  }
 }

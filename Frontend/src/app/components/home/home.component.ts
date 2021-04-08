@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
   public ngOnInit(): void {
     this.isOpen$ = this._navbarService.isOpen$;
     this.loggedUser$ = this._authService.loggedUser$;
-    console.log(this.loggedUser$);
   }
 
   public showMenu(): void {

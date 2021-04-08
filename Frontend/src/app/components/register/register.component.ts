@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 // @ts-ignore
-import {passwordMatchValidator} from "../../validators/passwordMatch.validator";
+import {passwordMatchValidator} from '../../validators/passwordMatch.validator';
 // @ts-ignore
-import {patternValidator} from "../../validators/patternValidator.validator";
-import {UserService} from "../../services/user.service";
-import {faAt, faLock, faUser} from "@fortawesome/free-solid-svg-icons";
-import {Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
-import {NavbarService} from "../../shared/navbar/navbar.service";
-import {LocalStorageService} from "../../services/local-storage.service";
+import {patternValidator} from '../../validators/patternValidator.validator';
+import {UserService} from '../../services/user.service';
+import {faAt, faLock, faUser} from '@fortawesome/free-solid-svg-icons';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import {NavbarService} from '../../shared/navbar/navbar.service';
+import {LocalStorageService} from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-register',
@@ -76,10 +76,10 @@ export class RegisterComponent implements OnInit {
   public onSubmit(): void  {
     this._registrationService.registerUser$(this.registrationForm.value).subscribe(
       _ => {
-        this._toastr.success("Registration successful");
-        this._router.navigate(["login"]);
+        this._toastr.success('Registration successful');
+        this._router.navigate(['login']);
       },
-    )
+    );
   }
 
   public homePageRedirect(): void {
@@ -87,7 +87,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public retainValue(event: any): void {
-    const key: string = (event.target.id).replace(/([-])/, "");
+    const key: string = (event.target.id).replace(/([-])/, '');
     this._localStorageService.setItem(key, event.target.value);
   }
 }

@@ -157,5 +157,16 @@
   @media (min-width: 1024px) {
     .donate__submit {
       width: 230px; } }
+.donate__submit:disabled {
+  pointer-events: none;
+  background-color: #fbc483; }
+
+small {
+  min-width: 200px;
+  max-width: 400px;
+  color: red; }
+
+.checkbox-disabled {
+  color: #fbc483; }
 
 /*# sourceMappingURL=donate-food.component.css.map */

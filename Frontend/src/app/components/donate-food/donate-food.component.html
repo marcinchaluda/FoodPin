@@ -2,51 +2,61 @@
   <div class="donate">
     <header class="donate__header">
       <h1 class="donate__title">Donate food details</h1>
-      <div class="donate__close">
+      <div class="donate__close" (click)="homePageRedirect()">
         <button><fa-icon class="donate__icon" [icon]="closeIcon"></fa-icon></button>
       </div>
     </header>
   </div>
-  <form class="donate__details">
-    <section class="donate__info">
+  <form class="donate__details" (ngSubmit)="onSubmit()">
+    <section class="donate__info" [formGroup]="addressForm">
       <div class="donate__field-group">
         <label for="street">Street</label>
-        <input class="donate__field" id="street" type="text" placeholder="street">
+        <input class="donate__field" id="street" type="text" placeholder="street" formControlName="street">
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:street}"></ng-container>
       </div>
       <div class="donate__field-group">
         <label for="local-number">Local number</label>
-        <input class="donate__field" id="local-number" type="number" placeholder="local number">
+        <input class="donate__field" id="local-number" type="number" placeholder="local number" formControlName="local_number">
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:localnumber}"></ng-container>
       </div>
       <div class="donate__field-group">
         <label for="postal-code">Postal code</label>
-        <input class="donate__field" id="postal-code" type="number" placeholder="postal code">
+        <input class="donate__field" id="postal-code" type="number" placeholder="postal code" formControlName="postal_code">
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:postalcode}"></ng-container>
       </div>
       <div class="donate__field-group">
         <label for="city">City</label>
-        <input class="donate__field" id="city" type="text" placeholder="city">
+        <input class="donate__field" id="city" type="text" placeholder="city" formControlName="city">
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:city}"></ng-container>
       </div>
       <div class="donate__field-group">
         <label for="country">Country</label>
-        <input class="donate__field" id="country" type="text" placeholder="country">
+        <input class="donate__field" id="country" type="text" placeholder="country" formControlName="country">
+        <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:country}"></ng-container>
       </div>
-      <div class="donate__field-group">
-        <label for="food-item">Food item(s):</label>
-        <input class="donate__field" id="food-item" type="text" placeholder="food product">
-      </div>
-      <div class="donate__field-group">
-        <label for="time">Preferred time:</label>
-        <input class="donate__field" id="time" type="time" placeholder="time to pick up">
-      </div>
-      <div class="donate__field-group">
-        <label for="date">Pickup date:</label>
-        <input class="donate__field" id="date" type="date" placeholder="pick up date">
-      </div>
+      <ng-container [formGroup]="donateForm">
+        <div class="donate__field-group">
+          <label for="food-item">Food item(s):</label>
+          <input class="donate__field" id="food-item" type="text" placeholder="food product" formControlName="title">
+          <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:title}"></ng-container>
+        </div>
+        <div class="donate__field-group">
+          <label for="time">Preferred time:</label>
+          <input class="donate__field" id="time" type="time" placeholder="time to pick up" formControlName="preferred_time">
+          <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:preferredtime}"></ng-container>
+        </div>
+        <div class="donate__field-group">
+          <label for="date">Pickup date:</label>
+          <input class="donate__field" id="date" type="date" placeholder="pick up date" formControlName="pickup_date">
+          <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:pickupdate}"></ng-container>
+        </div>
+      </ng-container>
     </section>
     <section class="donate__quantity">
       <div class="unit">
         <label id="quantity" for="units">Quantity:</label>
         <select id="units" name="units" [(ngModel)]="selectedUnit">
-          <option *ngFor="let unit of quantity" [value]="unit">{{unit | singularPlural: value}}</option>
+          <option *ngFor="let unit of quantity" [ngValue]="unit">{{unit.name | singularPlural: value}}</option>
         </select>
       </div>
       <div class="donate__slider">
@@ -66,16 +76,27 @@
         </div>
       </div>
     </section>
-    <section class="donate__description">
+    <section class="donate__description" [formGroup]="donateForm">
       <label for="description">Description:</label>
-      <textarea id='description' name="description" cols="40" rows="6" placeholder="add product description"></textarea>
+      <textarea id='description' name="description" cols="40" rows="6" placeholder="add product description"
+                formControlName="description"></textarea >
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:description}"></ng-container>
     </section>
     <section class="donate__buttons">
       <div class="donate__checkbox">
-        <input type="checkbox" id="food-quality">
-        <label for="food-quality">I assure that food quality and hygiene has maintained</label>
+        <input type="checkbox" id="food-quality" [(ngModel)]="isChecked" [ngModelOptions]="{standalone: true}"
+               [disabled]="!donateForm.valid">
+        <label for="food-quality" [ngClass]="{'checkbox-disabled': !donateForm.valid}">
+          I assure that food quality and hygiene has maintained
+        </label>
       </div>
-      <button type='submit' class="donate__submit" (click)="onSubmit()">Donate</button>
+      <button type='submit' class="donate__submit" [disabled]="!isChecked">Donate</button>
     </section>
   </form>
 </div>
+
+<ng-template let-error="inputFieldValue" #validationError>
+  <div class="inputErrors" *ngIf="error.invalid && error.touched">
+    <small [innerHTML]="error.errors | inputError"></small>
+  </div>
+</ng-template>

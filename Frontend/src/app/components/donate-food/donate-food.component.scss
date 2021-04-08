@@ -223,4 +223,19 @@
       width: 230px;
     }
   }
+
+  &__submit:disabled {
+    pointer-events: none;
+    background-color: lighten($colorOrange, 20%);
+  }
+}
+
+small {
+  min-width: 200px;
+  max-width: 400px;
+  color: red;
+}
+
+.checkbox-disabled {
+  color: lighten($colorOrange, 20%);;
 }
