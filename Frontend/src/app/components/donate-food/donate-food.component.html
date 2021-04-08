@@ -76,9 +76,11 @@
         </div>
       </div>
     </section>
-    <section class="donate__description">
+    <section class="donate__description" [formGroup]="donateForm">
       <label for="description">Description:</label>
-      <textarea id='description' name="description" cols="40" rows="6" placeholder="add product description"></textarea>
+      <textarea id='description' name="description" cols="40" rows="6" placeholder="add product description"
+                formControlName="description"></textarea >
+      <ng-container *ngTemplateOutlet="validationError; context:{inputFieldValue:description}"></ng-container>
     </section>
     <section class="donate__buttons">
       <div class="donate__checkbox">

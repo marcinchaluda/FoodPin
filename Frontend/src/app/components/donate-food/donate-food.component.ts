@@ -4,6 +4,7 @@ import {Options} from '@angular-slider/ngx-slider';
 import {NavbarService} from '../../shared/navbar/navbar.service';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LocalStorageService} from '../../services/local-storage.service';
+import {DonationsService} from '../../services/donations.service';
 
 @Component({
   selector: 'app-donate-food',
@@ -30,6 +31,7 @@ export class DonateFoodComponent implements OnInit {
     private _navbarService: NavbarService,
     private _formBuilder: FormBuilder,
     private _localStorageService: LocalStorageService,
+    private _donationService: DonationsService,
   ) { }
 
   ngOnInit(): void {
@@ -39,23 +41,17 @@ export class DonateFoodComponent implements OnInit {
 
   private generateDonationForm(): FormGroup {
     return this._formBuilder.group({
-      address: this.addressForm,
-      create_date: this.generateCurrentDate(),
-      description: [''],
-      distance: ['1.09', Validators.compose([Validators.required])],
+      user: Number(this._localStorageService.getItem('userId')),
       title: ['' , Validators.compose([Validators.required])],
-      preferred_time: ['' , Validators.compose([Validators.required])],
+      description: ['', Validators.compose([Validators.required])],
       photo_url: ['photoURL'],
-      quantity: [this.value, Validators.compose([Validators.required])],
+      preferred_time: ['' , Validators.compose([Validators.required])],
+      distance: ['1.09', Validators.compose([Validators.required])],
+      create_date: this.generateCurrentDate(),
       pickup_date: ['', Validators.compose([Validators.required])],
-      unit: this._formBuilder.group({
-        name: [this.selectedUnit, Validators.compose([Validators.required])],
-      }),
-      user: this._formBuilder.group({
-        id:  [this._localStorageService.getItem('userId'), Validators.compose([Validators.required])],
-        username: [this._localStorageService.getItem('username'),
-          Validators.compose([Validators.required, Validators.minLength(6)])],
-      }),
+      quantity: [this.value, Validators.compose([Validators.required])],
+      unit: 1,
+      address: this.addressForm,
     });
   }
 
@@ -75,12 +71,11 @@ export class DonateFoodComponent implements OnInit {
     const month = String(today.getMonth() + 1).padStart(2, '0');
     const year = today.getFullYear();
 
-    return `${day}-${month}-${year}`;
+    return `${year}-${month}-${day}`;
   }
 
   public onSubmit(): void {
-    console.log(this.isChecked);
-    console.log(this.donateForm.value);
+    this._donationService.postDonation(this.donateForm.value);
   }
 
   public homePageRedirect(): void {
@@ -117,5 +112,9 @@ export class DonateFoodComponent implements OnInit {
 
   public get pickupdate(): AbstractControl {
     return this.donateForm.get('pickup_date');
+  }
+
+  public get description(): AbstractControl {
+    return this.donateForm.get('description');
   }
 }
