@@ -4,8 +4,15 @@
       <div class="donation__info-container">
         <div class="donation__avatar-container"><div class="donation__user-avatar"></div></div>
         <div class="donation__info">
-          <p class="donation__user">{{donation['user']['username']}}-{{donation['title'] | lowercase}}</p>
-          <section class="donation__product-info">
+          <div class="donation__user">
+            <p>{{donation['user']['username']}}-{{donation['title'] | lowercase}}</p>
+            <ng-container *ngIf="loggedUser$ | async">
+              <button *ngIf="loggedUserId == donation['user']['id']" (click)="deleteDonation()">
+                <fa-icon class="donation__icon" [icon]="trashIcon"></fa-icon>
+              </button>
+            </ng-container>
+          </div>
+          <section class="donation__product-info" [ngClass]="{'logged': loggedUserId == donation['user']['id']}">
             <p class="donation__distance">
               <img src="assets/Icons/distance-20x20.png"><span>{{donation['distance']}}</span>
             </p>

@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from './http.service';
 import {Observable, Subscription} from 'rxjs';
-import {map} from 'rxjs/operators';
 import {InitDataModel} from '../models/InitDataModel';
 
 @Injectable({

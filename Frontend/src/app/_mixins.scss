@@ -235,3 +235,19 @@
     }
   }
 }
+
+
+@mixin closeButton($color) {
+  button {
+    background-color: $colorWhite;
+    border-radius: 50%;
+    font-size: 1.2em;
+    color: $color;
+    border: 2px solid $color;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 3px 0.5px 0 0;
+    box-shadow: 0 0 20px 20px rgba(255, 255, 255, 0.8);
+  }
+}

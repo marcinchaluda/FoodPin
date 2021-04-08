@@ -65,18 +65,7 @@
   }
 
   &__close {
-    button {
-      background-color: $colorWhite;
-      border-radius: 50%;
-      font-size: 1.2em;
-      color: $colorGrey;
-      z-index: -1;
-      border: 2px solid $colorGrey;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      padding: 3px 0.5px 0 0;
-    }
+   @include closeButton($colorGrey);
   }
 
   &__quantity {
