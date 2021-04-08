@@ -7,9 +7,11 @@
           <div class="donation__user">
             <p>{{donation['user']['username']}}-{{donation['title'] | lowercase}}</p>
             <ng-container *ngIf="loggedUser$ | async">
-              <button *ngIf="loggedUserId == donation['user']['id']" (click)="deleteDonation()">
-                <fa-icon class="donation__icon" [icon]="trashIcon"></fa-icon>
-              </button>
+              <div class="donation__buttons">
+                <button *ngIf="loggedUserId == donation['user']['id']" (click)="deleteDonation()">
+                  <fa-icon class="donation__icon" [icon]="trashIcon"></fa-icon>
+                </button>
+              </div>
             </ng-container>
           </div>
           <section class="donation__product-info" [ngClass]="{'logged': loggedUserId == donation['user']['id']}">
