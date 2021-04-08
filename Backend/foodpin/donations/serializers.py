@@ -48,3 +48,9 @@ class DonationCreateSerializer(serializers.ModelSerializer):
     #     instance.save()
     #
     #     return instance
+
+
+class UnitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Unit
+        fields = '__all__'
