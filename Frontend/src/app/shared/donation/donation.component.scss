@@ -27,9 +27,19 @@
     p {
       align-self: center;
     }
+  }
+
+  &__buttons {
+    display: flex;
 
     button {
+      width: 40px;
+      height: 40px;
       transform: translate(5px, -20px);
+
+      @include mediaQuery(smartphone) {
+        transform: translate(5px, -30px);
+      }
     }
   }
 
