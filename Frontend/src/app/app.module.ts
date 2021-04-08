@@ -2,7 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {RegisterComponent} from './components/register/register.component';
@@ -18,15 +17,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {AuthorizationGuard} from './guards/authorization.guard';
 import {SharedModule} from './shared/shared.module';
 import {TokenInterceptor} from './interceptors/token.interceptor';
-import { AboutComponent } from './components/about/about.component';
-import { StatisticsComponent } from './components/statistics/statistics.component';
-import { CombineStatsComponent } from './components/combine-stats/combine-stats.component';
-import { DonationsComponent } from './components/donations/donations.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { DonateFoodComponent } from './components/donate-food/donate-food.component';
+import {AboutComponent} from './components/about/about.component';
+import {StatisticsComponent} from './components/statistics/statistics.component';
+import {CombineStatsComponent} from './components/combine-stats/combine-stats.component';
+import {DonationsComponent} from './components/donations/donations.component';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {NgxSliderModule} from '@angular-slider/ngx-slider';
-import { SingularPluralPipe } from './pipes/singular-plural.pipe';
 import {InitDataResolver} from './resolvers/init-data.resolver';
+import {CanActivateGuard} from './guards/can-activate.guard';
 
 @NgModule({
   declarations: [
@@ -39,8 +37,6 @@ import {InitDataResolver} from './resolvers/init-data.resolver';
       CombineStatsComponent,
       DonationsComponent,
       PageNotFoundComponent,
-      DonateFoodComponent,
-      SingularPluralPipe,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +62,7 @@ import {InitDataResolver} from './resolvers/init-data.resolver';
         {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
         AuthorizationGuard,
         InitDataResolver,
+        CanActivateGuard,
     ],
     exports: [
     ],

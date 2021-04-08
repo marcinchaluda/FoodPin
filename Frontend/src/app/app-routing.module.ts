@@ -10,6 +10,7 @@ import {DonationsComponent} from './components/donations/donations.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {DonateFoodComponent} from './components/donate-food/donate-food.component';
 import {InitDataResolver} from './resolvers/init-data.resolver';
+import {CanActivateGuard} from './guards/can-activate.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -18,9 +19,12 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'statistics', component: StatisticsComponent},
-  {path: 'donate-food', component: DonateFoodComponent, resolve: {
-    initDataResolver: InitDataResolver
-    }},
+  {
+    path: 'donate-food',
+    loadChildren: () => import('./components/donate-food/donate-food.module').then(m => m.DonateFoodModule),
+    resolve: { initDataResolver: InitDataResolver },
+    canActivate: [CanActivateGuard],
+    },
   {
     path: 'account',
     loadChildren: () => import('./components/user-account/user-account.module').then(m => m.UserAccountModule),

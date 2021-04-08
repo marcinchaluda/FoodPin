@@ -50,8 +50,8 @@ export class UserAccountComponent implements OnInit {
           Validators.required, patternValidator(/^[+]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/, {invalidNumber: true})])],
       address: this._formBuilder.group({
         street: [this.address.street],
-        localnumber: [this.address.localnumber],
-        postalcode: [this.address.postalcode, patternValidator(/\d{2}-\d{3}/, {invalidPostalCode: true})],
+        localnumber: [this.address.local_number],
+        postalcode: [this.address.postal_code, patternValidator(/\d{2}-\d{3}/, {invalidPostalCode: true})],
         city: [this.address.city],
         country: [this.address.country],
       }),

@@ -10,8 +10,8 @@ export class AddressModel {
 
   constructor(input: Address) {
     this.street = input?.street;
-    this.localnumber = input?.localnumber;
-    this.postalcode = input?.postalcode;
+    this.localnumber = input?.local_number;
+    this.postalcode = input?.postal_code;
     this.city = input?.city;
     this.country = input?.country;
   }

@@ -16,7 +16,7 @@ export class InitDataModel {
     return new AddressModel(address);
   }
 
-  createUnits(units: []): Array<Unit> {
+  createUnits(units: Array<Unit> | undefined): Array<Unit> {
     const unitsArray = [];
     units.forEach(unit => {
       unitsArray.push(unit);
