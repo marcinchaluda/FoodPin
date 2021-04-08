@@ -5,6 +5,7 @@ import {NavbarService} from '../../shared/navbar/navbar.service';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LocalStorageService} from '../../services/local-storage.service';
 import {DonationsService} from '../../services/donations.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-donate-food',
@@ -19,6 +20,7 @@ export class DonateFoodComponent implements OnInit {
   donatePictures: Array<string> = ['stew.jpg', 'tomatoes.jpg'];
   quantity: Array<string> = ['Item', 'Kilogram'];
   selectedUnit: string = this.quantity[this.FIRST];
+  initData: Observable<object>;
   value = 0;
   options: Options = {
     floor: 0,
@@ -35,6 +37,10 @@ export class DonateFoodComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this._donationService.getInitData(Number(this._localStorageService.getItem('userId'))).subscribe(r => {
+      console.log(r);
+      this.initData = r;
+    });
     this.addressForm = this.generateAddress();
     this.donateForm = this.generateDonationForm();
   }
