@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CanLoad, Route, Router} from '@angular/router';
-import {AuthorizationService} from "../services/authorization.service";
-import {NavbarService} from "../shared/navbar/navbar.service";
+import {AuthorizationService} from '../services/authorization.service';
+import {NavbarService} from '../shared/navbar/navbar.service';
 
 @Injectable({
   providedIn: 'root'

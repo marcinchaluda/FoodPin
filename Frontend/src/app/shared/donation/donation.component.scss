@@ -19,7 +19,22 @@
   }
 
   &__user {
+    @include closeButton($colorOrange);
+    display: flex;
+    justify-content: space-between;
     padding-left: 1em;
+
+    p {
+      align-self: center;
+    }
+
+    button {
+      transform: translate(5px, -20px);
+    }
+  }
+
+  &__icon {
+    padding-left: 1px;
   }
 
   &__details {
@@ -83,4 +98,8 @@
       padding: 0 0.5em 0.3em 0;
     }
   }
+}
+
+.logged {
+  transform: translate(0, -10px);
 }
