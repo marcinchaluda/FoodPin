@@ -1,3 +1,65 @@
-
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 30vh;
+  background-color: #f79521;
+  color: white;
+  margin: 0 auto; }
+  .modal__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bolder;
+    text-align: center; }
+    @media (min-width: 1024px) {
+      .modal__logo {
+        font-size: 4em; } }
+  .modal__image {
+    margin: 0 auto; }
+  .modal__brand-name {
+    color: #f79521;
+    margin-bottom: 0.5em; }
+  @media (min-width: 1024px) {
+    .modal {
+      width: 300px;
+      height: 40vh; } }
+  @media (min-width: 1024px) {
+    .modal__logo {
+      font-size: 2.5em; } }
+  .modal__info {
+    width: 60%;
+    margin: 0 auto;
+    padding: 2em 0;
+    text-align: center; }
+    .modal__info p {
+      font-size: 1.1em; }
+      @media (min-width: 1024px) {
+        .modal__info p {
+          font-size: 1.3em; } }
+  .modal__buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 1em;
+    width: 60%;
+    margin: 0 auto; }
+    .modal__buttons button {
+      padding: 0.2em 0;
+      width: 50px;
+      border-radius: 25px;
+      font-size: 1em;
+      background-color: #ffffff;
+      color: #f79521;
+      border: none; }
+      @media (min-width: 1024px) {
+        .modal__buttons button {
+          padding: 0.5em 0;
+          width: 70px;
+          font-size: 1.2em; } }
 
 /*# sourceMappingURL=donate-food-modal.component.css.map */

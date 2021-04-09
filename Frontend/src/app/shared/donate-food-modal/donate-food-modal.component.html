@@ -1,5 +1,19 @@
-<jw-modal>
-  <h1>A Custom Modal!</h1>
-  <p>Home page text: <input type="text"/></p>
-  <button>Close</button>
-</jw-modal>
+<div class="wrapper">
+  <div class="modal">
+    <jw-modal>
+      <div class="modal__logo" (click)="homePageRedirect()">
+        <picture class="modal__image">
+          <source media="(min-width: 1024px)" srcset="./assets/Logo/logo-100x75-white.png">
+          <img src="./assets/Logo/logo-75x56-white.png" alt="food pin logo">
+        </picture>
+      </div>
+      <section class="modal__info">
+        <p>Would you like to donate another product?</p>
+      </section>
+      <section class="modal__buttons">
+        <button>Yes</button>
+        <button>No</button>
+      </section>
+    </jw-modal>
+  </div>
+</div>
