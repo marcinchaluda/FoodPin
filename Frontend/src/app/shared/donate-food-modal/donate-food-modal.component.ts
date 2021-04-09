@@ -8,14 +8,8 @@ import {NavbarService} from '../navbar/navbar.service';
 })
 export class DonateFoodModalComponent implements OnInit {
 
-  constructor(
-    private _navbarService: NavbarService,
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  public homePageRedirect(): void {
-    this._navbarService.redirectToHomePage();
   }
 }
