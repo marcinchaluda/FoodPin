@@ -97,7 +97,6 @@ export class DonateFoodComponent implements OnInit {
     this._donationService.postDonation(this.donateForm.value);
     this.resetDonateForm();
     this.isChecked = false;
-    console.log(this.donateForm.valid);
   }
 
   private resetDonateForm(): void {
