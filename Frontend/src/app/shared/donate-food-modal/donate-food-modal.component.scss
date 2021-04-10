@@ -1,0 +1,75 @@
+@import "../../variables";
+@import "../../mixins";
+
+.wrapper {
+  display: flex;
+  padding-top: 8em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  background-color: rgba(247, 149, 33, 0.5);
+}
+.modal {
+  @include logoStyles;
+  @include flexColumnCenter;
+  width: 250px;
+  height: 300px;
+  background-color: $colorOrange;
+  color: white;
+  margin: 0 auto;
+  border-radius: 10px;
+
+  @include mediaQuery(tabletLarge) {
+    width: 300px;
+    height: 400px;
+  }
+
+  &__logo {
+    @include mediaQuery(tabletLarge) {
+      font-size: 2.5em;
+    }
+  }
+
+  &__info {
+    width: 60%;
+    margin: 0 auto;
+    padding: 2em 0;
+    text-align: center;
+
+    p {
+      font-size: 1.1em;
+
+      @include mediaQuery(tabletLarge) {
+        font-size: 1.3em;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 1em;
+    width: 60%;
+    margin: 0 auto;
+
+    button {
+      padding: 0.2em 0;
+      width: 50px;
+      border-radius: 25px;
+      font-size: 1em;
+      background-color: $colorWhite;
+      color: $colorOrange;
+      border: none;
+
+      @include mediaQuery(tabletLarge) {
+        padding: 0.5em 0;
+        width: 70px;
+        font-size: 1.2em;
+      }
+    }
+  }
+}

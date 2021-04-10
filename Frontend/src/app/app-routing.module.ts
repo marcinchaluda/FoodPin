@@ -8,7 +8,6 @@ import {AboutComponent} from './components/about/about.component';
 import {StatisticsComponent} from './components/statistics/statistics.component';
 import {DonationsComponent} from './components/donations/donations.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
-import {DonateFoodComponent} from './components/donate-food/donate-food.component';
 import {InitDataResolver} from './resolvers/init-data.resolver';
 import {CanActivateGuard} from './guards/can-activate.guard';
 

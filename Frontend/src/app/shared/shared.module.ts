@@ -11,6 +11,8 @@ import {DonationComponent} from './donation/donation.component';
 import {InputErrorPipe} from '../pipes/input-error.pipe';
 import { MostWasteProductsComponent } from './most-waste-products/most-waste-products.component';
 import { InfoStatsComponent } from './info-stats/info-stats.component';
+import { DonateFoodModalComponent } from './donate-food-modal/donate-food-modal.component';
+import {DonateFoodModalService} from './donate-food-modal/donate-food-modal.service';
 
 @NgModule({
   declarations: [
@@ -21,15 +23,17 @@ import { InfoStatsComponent } from './info-stats/info-stats.component';
     InputErrorPipe,
     MostWasteProductsComponent,
     InfoStatsComponent,
+    DonateFoodModalComponent,
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
-    RouterModule,
+    RouterModule
   ],
   providers: [
     NavbarService,
     LoaderService,
+    DonateFoodModalService,
   ],
     exports: [
         HeaderComponent,
@@ -39,6 +43,7 @@ import { InfoStatsComponent } from './info-stats/info-stats.component';
         InputErrorPipe,
         MostWasteProductsComponent,
         InfoStatsComponent,
+        DonateFoodModalComponent,
     ]
 })
 export class SharedModule { }

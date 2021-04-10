@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
-import {Router} from "@angular/router";
+import {BehaviorSubject} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class NavbarService {
@@ -16,8 +16,8 @@ export class NavbarService {
     this.isOpen$.next(false);
   }
 
-  public redirectToHomePage() {
+  public redirectToHomePage(): void {
     this.hideNavbar();
-    this._router.navigate(["home"]);
+    this._router.navigate(['home']);
   }
 }
