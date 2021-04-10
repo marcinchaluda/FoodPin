@@ -94,7 +94,9 @@
     </section>
   </form>
 </div>
-<app-donate-food-modal></app-donate-food-modal>
+<ng-container *ngIf="isOpen$ | async">
+  <app-donate-food-modal></app-donate-food-modal>
+</ng-container>
 <ng-template let-error="inputFieldValue" #validationError>
   <div class="inputErrors" *ngIf="error.invalid && error.touched">
     <small [innerHTML]="error.errors | inputError"></small>

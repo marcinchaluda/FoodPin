@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="modal">
-    <jw-modal>
+    <div id="donate-modal">
       <div class="modal__logo">
         <picture class="modal__image">
           <source media="(min-width: 1024px)" srcset="./assets/Logo/logo-100x75-white.png">
@@ -11,9 +11,9 @@
         <p>Would you like to donate another product?</p>
       </section>
       <section class="modal__buttons">
-        <button>Yes</button>
-        <button>No</button>
+        <button (click)="addDonation()">Yes</button>
+        <button (click)="redirectToDonations()">No</button>
       </section>
-    </jw-modal>
+    </div>
   </div>
 </div>

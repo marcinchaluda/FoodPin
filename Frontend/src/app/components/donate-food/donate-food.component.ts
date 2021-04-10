@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {faPlus, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {Options} from '@angular-slider/ngx-slider';
 import {NavbarService} from '../../shared/navbar/navbar.service';
@@ -9,6 +9,8 @@ import {InitDataModel} from '../../models/InitDataModel';
 import {ActivatedRoute} from '@angular/router';
 import {Address} from '../../models/Address';
 import {Unit} from '../../models/Unit';
+import {BehaviorSubject} from 'rxjs';
+import {DonateFoodModalService} from '../../shared/donate-food-modal/donate-food-modal.service';
 
 @Component({
   selector: 'app-donate-food',
@@ -31,6 +33,7 @@ export class DonateFoodComponent implements OnInit {
   };
   donateForm: FormGroup;
   addressForm: FormGroup;
+  isOpen$: BehaviorSubject<boolean>;
 
   constructor(
     private _navbarService: NavbarService,
@@ -38,9 +41,11 @@ export class DonateFoodComponent implements OnInit {
     private _localStorageService: LocalStorageService,
     private _donationService: DonationsService,
     private _actRoute: ActivatedRoute,
+    private _modalService: DonateFoodModalService,
   ) { }
 
   ngOnInit(): void {
+    this.isOpen$ = this._modalService.isOpen$;
     this._actRoute.data.subscribe(data => {
       this.initData = data.initDataResolver;
     });
@@ -86,10 +91,31 @@ export class DonateFoodComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    console.log(this.selectedUnit.id);
+    this._modalService.showModal();
     this.donateForm.get('quantity').setValue(this.value);
     this.donateForm.get('unit').setValue(this.selectedUnit.id);
     this._donationService.postDonation(this.donateForm.value);
+    this.resetDonateForm();
+    this.isChecked = false;
+    console.log(this.donateForm.valid);
+  }
+
+  private resetDonateForm(): void {
+    this.value = 0;
+    this.selectedUnit = this.quantity[this.FIRST];
+    this.donateForm.get('title').setValue('');
+    this.donateForm.get('preferred_time').setValue('');
+    this.donateForm.get('pickup_date').setValue('');
+    this.donateForm.get('description').setValue('');
+    this.resetFormValidators();
+  }
+
+  private resetFormValidators(): void {
+    for (const error in this.donateForm.controls) {
+      if (error) {
+        this.donateForm.controls[error].markAsUntouched();
+      }
+    }
   }
 
   public homePageRedirect(): void {

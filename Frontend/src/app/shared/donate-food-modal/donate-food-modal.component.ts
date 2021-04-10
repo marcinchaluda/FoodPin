@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {NavbarService} from '../navbar/navbar.service';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
+import {DonateFoodModalService} from './donate-food-modal.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-donate-food-modal',
@@ -8,8 +10,21 @@ import {NavbarService} from '../navbar/navbar.service';
 })
 export class DonateFoodModalComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _router: Router,
+    private _modalService: DonateFoodModalService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  addDonation(): void {
+    this._modalService.hideModal();
+    this._router.navigate(['donate-food']);
+  }
+
+  redirectToDonations(): void {
+    this._modalService.hideModal();
+    this._router.navigate(['donations']);
   }
 }
