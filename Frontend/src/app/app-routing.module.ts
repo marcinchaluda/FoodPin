@@ -10,6 +10,7 @@ import {DonationsComponent} from './components/donations/donations.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {InitDataResolver} from './resolvers/init-data.resolver';
 import {CanActivateGuard} from './guards/can-activate.guard';
+import {DonationsResolver} from './resolvers/donations.resolver';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -33,6 +34,7 @@ const routes: Routes = [
   {
     path: 'map',
     loadChildren: () => import('./shared/map/map.module').then(m => m.MapModule),
+    resolve: {donations$: DonationsResolver}
   },
   {path: '**', component: PageNotFoundComponent}
 ];

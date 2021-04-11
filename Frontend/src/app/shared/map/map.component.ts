@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {latLng, marker, icon, Marker, MarkerClusterGroup, tileLayer, Icon, IconOptions} from 'leaflet';
+import {ActivatedRoute} from '@angular/router';
 
 class MarkerClusterGroupOptions {
 }
@@ -10,6 +11,7 @@ class MarkerClusterGroupOptions {
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+  donations: Array<object>;
   options = {
     layers: [
       tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -25,15 +27,9 @@ export class MapComponent implements OnInit {
     zoom: 14,
     center: latLng(50.061389, 19.937222)
   };
-  coords = [
-    [50.061389, 19.937222],
-    [50.044467, 19.950578],
-    [50.049538, 20],
-    [50.051136, 19.946973],
-    [50.045735, 19.958131],
-  ];
 
   constructor(
+    private _actRoute: ActivatedRoute,
   ) { }
 
   markerClusterGroup: MarkerClusterGroup;
@@ -41,20 +37,25 @@ export class MapComponent implements OnInit {
   markerClusterOptions: MarkerClusterGroupOptions;
 
   ngOnInit(): void {
-    this.markerClusterData = this.generateMarker(this.coords);
+    this._actRoute.data.subscribe(data => {
+      this.donations = data.donations$;
+    });
+    this.markerClusterData = this.generateMarker();
+    console.log(this.donations);
   }
 
-  private markerClusterReady(group: MarkerClusterGroup): void {
+  public markerClusterReady(group: MarkerClusterGroup): void {
     this.markerClusterGroup = group;
   }
 
-  private generateMarker(coords: number[][]): Marker[] {
+  private generateMarker(): Marker[] {
     const data: Marker[] = [];
     // tslint:disable-next-line:no-shadowed-variable
     const icon = this.createIcon();
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < coords.length; i++) {
-      data.push(marker( [coords[i][0], coords[i][1]], { icon }));
+
+    for (const donation of this.donations) {
+      // @ts-ignore
+      data.push(marker( [donation.address.latitude, donation.address.longitude], { icon }));
     }
     return data;
   }
@@ -64,7 +65,6 @@ export class MapComponent implements OnInit {
       iconSize: [50, 38],
       iconAnchor: [0, 0],
       popupAnchor: [0, 0],
-      // specify the path here
       iconUrl: '../../../assets/Logo/logo-50x38.png',
     });
   }

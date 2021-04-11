@@ -28,6 +28,7 @@ import {CanActivateGuard} from './guards/can-activate.guard';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import {MapModule} from './shared/map/map.module';
 import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster';
+import {DonationsResolver} from './resolvers/donations.resolver';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster'
         {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
         AuthorizationGuard,
         InitDataResolver,
+        DonationsResolver,
         CanActivateGuard,
     ],
     exports: [
