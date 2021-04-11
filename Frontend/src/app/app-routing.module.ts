@@ -10,6 +10,8 @@ import {DonationsComponent} from './components/donations/donations.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {InitDataResolver} from './resolvers/init-data.resolver';
 import {CanActivateGuard} from './guards/can-activate.guard';
+import {DonationsResolver} from './resolvers/donations.resolver';
+import {MapComponent} from './shared/map/map.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -30,6 +32,11 @@ const routes: Routes = [
     canLoad: [AuthorizationGuard],
   },
   {path: 'donations', component: DonationsComponent},
+  {
+    path: 'map',
+    loadChildren: () => import('./components/donations-map/donations-map.module').then(m => m.DonationsMapModule),
+    resolve: {donations$: DonationsResolver}
+  },
   {path: '**', component: PageNotFoundComponent}
 ];
 

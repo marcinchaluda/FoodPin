@@ -13,6 +13,9 @@ import { MostWasteProductsComponent } from './most-waste-products/most-waste-pro
 import { InfoStatsComponent } from './info-stats/info-stats.component';
 import { DonateFoodModalComponent } from './donate-food-modal/donate-food-modal.component';
 import {DonateFoodModalService} from './donate-food-modal/donate-food-modal.service';
+import {MapComponent} from './map/map.component';
+import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster';
 
 @NgModule({
   declarations: [
@@ -24,26 +27,30 @@ import {DonateFoodModalService} from './donate-food-modal/donate-food-modal.serv
     MostWasteProductsComponent,
     InfoStatsComponent,
     DonateFoodModalComponent,
+    MapComponent,
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
-    RouterModule
+    RouterModule,
+    LeafletModule,
+    LeafletMarkerClusterModule
   ],
   providers: [
     NavbarService,
     LoaderService,
     DonateFoodModalService,
   ],
-    exports: [
-        HeaderComponent,
-        LoaderComponent,
-        NavbarComponent,
-        DonationComponent,
-        InputErrorPipe,
-        MostWasteProductsComponent,
-        InfoStatsComponent,
-        DonateFoodModalComponent,
-    ]
+  exports: [
+    HeaderComponent,
+    LoaderComponent,
+    NavbarComponent,
+    DonationComponent,
+    InputErrorPipe,
+    MostWasteProductsComponent,
+    InfoStatsComponent,
+    DonateFoodModalComponent,
+    MapComponent,
+  ]
 })
 export class SharedModule { }

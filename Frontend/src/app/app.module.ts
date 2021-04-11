@@ -26,6 +26,8 @@ import {NgxSliderModule} from '@angular-slider/ngx-slider';
 import {InitDataResolver} from './resolvers/init-data.resolver';
 import {CanActivateGuard} from './guards/can-activate.guard';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster';
+import {DonationsResolver} from './resolvers/donations.resolver';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import {LeafletModule} from '@asymmetrik/ngx-leaflet';
     NgxSliderModule,
     FormsModule,
     LeafletModule,
+    LeafletMarkerClusterModule,
   ],
     providers: [
         {
@@ -64,6 +67,7 @@ import {LeafletModule} from '@asymmetrik/ngx-leaflet';
         {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
         AuthorizationGuard,
         InitDataResolver,
+        DonationsResolver,
         CanActivateGuard,
     ],
     exports: [
