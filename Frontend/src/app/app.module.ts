@@ -26,6 +26,7 @@ import {NgxSliderModule} from '@angular-slider/ngx-slider';
 import {InitDataResolver} from './resolvers/init-data.resolver';
 import {CanActivateGuard} from './guards/can-activate.guard';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+import {MapModule} from './shared/map/map.module';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {LeafletModule} from '@asymmetrik/ngx-leaflet';
     NgxSliderModule,
     FormsModule,
     LeafletModule,
+    MapModule,
   ],
     providers: [
         {
