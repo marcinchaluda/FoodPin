@@ -25,6 +25,7 @@ import {PageNotFoundComponent} from './components/page-not-found/page-not-found.
 import {NgxSliderModule} from '@angular-slider/ngx-slider';
 import {InitDataResolver} from './resolvers/init-data.resolver';
 import {CanActivateGuard} from './guards/can-activate.guard';
+import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {CanActivateGuard} from './guards/can-activate.guard';
     SharedModule,
     NgxSliderModule,
     FormsModule,
+    LeafletModule,
   ],
     providers: [
         {
