@@ -29,6 +29,7 @@ import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import {MapModule} from './shared/map/map.module';
 import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster';
 import {DonationsResolver} from './resolvers/donations.resolver';
+import { DonationsMapComponent } from './components/donations-map/donations-map.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {DonationsResolver} from './resolvers/donations.resolver';
       CombineStatsComponent,
       DonationsComponent,
       PageNotFoundComponent,
+      DonationsMapComponent,
   ],
   imports: [
     BrowserModule,
