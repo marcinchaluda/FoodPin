@@ -61,6 +61,7 @@ export class HomeComponent implements OnInit {
   }
 
   public displayMap(): void {
-    console.log('map');
+    this._navbarService.hideNavbar();
+    this._router.navigate(['map']);
   }
 }

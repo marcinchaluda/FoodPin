@@ -30,7 +30,10 @@ const routes: Routes = [
     canLoad: [AuthorizationGuard],
   },
   {path: 'donations', component: DonationsComponent},
-  { path: 'shared/map', loadChildren: () => import('./shared/map/map.module').then(m => m.MapModule) },
+  {
+    path: 'map',
+    loadChildren: () => import('./shared/map/map.module').then(m => m.MapModule),
+  },
   {path: '**', component: PageNotFoundComponent}
 ];
 
