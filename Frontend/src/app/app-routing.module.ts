@@ -11,6 +11,7 @@ import {PageNotFoundComponent} from './components/page-not-found/page-not-found.
 import {InitDataResolver} from './resolvers/init-data.resolver';
 import {CanActivateGuard} from './guards/can-activate.guard';
 import {DonationsResolver} from './resolvers/donations.resolver';
+import {MapComponent} from './shared/map/map.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -33,7 +34,7 @@ const routes: Routes = [
   {path: 'donations', component: DonationsComponent},
   {
     path: 'map',
-    loadChildren: () => import('./shared/map/map.module').then(m => m.MapModule),
+    loadChildren: () => import('./components/donations-map/donations-map.module').then(m => m.DonationsMapModule),
     resolve: {donations$: DonationsResolver}
   },
   {path: '**', component: PageNotFoundComponent}

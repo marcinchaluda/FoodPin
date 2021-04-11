@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {latLng, marker, icon, Marker, MarkerClusterGroup, tileLayer, Icon, IconOptions} from 'leaflet';
-import {ActivatedRoute} from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {icon, Icon, IconOptions, latLng, marker, Marker, MarkerClusterGroup, tileLayer} from 'leaflet';
+import {BehaviorSubject} from 'rxjs';
+import {NavbarService} from '../navbar/navbar.service';
 
 class MarkerClusterGroupOptions {
 }
@@ -11,7 +12,9 @@ class MarkerClusterGroupOptions {
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+  @Input()
   donations: Array<object>;
+  isOpen$: BehaviorSubject<boolean>;
   options = {
     layers: [
       tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -28,20 +31,19 @@ export class MapComponent implements OnInit {
     center: latLng(50.061389, 19.937222)
   };
 
-  constructor(
-    private _actRoute: ActivatedRoute,
-  ) { }
-
   markerClusterGroup: MarkerClusterGroup;
   markerClusterData: Marker[] = [];
   markerClusterOptions: MarkerClusterGroupOptions;
 
+  constructor(
+    private _navbarService: NavbarService,
+  ) { }
+
   ngOnInit(): void {
-    this._actRoute.data.subscribe(data => {
-      this.donations = data.donations$;
-    });
-    this.markerClusterData = this.generateMarker();
-    console.log(this.donations);
+    this.isOpen$ = this._navbarService.isOpen$;
+    if (this.donations) {
+      this.markerClusterData = this.generateMarker();
+    }
   }
 
   public markerClusterReady(group: MarkerClusterGroup): void {

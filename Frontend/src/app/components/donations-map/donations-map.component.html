@@ -1,1 +1,11 @@
-<p>donations-map works!</p>
+<div class="wrapper">
+  <app-loader></app-loader>
+  <app-header></app-header>
+  <ng-container *ngIf="isOpen$ | async">
+    <app-navbar></app-navbar>
+  </ng-container>
+</div>
+<app-map [donations]=donations></app-map>
+
+
+

@@ -26,10 +26,8 @@ import {NgxSliderModule} from '@angular-slider/ngx-slider';
 import {InitDataResolver} from './resolvers/init-data.resolver';
 import {CanActivateGuard} from './guards/can-activate.guard';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
-import {MapModule} from './shared/map/map.module';
 import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster';
 import {DonationsResolver} from './resolvers/donations.resolver';
-import { DonationsMapComponent } from './components/donations-map/donations-map.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +40,6 @@ import { DonationsMapComponent } from './components/donations-map/donations-map.
       CombineStatsComponent,
       DonationsComponent,
       PageNotFoundComponent,
-      DonationsMapComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +55,6 @@ import { DonationsMapComponent } from './components/donations-map/donations-map.
     NgxSliderModule,
     FormsModule,
     LeafletModule,
-    MapModule,
     LeafletMarkerClusterModule,
   ],
     providers: [
