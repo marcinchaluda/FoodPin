@@ -27,6 +27,7 @@ import {InitDataResolver} from './resolvers/init-data.resolver';
 import {CanActivateGuard} from './guards/can-activate.guard';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import {MapModule} from './shared/map/map.module';
+import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {MapModule} from './shared/map/map.module';
     FormsModule,
     LeafletModule,
     MapModule,
+    LeafletMarkerClusterModule,
   ],
     providers: [
         {

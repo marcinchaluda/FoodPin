@@ -5,6 +5,7 @@ import { MapRoutingModule } from './map-routing.module';
 import { MapComponent } from './map.component';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import {SharedModule} from '../shared.module';
+import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {SharedModule} from '../shared.module';
     CommonModule,
     MapRoutingModule,
     LeafletModule,
+    LeafletMarkerClusterModule,
     SharedModule,
   ]
 })
